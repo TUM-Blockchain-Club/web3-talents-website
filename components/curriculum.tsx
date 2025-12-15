@@ -20,10 +20,10 @@ export function Curriculum() {
               <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
                 <BookOpen className="w-5 h-5 text-accent" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground">Blockchain Basics + DLT</h3>
+              <h3 className="text-xl font-semibold text-foreground">Blockchain Fundamentals</h3>
             </div>
             <p className="text-muted-foreground leading-relaxed mb-6">
-              The curriculum covers Finance, Cryptography, and foundational Blockchain technology. Full content details
+              The curriculum covers foundational Blockchain technology, Cryptography, and Finance. Full content details
               coming soon.
             </p>
             <p className="text-sm text-muted-foreground/70">
@@ -33,7 +33,7 @@ export function Curriculum() {
           </div>
 
           <div className="p-6 rounded-xl border border-border bg-card">
-            <h3 className="text-lg font-semibold text-foreground mb-6">Project Schedule</h3>
+            <h3 className="text-lg font-semibold text-foreground mb-6">Program Schedule (TBD)</h3>
             <div className="space-y-4">
               {facts.map((fact) => (
                 <div key={fact.label} className="flex items-center justify-between">

@@ -43,7 +43,7 @@ export function ParticipantTypes() {
           ))}
         </div>
 
-        <p className="text-muted-foreground mt-12 max-w-2xl">
+        <p className="text-foreground text-xl font-semibold mt-12 max-w-3xl leading-relaxed border-l-4 border-accent pl-6 py-4">
           We believe the best growth happens when people of different backgrounds—from developers to finance
           experts—learn from one another.
         </p>
