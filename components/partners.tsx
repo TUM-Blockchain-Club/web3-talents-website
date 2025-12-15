@@ -13,7 +13,6 @@ export function Partners() {
   return (
     <section className="py-20 px-6 border-y border-border">
       <div className="max-w-7xl mx-auto">
-        <p className="text-accent font-semibold text-sm tracking-widest uppercase mb-12">Collaborated With</p>
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-8 lg:gap-12">
           {partners.map((partner) => (
             <div
