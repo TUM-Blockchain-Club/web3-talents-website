@@ -1,6 +1,7 @@
+"use client";
 import Link from "next/link"
+import {Link as ScrollLink} from 'react-scroll'
 import Image from "next/image"
-
 export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
@@ -19,18 +20,52 @@ export function Header() {
         </div>
 
         <nav className="hidden md:flex items-center gap-8">
-          <Link href="#mission" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
+          <ScrollLink
+              to="mission"
+              smooth={true}
+              spy={true}
+              hashSpy={true}
+              duration={500}
+              className="cursor-pointer text-muted-foreground hover:text-foreground transition-colors text-sm"
+          >
             About
-          </Link>
-          <Link href="#participants" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
+          </ScrollLink>
+          <ScrollLink
+              to="participants"
+              smooth={true}
+              spy={true}
+              hashSpy={true}
+              duration={500}
+              className="cursor-pointer text-muted-foreground hover:text-foreground transition-colors text-sm">
             Program
-          </Link>
-          <Link href="#structure" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
+          </ScrollLink>
+          <ScrollLink
+              to="structure"
+              smooth={true}
+              spy={true}
+              hashSpy={true}
+              duration={500}
+              className="cursor-pointer text-muted-foreground hover:text-foreground transition-colors text-sm">
             Structure
-          </Link>
-          <Link href="#curriculum" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
+          </ScrollLink>
+          <ScrollLink
+              to="curriculum"
+              smooth={true}
+              spy={true}
+              hashSpy={true}
+              duration={500}
+              className="cursor-pointer text-muted-foreground hover:text-foreground transition-colors text-sm">
             Curriculum
-          </Link>
+          </ScrollLink>
+          <ScrollLink
+              to="faq"
+              smooth={true}
+              spy={true}
+              hashSpy={true}
+              duration={500}
+              className="cursor-pointer text-muted-foreground hover:text-foreground transition-colors text-sm">
+            FAQ
+          </ScrollLink>
         </nav>
       </div>
     </header>
