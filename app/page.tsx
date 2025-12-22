@@ -5,7 +5,9 @@ import { ParticipantTypes } from "@/components/participant-types"
 import { Expectations } from "@/components/expectations"
 import { CourseStructure } from "@/components/course-structure"
 import { Curriculum } from "@/components/curriculum"
+import { FAQ } from "@/components/faq";
 import { Footer } from "@/components/footer"
+
 
 export default function Home() {
   return (
@@ -17,6 +19,7 @@ export default function Home() {
       <Expectations />
       <CourseStructure />
       <Curriculum />
+      <FAQ />
       <Footer />
     </main>
   )
