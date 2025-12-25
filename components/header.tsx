@@ -69,6 +69,15 @@ export function Header() {
             </ScrollLink>
 
             <Link
+                href="https://www.tum-blockchain.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 rounded-full border border-foreground/30 text-foreground text-sm font-semibold hover:bg-foreground hover:text-background transition-all"
+            >
+              TUM Blockchain
+            </Link>
+
+            <Link
                 href="https://tally.so/r/xXV8WG"
                 target="_blank"
                 rel="noopener noreferrer"

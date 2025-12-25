@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { Linkedin } from "lucide-react"
 
 export function Footer() {
   return (
@@ -27,18 +28,29 @@ export function Footer() {
             </Link>
           </div>
 
-          <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground">
-            <Link href="#" className="hover:text-foreground transition-colors">
-              Privacy
-            </Link>
-            <Link href="#" className="hover:text-foreground transition-colors">
-              Terms
-            </Link>
-            <Link href="#" className="hover:text-foreground transition-colors">
-              Contact
+          <div className="flex items-center justify-center mb-8">
+            <Link
+                href="https://www.linkedin.com/company/web-3-talents"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-[#0A66C2] bg-[#0A66C2]/10 text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white transition-all font-semibold"
+            >
+              <Linkedin className="w-6 h-6" />
+              <span>Follow us on LinkedIn</span>
             </Link>
           </div>
-          <p className="mt-8 text-sm text-muted-foreground/60">Powered by TUM Blockchain Club</p>
+
+          <p className="text-sm text-muted-foreground/60 flex items-center justify-center gap-2">
+            Powered by{" "}
+            <Link
+                href="https://www.tum-blockchain.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-foreground/10 text-foreground font-semibold hover:bg-accent hover:text-accent-foreground transition-all"
+            >
+              TUM Blockchain Club
+            </Link>
+          </p>
         </div>
       </footer>
   )
