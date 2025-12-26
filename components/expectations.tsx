@@ -33,7 +33,7 @@ export function Expectations() {
 
           <div className="max-w-2xl">
             <p className="text-lg text-muted-foreground mb-4">
-              This project is designed to be challenging and rewarding.
+              This program is designed to be challenging and rewarding.
             </p>
             <p className="text-lg text-muted-foreground mb-4">
               Here is what you will experience:

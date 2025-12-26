@@ -26,7 +26,7 @@ export function CourseStructure() {
         <p className="text-accent font-semibold text-sm tracking-widest uppercase mb-6">From Learners to Teachers</p>
         <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">Course Structure</h2>
         <p className="text-lg text-muted-foreground mb-12 max-w-2xl">
-          The project takes place fully online and follows a unique 3-week cycle designed to turn learners into
+          The program takes place fully online and follows a unique 3-week cycle designed to turn learners into
           teachers.
         </p>
 

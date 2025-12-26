@@ -26,7 +26,7 @@ export function Mission() {
               <h3 className="text-xl font-semibold text-foreground mb-3">A New Chapter</h3>
               <p className="text-muted-foreground leading-relaxed">
                 Web3 Talents has found a new home. We send a big thank you to the Frankfurt School Blockchain Center for
-                establishing this incredible format. Building on their foundation, we are starting this project with
+                establishing this incredible format. Building on their foundation, we are starting this program with
                 full motivation and fresh energy here at the TUM Blockchain Club.
               </p>
             </div>

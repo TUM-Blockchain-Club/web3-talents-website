@@ -14,7 +14,7 @@ export function Hero() {
           </h1>
 
           <p className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-2xl">
-            A 20-week project to educate, connect, and build careers in Web3.
+            A 20-week program to educate, connect, and build careers in Web3.
           </p>
 
           <div className="flex flex-wrap items-center gap-4 mb-10">
