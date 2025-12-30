@@ -27,18 +27,10 @@ export function Header() {
                 spy={true}
                 hashSpy={true}
                 duration={500}
-                className="cursor-pointer text-muted-foreground hover:text-foreground transition-colors text-sm"
+                activeClass="!text-foreground !border-accent"
+                className="cursor-pointer text-muted-foreground border-b-2 border-transparent hover:text-foreground transition-all py-1"
             >
               About
-            </ScrollLink>
-            <ScrollLink
-                to="participants"
-                smooth={true}
-                spy={true}
-                hashSpy={true}
-                duration={500}
-                className="cursor-pointer text-muted-foreground hover:text-foreground transition-colors text-sm">
-              Program
             </ScrollLink>
             <ScrollLink
                 to="structure"
@@ -46,7 +38,9 @@ export function Header() {
                 spy={true}
                 hashSpy={true}
                 duration={500}
-                className="cursor-pointer text-muted-foreground hover:text-foreground transition-colors text-sm">
+                activeClass="!text-foreground !border-accent"
+                className="cursor-pointer text-muted-foreground border-b-2 border-transparent hover:text-foreground transition-all py-1"
+            >
               Structure
             </ScrollLink>
             <ScrollLink
@@ -55,7 +49,9 @@ export function Header() {
                 spy={true}
                 hashSpy={true}
                 duration={500}
-                className="cursor-pointer text-muted-foreground hover:text-foreground transition-colors text-sm">
+                activeClass="!text-foreground !border-accent"
+                className="cursor-pointer text-muted-foreground border-b-2 border-transparent hover:text-foreground transition-all py-1"
+            >
               Curriculum
             </ScrollLink>
             <ScrollLink
@@ -64,7 +60,9 @@ export function Header() {
                 spy={true}
                 hashSpy={true}
                 duration={500}
-                className="cursor-pointer text-muted-foreground hover:text-foreground transition-colors text-sm">
+                activeClass="!text-foreground !border-accent"
+                className="cursor-pointer text-muted-foreground border-b-2 border-transparent hover:text-foreground transition-all py-1"
+            >
               FAQ
             </ScrollLink>
 
