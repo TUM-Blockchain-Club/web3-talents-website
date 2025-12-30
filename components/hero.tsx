@@ -26,7 +26,8 @@ export function Hero() {
             >
               <Button
                   size="lg"
-                  className="bg-foreground text-background hover:bg-foreground/90 rounded-md px-10 py-7 text-2xl font-black w-full"
+                  className="bg-foreground text-background hover:bg-foreground/90 rounded-md px-10 py-7 text-2xl font-black w-full
+               transition-all hover:scale-105 shadow-sm cursor-pointer"
               >
                 APPLY NOW!
               </Button>
