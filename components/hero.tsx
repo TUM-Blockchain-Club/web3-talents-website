@@ -34,13 +34,24 @@ export function Hero() {
             </Link>
           </div>
 
-          <div className="flex items-center gap-4 text-sm text-muted-foreground">
+          <div className="flex items-center gap-4 text-sm text-muted-foreground flex-wrap">
           <span className="flex items-center gap-2">
             <span className="w-2 h-2 bg-accent rounded-full"></span>
-            Fully Online
+            Part-Time Program, Fully Online
           </span>
             <span className="text-border">|</span>
-            <span>Jan 28, 2026 – June 17, 2026</span>
+            <div className="flex items-center gap-3">
+              <span>Jan 28, 2026 – June 17, 2026</span>
+              <div className="border border-gray-400 bg-gray-50 text-black font-semibold shadow-sm px-3 py-1 rounded-md text-sm whitespace-nowrap">
+                5 to 7 hours per week expected
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-6 pt-6">
+            <p className="text-lg sm:text-xl font-bold text-accent border-l-4 border-accent pl-6 py-2">
+              Every Wednesday, 5:30 PM - 7:30 PM (Berlin Time)
+            </p>
           </div>
         </div>
       </section>
