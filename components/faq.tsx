@@ -6,16 +6,20 @@ import { ChevronDown } from 'lucide-react';
 export function FAQ() {
   const faqs = [
     {
-      question: "Is the Web3 Talents program fully online?",
+      question: "Is the program fully online?",
       answer: "Yes, the program is conducted 100% online. This ensures that students and professionals can participate from anywhere in the world."
     },
     {
-      question: "Do I need a background in Informatics or Finance?",
-      answer: "No. We explicitly welcome talents from all disciplines. Diverse perspectives are essential for building a human-centered digital future."
+      question: "What do I need to put in my application?",
+      answer: "There is nothing specific we are looking for in terms of prior technical knowledge. We welcome people from all disciplines (tech, business, law, etc.). We just want to learn about who you are!"
     },
     {
-      question: "What is the duration of the program?",
-      answer: "The journey runs for 20 weeks, from January 28 to June 17, 2026."
+      question: "Is the program free?",
+      answer: "Yes, the program is completely free"
+    },
+    {
+      question: "How time consuming is this program?",
+      answer: "The program is designed to be part-time and compatible with full-time studies or a job. You should expect to commit approximately 2 to 3 hours per week to attend sessions and complete the self-study materials."
     }
   ];
 
