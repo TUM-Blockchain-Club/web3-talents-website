@@ -19,7 +19,7 @@ export function FAQ() {
     },
     {
       question: "How time consuming is this program?",
-      answer: "The program is designed to be part-time and compatible with full-time studies or a job. You should expect to commit approximately 2 to 3 hours per week to attend sessions and complete the self-study materials."
+      answer: "The program is designed to be part-time and compatible with full-time studies or a job. You should expect to commit approximately 5 to 7 hours per week to attend sessions and complete the self-study materials."
     }
   ];
 
