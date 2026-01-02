@@ -36,7 +36,7 @@ export function Curriculum() {
       description: "Establish the need for blockchain by conceptually solving the double-spending problem, then introducing the mathematical concepts that make it possible.",
       weeks: [
         {
-          week: "Week 1",
+          week: "Topic 1",
           title: "The Need for Decentralization & Digital Trust",
           icon: Shield,
           topics: [
@@ -48,7 +48,7 @@ export function Curriculum() {
           ]
         },
         {
-          week: "Week 2",
+          week: "Topic 2",
           title: "Cryptography / Keys & Hashing",
           icon: Lock,
           topics: [
@@ -72,7 +72,7 @@ export function Curriculum() {
       description: "Build the identity layer and then the data layer of the first major blockchain implementation (Bitcoin).",
       weeks: [
         {
-          week: "Week 3",
+          week: "Topic 3",
           title: "Wallets & Peer-to-Peer Networks & Propagation",
           icon: Wallet,
           topics: [
@@ -84,7 +84,7 @@ export function Curriculum() {
           ]
         },
         {
-          week: "Week 4",
+          week: "Topic 4",
           title: "Bitcoin: Data Structure & Transactions",
           icon: Bitcoin,
           topics: [
@@ -101,7 +101,7 @@ export function Curriculum() {
       description: "Focus on the mechanisms used to agree on the single, correct history of transactions.",
       weeks: [
         {
-          week: "Week 5",
+          week: "Topic 5",
           title: "Proof-of-Work, Mining, and Immutability",
           icon: Cpu,
           topics: [
@@ -115,7 +115,7 @@ export function Curriculum() {
           ]
         },
         {
-          week: "Week 6",
+          week: "Topic 6",
           title: "Consensus Mechanisms: Beyond Proof-of-Work",
           icon: Scale,
           topics: [
@@ -136,7 +136,7 @@ export function Curriculum() {
       description: "Transition from a single-purpose ledger to a general-purpose blockchain and smart contracts.",
       weeks: [
         {
-          week: "Week 7",
+          week: "Topic 7",
           title: "Architectural Shift: The 'World Computer' (Ethereum)",
           icon: Code,
           topics: [
@@ -148,7 +148,7 @@ export function Curriculum() {
           ]
         },
         {
-          week: "Week 8",
+          week: "Topic 8",
           title: "Smart Contracts, Gas, Token Standards & Oracles",
           icon: Code,
           topics: [
@@ -168,7 +168,7 @@ export function Curriculum() {
       description: "Apply the programmable layer to Finance (DeFi) and the Real World.",
       weeks: [
         {
-          week: "Week 9",
+          week: "Topic 9",
           title: "The Financial Layer: Stablecoins, RWA & DeFi Intro",
           icon: Coins,
           topics: [
@@ -181,7 +181,7 @@ export function Curriculum() {
           ]
         },
         {
-          week: "Week 10",
+          week: "Topic 10",
           title: "Future Outlook: Beyond Finance (DePIN, Identity & DAO)",
           icon: Rocket,
           topics: [
@@ -203,7 +203,7 @@ export function Curriculum() {
         <p className="text-accent font-semibold text-sm tracking-widest uppercase mb-6">What You'll Learn</p>
         <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">Curriculum & Key Facts</h2>
         <p className="text-muted-foreground mb-12 max-w-3xl">
-          Our comprehensive 10-week curriculum is designed to build your blockchain knowledge progressively, 
+          Our comprehensive 10-topic curriculum is designed to build your blockchain knowledge progressively,
           with each phase building upon concepts from previous weeks.
         </p>
 
