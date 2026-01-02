@@ -211,7 +211,7 @@ export function Curriculum() {
         <div className="p-6 rounded-xl border border-border bg-card mb-12">
           <h3 className="text-lg font-semibold text-foreground mb-6 flex items-center gap-2">
             <BookOpen className="w-5 h-5 text-accent" />
-            Program Schedule (TBD)
+            Program Schedule
           </h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {facts.map((fact) => (
