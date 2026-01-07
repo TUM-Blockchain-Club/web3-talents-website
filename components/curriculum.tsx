@@ -45,7 +45,8 @@ export function Curriculum() {
             "The Double-Spending Problem",
             "Introduction to the concept of a shared, immutable ledger",
             "Basic overview of public vs. private ledgers"
-          ]
+          ],
+          note: "⏰ 2026/1/28 - 2026/2/10"
         },
         {
           week: "Topic 2",
@@ -58,6 +59,7 @@ export function Curriculum() {
             "How public/private key pairs work",
             "Digital signatures for authorization"
           ],
+          note: "⏰ 2026/2/11 - 2026/2/24"
         }
       ]
     },
@@ -76,7 +78,8 @@ export function Curriculum() {
             "Decentralized network communication",
             "Node roles (full, light, archival)",
             "Gossip protocols and how data propagates"
-          ]
+          ],
+          note: "⏰ 2026/2/25 - 2026/3/10"
         },
         {
           week: "Topic 4",
@@ -86,7 +89,8 @@ export function Curriculum() {
             "Structure of the Bitcoin block (Header, Transactions)",
             "Transaction flow: creation, signing, mempool, and confirmation",
             "UTXO model overview"
-          ]
+          ],
+          note: "⏰ 2026/3/11 - 2026/3/24"
         }
       ]
     },
@@ -105,6 +109,7 @@ export function Curriculum() {
             "Timestamping and the chaining mechanism that creates immutability",
             "Introduction to the concept of the 51% attack"
           ],
+          note: "⏰ 2026/3/25 - 2026/4/7"
         },
         {
           week: "Topic 6",
@@ -116,6 +121,7 @@ export function Curriculum() {
             "Staking pools vs. mining pools",
             "The Blockchain Trilemma"
           ],
+          note: "⏰ 2026/4/8 - 2026/4/21"
         }
       ]
     },
@@ -134,7 +140,8 @@ export function Curriculum() {
             "Concept of the EVM (Ethereum Virtual Machine) as a shared, singleton state machine",
             "Account Model: Why Ethereum uses accounts instead of UTXO for programmability",
             "EVM Intro: The global computer that everyone runs simultaneously"
-          ]
+          ],
+          note: "⏰ 2026/4/22 - 2026/5/5"
         },
         {
           week: "Topic 8",
@@ -147,7 +154,8 @@ export function Curriculum() {
             "ERC-20 (Fungible): Creating 'Currency' or 'Shares' on top of Ethereum",
             "ERC-721 (Non-Fungible/NFT): Unique identifiers for digital art, certificates, or identity",
             "Oracles: The 'Walled Garden' problem and how blockchains access off-chain data (e.g., Chainlink)"
-          ]
+          ],
+          note: "⏰ 2026/5/6 - 2026/5/19"
         }
       ]
     },
@@ -167,7 +175,8 @@ export function Curriculum() {
             "Real World Assets (RWA): Tokenizing off-chain assets (Real Estate, T-Bills, Gold)",
             "DEX (Decentralized Exchange): Automated Market Makers (AMM) vs. Order Books",
             "Lending/Borrowing: Over-collateralized loans (Aave/Compound)"
-          ]
+          ],
+          note: "⏰ 2026/5/20 - 2026/6/2"
         },
         {
           week: "Topic 10",
@@ -180,7 +189,8 @@ export function Curriculum() {
             "Zero Knowledge proofs high-level concept",
             "DAOs (Decentralized Autonomous Organizations): Governance without a CEO",
             "Voting mechanisms and treasury management"
-          ]
+          ],
+          note: "⏰ 2026/6/3 - 2026/6/16"
         }
       ]
     }
