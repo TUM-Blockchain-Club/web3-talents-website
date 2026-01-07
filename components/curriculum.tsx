@@ -58,11 +58,6 @@ export function Curriculum() {
             "How public/private key pairs work",
             "Digital signatures for authorization"
           ],
-          exercises: [
-            "Explain why hashing ensures data integrity and relates to immutability",
-            "Hands-on signing of transactions"
-          ],
-          note: "Includes hands-on hash function demonstration"
         }
       ]
     },
@@ -110,9 +105,6 @@ export function Curriculum() {
             "Timestamping and the chaining mechanism that creates immutability",
             "Introduction to the concept of the 51% attack"
           ],
-          exercises: [
-            "Explain how the chain structure makes revising past history computationally infeasible"
-          ]
         },
         {
           week: "Topic 6",
@@ -124,9 +116,6 @@ export function Curriculum() {
             "Staking pools vs. mining pools",
             "The Blockchain Trilemma"
           ],
-          exercises: [
-            "Ethereum DAO Fork case study"
-          ]
         }
       ]
     },
