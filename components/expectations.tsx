@@ -20,8 +20,11 @@ export function Expectations() {
     },
     {
       title: "Authentic Learning",
-      description:
-        "We focus on mitigating AI-generated homework. By prioritizing verbal presentations and live interaction, we ensure you build genuine, personal understanding.",
+      description: "We focus on mitigating AI-generated homework. By prioritizing verbal presentations and live interaction, we ensure you build genuine, personal understanding.",
+    },
+    {
+      title: "Recognized Achievement",
+      description: "Through successful participation and completion of this course you will receive an official TUM Blockchain certificate that shows your mastery of blockchain fundamentals."
     }
   ]
 
