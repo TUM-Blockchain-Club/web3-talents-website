@@ -1,4 +1,4 @@
-import { ArrowDown, Users, Presentation, BookOpen } from "lucide-react"
+import { ArrowDown, ArrowLeft, ArrowRight, Users, Presentation, BookOpen } from "lucide-react"
 import { Card } from "@/components/ui/card"
 
 export function CourseStructure() {
@@ -65,25 +65,33 @@ export function CourseStructure() {
             </div>
           </div>
 
-          {/* Curved arrows */}
-          <div className="flex justify-center md:justify-start md:pl-48">
-            <div className="relative w-32 h-24">
-              <svg
-                viewBox="0 0 128 96"
-                className="w-full h-full text-purple-400"
+          <div className="relative h-32 md:pl-48">
+            <svg className="w-full h-full" viewBox="0 0 800 120" preserveAspectRatio="xMidYMid meet">
+              {/* Left curved arrow - pointing DOWN */}
+              <path
+                d="M 150 10 Q 100 60 150 110"
                 fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path d="M 64 0 Q 20 48 64 96" markerEnd="url(#arrowhead)" />
-                <path d="M 64 96 Q 108 48 64 0" markerEnd="url(#arrowhead)" />
-                <defs>
-                  <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
-                    <polygon points="0 0, 10 5, 0 10" fill="currentColor" />
-                  </marker>
-                </defs>
-              </svg>
-            </div>
+                stroke="rgb(192, 132, 252)"
+                strokeWidth="3"
+                strokeLinecap="round"
+              />
+              <polygon points="150,110 145,100 155,105" fill="rgb(192, 132, 252)" transform="rotate(225 150 110)" />
+
+              {/* Right curved arrow - pointing UP */}
+              <path
+                d="M 650 110 Q 700 60 650 10"
+                fill="none"
+                stroke="rgb(192, 132, 252)"
+                strokeWidth="3"
+                strokeLinecap="round"
+              />
+              <polygon points="650,10 645,20 655,15" fill="rgb(192, 132, 252)" transform="rotate(45 650 10)" />
+              
+              {/* Center text */}
+              <text x="400" y="65" textAnchor="middle" className="fill-purple-400 text-lg font-medium">
+                Progressive Learning Cycle
+              </text>
+            </svg>
           </div>
 
           {/* Week 3, 5 */}
