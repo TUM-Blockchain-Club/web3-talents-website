@@ -1,122 +1,133 @@
-import { BookOpen, Users, Presentation, ArrowDown, RotateCw } from "lucide-react"
+import { ArrowDown, Users, Presentation, BookOpen } from "lucide-react"
+import { Card } from "@/components/ui/card"
 
 export function CourseStructure() {
   return (
     <section id="structure" className="py-24 px-4 bg-gradient-to-b from-background via-card to-background overflow-hidden">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
-          <p className="text-accent font-semibold text-sm tracking-widest uppercase mb-4">
-            FROM LEARNERS TO TEACHERS
-          </p>
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-foreground">
-            Course Structure
-          </h2>
+        <div className="mb-16 text-center">
+          <h1 className="text-5xl font-bold mb-4 text-balance text-foreground">Course Structure</h1>
+          <div className="h-1 w-80 bg-gradient-to-r from-purple-500 to-transparent mb-6 mx-auto" />
+          <p className="text-2xl text-purple-400">From Learners to Teachers</p>
         </div>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Vertical line - hidden on mobile */}
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-accent/20 via-accent to-accent/20 transform -translate-x-1/2" />
-
+        <div className="space-y-12">
           {/* Week 1 */}
-          <div className="relative flex flex-col md:flex-row items-center gap-6 md:gap-12 mb-16">
-            <div className="flex-1 md:text-right order-2 md:order-1">
-              <div className="bg-card/80 backdrop-blur-sm border border-accent/20 rounded-3xl p-8 shadow-xl shadow-accent/5 hover:shadow-accent/10 hover:border-accent/40 transition-all duration-300 group">
-                <div className="flex items-center gap-3 mb-4 md:justify-end">
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-accent/20 text-accent">
-                    Week 1
-                  </span>
-                </div>
-                <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-accent transition-colors">
-                  Lecture + Assignment
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Establishment of <span className="text-accent font-medium">conceptual foundation</span> through lectures by <span className="text-accent font-medium">expert-speakers</span>. You are given a <span className="text-accent font-medium">practical assignment</span> to build your knowledge foundation in a <span className="text-accent font-medium">subtopic</span>.
-                </p>
-              </div>
-            </div>
-            
-            {/* Center icon */}
-            <div className="relative z-10 order-1 md:order-2 flex-shrink-0">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-purple-600 flex items-center justify-center shadow-lg shadow-accent/30 rotate-3 hover:rotate-0 transition-transform">
-                <BookOpen className="w-8 h-8 text-white" />
-              </div>
-            </div>
-            
-            <div className="flex-1 order-3 hidden md:block" />
-          </div>
+          <div className="flex flex-col md:flex-row gap-8 items-start">
+            <Card className="bg-gray-100 text-black px-8 py-4 rounded-full border-2 border-purple-500 shadow-lg shadow-purple-500/20 whitespace-nowrap">
+              <span className="font-semibold">Week 1</span>
+            </Card>
 
-          {/* Arrow */}
-          <div className="flex justify-center mb-8 md:mb-16">
-            <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center animate-bounce">
-              <ArrowDown className="w-5 h-5 text-accent" />
-            </div>
-          </div>
+            <div className="flex-1 space-y-6">
+              <Card className="bg-gray-100 text-black px-8 py-4 rounded-full border-2 border-purple-400 shadow-lg flex items-center gap-3">
+                <BookOpen className="w-5 h-5" />
+                <span className="font-semibold">Lecture + Assignment</span>
+              </Card>
 
-          {/* Week 2, 4, ... */}
-          <div className="relative flex flex-col md:flex-row items-center gap-6 md:gap-12 mb-16">
-            <div className="flex-1 order-2 hidden md:block" />
-            
-            {/* Center icon */}
-            <div className="relative z-10 order-1 md:order-2 flex-shrink-0">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shadow-lg shadow-blue-500/30 -rotate-3 hover:rotate-0 transition-transform">
-                <Users className="w-8 h-8 text-white" />
-              </div>
-            </div>
-            
-            <div className="flex-1 order-2 md:order-3">
-              <div className="bg-card/80 backdrop-blur-sm border border-blue-500/20 rounded-3xl p-8 shadow-xl shadow-blue-500/5 hover:shadow-blue-500/10 hover:border-blue-500/40 transition-all duration-300 group">
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-blue-500/20 text-blue-400">
-                    Week 2, 4, ...
-                  </span>
-                </div>
-                <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-blue-400 transition-colors">
-                  Processing (Specialist Groups)
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Meet peers in smaller <span className="text-blue-400 font-medium">subgroups</span> where everyone <span className="text-blue-400 font-medium">researches</span> and <span className="text-blue-400 font-medium">discusses</span> the same subtopic. The goal is for you to <span className="text-blue-400 font-medium">become an expert</span> on that specific topic and <span className="text-blue-400 font-medium">prepare a presentation</span>.
+              <div className="pl-8 border-l-2 border-purple-500/30">
+                <p className="text-gray-300 leading-relaxed">
+                  Establishment of <span className="text-white font-semibold">conceptual foundation</span> through
+                  lectures by <span className="text-white font-semibold">expert-speakers</span>. You are given a{" "}
+                  <span className="text-white font-semibold">practical assignment</span> to build your knowledge
+                  foundation in a <span className="text-white font-semibold">subtopic</span>.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Cycle indicator */}
-          <div className="flex justify-center items-center gap-4 mb-8 md:mb-16">
-            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-accent/10 to-emerald-500/10 border border-accent/20">
-              <RotateCw className="w-4 h-4 text-accent animate-spin" style={{ animationDuration: '3s' }} />
-              <span className="text-sm text-muted-foreground font-medium">Iterative Learning Cycle</span>
-              <RotateCw className="w-4 h-4 text-emerald-500 animate-spin" style={{ animationDuration: '3s', animationDirection: 'reverse' }} />
-            </div>
+          {/* Arrow down */}
+          <div className="flex justify-center md:justify-start md:pl-48">
+            <ArrowDown className="w-8 h-8 text-purple-400" />
           </div>
 
-          {/* Week 3, 5, ... */}
-          <div className="relative flex flex-col md:flex-row items-center gap-6 md:gap-12">
-            <div className="flex-1 md:text-right order-2 md:order-1">
-              <div className="bg-card/80 backdrop-blur-sm border border-emerald-500/20 rounded-3xl p-8 shadow-xl shadow-emerald-500/5 hover:shadow-emerald-500/10 hover:border-emerald-500/40 transition-all duration-300 group">
-                <div className="flex items-center gap-3 mb-4 md:justify-end">
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-400">
-                    Week 3, 5, ...
-                  </span>
-                </div>
-                <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-emerald-400 transition-colors">
-                  Group Teaching & New Lecture
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  <span className="text-emerald-400 font-medium">Specialist groups teach their subtopics</span> to other groups. You <span className="text-emerald-400 font-medium">present your findings</span> to peers, and they teach you theirs – piecing together the full picture through <span className="text-emerald-400 font-medium">peer-to-peer teaching</span>. After, you receive <span className="text-emerald-400 font-medium">new input</span> through a lecture by an <span className="text-emerald-400 font-medium">expert speaker</span>.
+          {/* Week 2, 4 */}
+          <div className="flex flex-col md:flex-row gap-8 items-start">
+            <Card className="bg-gray-100 text-black px-8 py-4 rounded-full border-2 border-purple-500 shadow-lg shadow-purple-500/20 whitespace-nowrap">
+              <span className="font-semibold">Week 2, 4, ...</span>
+            </Card>
+
+            <div className="flex-1 space-y-6">
+              <Card className="bg-gray-100 text-black px-8 py-4 rounded-full border-2 border-purple-400 shadow-lg flex items-center gap-3">
+                <Users className="w-5 h-5" />
+                <span className="font-semibold">Processing (Specialist Groups)</span>
+              </Card>
+
+              <div className="pl-8 border-l-2 border-purple-500/30">
+                <p className="text-gray-300 leading-relaxed">
+                  Meet peers in smaller <span className="text-white font-semibold">subgroups</span> where everyone{" "}
+                  <span className="text-white font-semibold">researches</span> and{" "}
+                  <span className="text-white font-semibold">discusses</span> the same subtopic derived from the lecture.
+                  The goal is for you to <span className="text-white font-semibold">become an expert</span> on that
+                  specific of the topic and <span className="text-white font-semibold">prepare a presentation</span>.
                 </p>
               </div>
             </div>
-            
-            {/* Center icon */}
-            <div className="relative z-10 order-1 md:order-2 flex-shrink-0">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center shadow-lg shadow-emerald-500/30 rotate-3 hover:rotate-0 transition-transform">
-                <Presentation className="w-8 h-8 text-white" />
+          </div>
+
+          {/* Curved arrows */}
+          <div className="flex justify-center md:justify-start md:pl-48">
+            <div className="relative w-32 h-24">
+              <svg
+                viewBox="0 0 128 96"
+                className="w-full h-full text-purple-400"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path d="M 64 0 Q 20 48 64 96" markerEnd="url(#arrowhead)" />
+                <path d="M 64 96 Q 108 48 64 0" markerEnd="url(#arrowhead)" />
+                <defs>
+                  <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+                    <polygon points="0 0, 10 5, 0 10" fill="currentColor" />
+                  </marker>
+                </defs>
+              </svg>
+            </div>
+          </div>
+
+          {/* Week 3, 5 */}
+          <div className="flex flex-col md:flex-row gap-8 items-start">
+            <Card className="bg-gray-100 text-black px-8 py-4 rounded-full border-2 border-purple-500 shadow-lg shadow-purple-500/20 whitespace-nowrap">
+              <span className="font-semibold">Week 3, 5, ...</span>
+            </Card>
+
+            <div className="flex-1 space-y-6">
+              <div className="space-y-4">
+                <Card className="bg-gray-100 text-black px-8 py-4 rounded-full border-2 border-purple-400 shadow-lg flex items-center gap-3">
+                  <Presentation className="w-5 h-5" />
+                  <span className="font-semibold">Group Teaching (Mixed Groups)</span>
+                </Card>
+
+                <Card className="bg-gray-100 text-black px-8 py-4 rounded-full border-2 border-purple-400 shadow-lg flex items-center gap-3">
+                  <BookOpen className="w-5 h-5" />
+                  <span className="font-semibold">Lecture + Assignment</span>
+                </Card>
+              </div>
+
+              <div className="pl-8 border-l-2 border-purple-500/30 space-y-4">
+                <div>
+                  <span className="text-purple-400 font-bold text-xl">1.</span>
+                  <p className="text-gray-300 leading-relaxed inline ml-2">
+                    The specialist groups <span className="text-white font-semibold">teach</span> their{" "}
+                    <span className="text-white font-semibold">subtopics</span> to the others groups. You{" "}
+                    <span className="text-white font-semibold">present</span> your{" "}
+                    <span className="text-white font-semibold">findings</span> to peers, and they teach you theirs -
+                    piecing together the full picture through{" "}
+                    <span className="text-white font-semibold">peer-to-peer teaching</span>.
+                  </p>
+                </div>
+
+                <div>
+                  <span className="text-purple-400 font-bold text-xl">2.</span>
+                  <p className="text-gray-300 leading-relaxed inline ml-2">
+                    After, you receive <span className="text-white font-semibold">new input</span> through a{" "}
+                    <span className="text-white font-semibold">lecture</span> by an{" "}
+                    <span className="text-white font-semibold">expert speaker</span>.
+                  </p>
+                </div>
               </div>
             </div>
-            
-            <div className="flex-1 order-3 hidden md:block" />
           </div>
         </div>
       </div>
