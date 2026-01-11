@@ -1,57 +1,122 @@
-import { CourseStructureFlow } from "./course-structure-flow"
+import { BookOpen, Users, Presentation, ArrowDown, RotateCw } from "lucide-react"
 
 export function CourseStructure() {
-  // ...existing code...
-
   return (
-    <section id="structure" className="py-24 px-4 bg-card">
-      <div className="max-w-xl mx-auto flex flex-col items-center">
-        <p className="text-accent font-semibold text-base tracking-widest uppercase mb-8 text-center">FROM LEARNERS TO TEACHERS</p>
-        <h2 className="text-4xl sm:text-5xl font-extrabold text-foreground mb-12 text-center">Course Structure</h2>
-        <div className="w-full flex flex-col items-center gap-0">
+    <section id="structure" className="py-24 px-4 bg-gradient-to-b from-background via-card to-background overflow-hidden">
+      <div className="max-w-5xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <p className="text-accent font-semibold text-sm tracking-widest uppercase mb-4">
+            FROM LEARNERS TO TEACHERS
+          </p>
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-foreground">
+            Course Structure
+          </h2>
+        </div>
+
+        {/* Timeline */}
+        <div className="relative">
+          {/* Vertical line - hidden on mobile */}
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-accent/20 via-accent to-accent/20 transform -translate-x-1/2" />
+
           {/* Week 1 */}
-          <div className="relative w-full flex flex-col items-center">
-            <div className="bg-gradient-to-r from-accent/80 to-accent/40 rounded-2xl shadow-lg px-8 py-6 mb-2 w-full max-w-md border border-accent">
-              <div className="text-lg font-bold text-white mb-1">Week 1</div>
-              <div className="text-xl font-semibold text-foreground mb-2">Lecture + Assignment</div>
-              <div className="text-base text-muted-foreground">Establishment of <b>conceptual foundation</b> through lectures by <b>expert-speakers</b>. You are given a <b>practical assignment</b> to build your knowledge foundation in a <b>subtopic</b>.</div>
+          <div className="relative flex flex-col md:flex-row items-center gap-6 md:gap-12 mb-16">
+            <div className="flex-1 md:text-right order-2 md:order-1">
+              <div className="bg-card/80 backdrop-blur-sm border border-accent/20 rounded-3xl p-8 shadow-xl shadow-accent/5 hover:shadow-accent/10 hover:border-accent/40 transition-all duration-300 group">
+                <div className="flex items-center gap-3 mb-4 md:justify-end">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-accent/20 text-accent">
+                    Week 1
+                  </span>
+                </div>
+                <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-accent transition-colors">
+                  Lecture + Assignment
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Establishment of <span className="text-accent font-medium">conceptual foundation</span> through lectures by <span className="text-accent font-medium">expert-speakers</span>. You are given a <span className="text-accent font-medium">practical assignment</span> to build your knowledge foundation in a <span className="text-accent font-medium">subtopic</span>.
+                </p>
+              </div>
             </div>
-            {/* Arrow */}
-            <div className="flex flex-col items-center">
-              <div className="w-1 h-8 bg-accent rounded-full" />
-              <div className="w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-accent" />
+            
+            {/* Center icon */}
+            <div className="relative z-10 order-1 md:order-2 flex-shrink-0">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-purple-600 flex items-center justify-center shadow-lg shadow-accent/30 rotate-3 hover:rotate-0 transition-transform">
+                <BookOpen className="w-8 h-8 text-white" />
+              </div>
+            </div>
+            
+            <div className="flex-1 order-3 hidden md:block" />
+          </div>
+
+          {/* Arrow */}
+          <div className="flex justify-center mb-8 md:mb-16">
+            <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center animate-bounce">
+              <ArrowDown className="w-5 h-5 text-accent" />
             </div>
           </div>
+
           {/* Week 2, 4, ... */}
-          <div className="relative w-full flex flex-col items-center mt-2">
-            <div className="bg-gradient-to-r from-accent/80 to-accent/40 rounded-2xl shadow-lg px-8 py-6 mb-2 w-full max-w-md border border-accent">
-              <div className="text-lg font-bold text-white mb-1">Week 2, 4, ...</div>
-              <div className="text-xl font-semibold text-foreground mb-2">Processing (Specialist Groups)</div>
-              <div className="text-base text-muted-foreground">Meet peers in smaller <b>subgroups</b> where everyone <b>researches</b> and <b>discusses</b> the same subtopic derived from the lecture. The goal is for you to <b>become an expert</b> on that specific of the topic and <b>prepare a presentation</b>.</div>
-            </div>
-            {/* Arrow: more beautiful loop SVG */}
-            <div className="flex flex-row items-center justify-center gap-4 mb-4">
-              <div className="w-16 h-16 relative">
-                <svg width="64" height="64" viewBox="0 0 64 64" className="absolute top-0 left-0">
-                  <path d="M48 32a16 16 0 1 1-16-16" fill="none" stroke="#7c3aed" strokeWidth="4" />
-                  <polygon points="48,32 40,28 40,36" fill="#7c3aed" />
-                </svg>
+          <div className="relative flex flex-col md:flex-row items-center gap-6 md:gap-12 mb-16">
+            <div className="flex-1 order-2 hidden md:block" />
+            
+            {/* Center icon */}
+            <div className="relative z-10 order-1 md:order-2 flex-shrink-0">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shadow-lg shadow-blue-500/30 -rotate-3 hover:rotate-0 transition-transform">
+                <Users className="w-8 h-8 text-white" />
               </div>
-              <div className="w-16 h-16 relative">
-                <svg width="64" height="64" viewBox="0 0 64 64" className="absolute top-0 left-0">
-                  <path d="M16 32a16 16 0 1 0 16-16" fill="none" stroke="#7c3aed" strokeWidth="4" />
-                  <polygon points="16,32 24,28 24,36" fill="#7c3aed" />
-                </svg>
+            </div>
+            
+            <div className="flex-1 order-2 md:order-3">
+              <div className="bg-card/80 backdrop-blur-sm border border-blue-500/20 rounded-3xl p-8 shadow-xl shadow-blue-500/5 hover:shadow-blue-500/10 hover:border-blue-500/40 transition-all duration-300 group">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-blue-500/20 text-blue-400">
+                    Week 2, 4, ...
+                  </span>
+                </div>
+                <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-blue-400 transition-colors">
+                  Processing (Specialist Groups)
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Meet peers in smaller <span className="text-blue-400 font-medium">subgroups</span> where everyone <span className="text-blue-400 font-medium">researches</span> and <span className="text-blue-400 font-medium">discusses</span> the same subtopic. The goal is for you to <span className="text-blue-400 font-medium">become an expert</span> on that specific topic and <span className="text-blue-400 font-medium">prepare a presentation</span>.
+                </p>
               </div>
             </div>
           </div>
-          {/* Week 3, 5, ... */}
-          <div className="relative w-full flex flex-col items-center mt-2">
-            <div className="bg-gradient-to-r from-accent/80 to-accent/40 rounded-2xl shadow-lg px-8 py-6 mb-2 w-full max-w-md border border-accent">
-              <div className="text-lg font-bold text-white mb-1">Week 3, 5, ...</div>
-              <div className="text-xl font-semibold text-foreground mb-2">Group Teaching (Mixed Groups) &amp; Lecture + Assignment</div>
-              <div className="text-base text-muted-foreground"><b>The specialist groups teach their subtopics</b> to the others groups. You <b>present your findings</b> to peers, and they teach you theirs – piecing together the full picture through <b>peer-to-peer teaching</b>. After, you receive <b>new input</b> through a lecture by an <b>expert speaker</b>.</div>
+
+          {/* Cycle indicator */}
+          <div className="flex justify-center items-center gap-4 mb-8 md:mb-16">
+            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-accent/10 to-emerald-500/10 border border-accent/20">
+              <RotateCw className="w-4 h-4 text-accent animate-spin" style={{ animationDuration: '3s' }} />
+              <span className="text-sm text-muted-foreground font-medium">Iterative Learning Cycle</span>
+              <RotateCw className="w-4 h-4 text-emerald-500 animate-spin" style={{ animationDuration: '3s', animationDirection: 'reverse' }} />
             </div>
+          </div>
+
+          {/* Week 3, 5, ... */}
+          <div className="relative flex flex-col md:flex-row items-center gap-6 md:gap-12">
+            <div className="flex-1 md:text-right order-2 md:order-1">
+              <div className="bg-card/80 backdrop-blur-sm border border-emerald-500/20 rounded-3xl p-8 shadow-xl shadow-emerald-500/5 hover:shadow-emerald-500/10 hover:border-emerald-500/40 transition-all duration-300 group">
+                <div className="flex items-center gap-3 mb-4 md:justify-end">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-400">
+                    Week 3, 5, ...
+                  </span>
+                </div>
+                <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-emerald-400 transition-colors">
+                  Group Teaching & New Lecture
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  <span className="text-emerald-400 font-medium">Specialist groups teach their subtopics</span> to other groups. You <span className="text-emerald-400 font-medium">present your findings</span> to peers, and they teach you theirs – piecing together the full picture through <span className="text-emerald-400 font-medium">peer-to-peer teaching</span>. After, you receive <span className="text-emerald-400 font-medium">new input</span> through a lecture by an <span className="text-emerald-400 font-medium">expert speaker</span>.
+                </p>
+              </div>
+            </div>
+            
+            {/* Center icon */}
+            <div className="relative z-10 order-1 md:order-2 flex-shrink-0">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center shadow-lg shadow-emerald-500/30 rotate-3 hover:rotate-0 transition-transform">
+                <Presentation className="w-8 h-8 text-white" />
+              </div>
+            </div>
+            
+            <div className="flex-1 order-3 hidden md:block" />
           </div>
         </div>
       </div>
