@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowLeft, ArrowRight, Users, Presentation, BookOpen } from "lucide-react"
+import { ArrowDown, ArrowLeft, ArrowRight, Users, Presentation, BookOpen, Calendar } from "lucide-react"
 import { Card } from "@/components/ui/card"
 
 export function CourseStructure() {

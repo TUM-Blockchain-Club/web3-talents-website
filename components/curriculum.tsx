@@ -29,6 +29,12 @@ export function Curriculum() {
     { icon: Globe, label: "Format", value: "100% Online" },
   ]
 
+  const finalSession = {
+    date: "June 17, 2026",
+    title: "Final Session",
+    description: "Final session with last group teaching"
+  }
+
   const phases: Phase[] = [
     {
       phase: "Phase 1",
@@ -304,6 +310,32 @@ export function Curriculum() {
               )}
             </div>
           ))}
+        </div>
+
+        {/* Final Session Card */}
+        <div className="p-6 rounded-xl border border-border bg-card mt-8">
+          <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
+            <Calendar className="w-5 h-5 text-accent" />
+            Final Session Details
+          </h3>
+          <div className="flex flex-col md:flex-row gap-6">
+            <div className="flex items-center gap-3 p-4 rounded-lg bg-background/50">
+              <Calendar className="w-5 h-5 text-accent flex-shrink-0" />
+              <div>
+                <span className="text-sm text-muted-foreground block">Date</span>
+                <span className="font-semibold text-foreground">{finalSession.date}</span>
+              </div>
+            </div>
+            <div className="flex-1 p-4 rounded-lg bg-background/50">
+              <div className="flex items-center gap-3 mb-2">
+                <BookOpen className="w-5 h-5 text-accent" />
+                <span className="font-semibold text-foreground">{finalSession.title}</span>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                {finalSession.description}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
