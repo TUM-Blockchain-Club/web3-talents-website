@@ -1,6 +1,4 @@
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Calendar, Clock, Users, BookOpen } from "lucide-react"
+import { Calendar, Clock, BookOpen } from "lucide-react"
 
 export function Hero() {
   return (
@@ -9,8 +7,8 @@ export function Hero() {
         <div className="max-w-5xl mx-auto">
           {/* Badge */}
           <div className="mb-8">
-            <p className="text-accent font-bold text-sm tracking-widest uppercase animate-pulse inline-block">
-              Applications Open Now
+            <p className="text-muted-foreground font-bold text-sm tracking-widest uppercase inline-block">
+              Applications Closed
             </p>
           </div>
 
@@ -24,30 +22,13 @@ export function Hero() {
             A 20-week program to educate, connect, and build careers in Web3.
           </p>
 
-          {/* CTA Button */}
-          <div className="mb-16">
-            <Link
-              href="https://tally.so/r/xXV8WG"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block"
-            >
-              <Button
-                size="lg"
-                className="bg-foreground text-background hover:bg-foreground/90 rounded-lg px-12 py-8 text-xl font-black transition-all hover:scale-105 shadow-lg hover:shadow-xl"
-              >
-                APPLY NOW!
-              </Button>
-            </Link>
-          </div>
-
           {/* Program Details Grid */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
             {/* Part-Time Badge */}
             <div className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-5 flex items-start gap-3">
               <div className="mt-1">
                 <div className="w-3 h-3 bg-accent rounded-full"></div>
-              </div>
+                </div>
               <div>
                 <p className="text-xs text-muted-foreground uppercase font-semibold mb-1">Format</p>
                 <p className="text-foreground font-semibold">Part-Time, Fully Online</p>
@@ -60,8 +41,8 @@ export function Hero() {
               <div>
                 <p className="text-xs text-muted-foreground uppercase font-semibold mb-1">Duration</p>
                 <p className="text-foreground font-semibold text-sm">Jan 28 - Jun 17, 2026</p>
-              </div>
             </div>
+          </div>
 
             {/* Time Commitment */}
             <div className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-5 flex items-start gap-3">
@@ -70,7 +51,7 @@ export function Hero() {
                 <p className="text-xs text-muted-foreground uppercase font-semibold mb-1">Time</p>
                 <p className="text-foreground font-semibold">5-7 hours/week</p>
               </div>
-            </div>
+                </div>
 
             {/* Schedule */}
             <div className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-xl p-5 flex items-start gap-3">
@@ -83,7 +64,7 @@ export function Hero() {
             </div>
           </div>
         </div>
-      </div>
-    </section>
+        </div>
+      </section>
   )
 }
