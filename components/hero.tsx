@@ -22,6 +22,15 @@ export function Hero() {
             A 20-week program to educate, connect, and build careers in Web3.
           </p>
 
+          {/* CTA Button */}
+          <div className="mb-16">
+            <div
+                className="inline-flex items-center justify-center bg-muted text-muted-foreground/50 px-12 py-8 rounded-lg text-xl font-bold cursor-not-allowed select-none border border-border/50"
+            >
+              Applications Closed
+            </div>
+          </div>
+
           {/* Program Details Grid */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
             {/* Part-Time Badge */}
