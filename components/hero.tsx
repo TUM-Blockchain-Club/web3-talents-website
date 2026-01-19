@@ -26,19 +26,11 @@ export function Hero() {
 
           {/* CTA Button */}
           <div className="mb-16">
-            <Link
-              href="https://tally.so/r/xXV8WG"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block"
+            <div
+                className="inline-flex items-center justify-center bg-muted text-muted-foreground/50 px-12 py-8 rounded-lg text-xl font-bold cursor-not-allowed select-none border border-border/50"
             >
-              <Button
-                size="lg"
-                className="bg-foreground text-background hover:bg-foreground/90 rounded-lg px-12 py-8 text-xl font-black transition-all hover:scale-105 shadow-lg hover:shadow-xl"
-              >
-                APPLY NOW!
-              </Button>
-            </Link>
+              Applications Closed
+            </div>
           </div>
 
           {/* Program Details Grid */}

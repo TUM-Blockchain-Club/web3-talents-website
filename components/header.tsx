@@ -75,14 +75,6 @@ export function Header() {
               TUM Blockchain
             </Link>
 
-            <Link
-                href="https://tally.so/r/xXV8WG"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-accent text-accent-foreground px-5 py-2 rounded-full text-sm font-bold hover:scale-105 transition-all shadow-sm"
-            >
-              Apply Now!
-            </Link>
           </nav>
         </div>
       </header>
