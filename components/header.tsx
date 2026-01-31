@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link"
-import {Link as ScrollLink} from 'react-scroll'
+import { Link as ScrollLink } from 'react-scroll'
 import Image from "next/image"
 
 export function Header() {
@@ -25,40 +25,56 @@ export function Header() {
                 to="mission"
                 smooth={true}
                 spy={true}
-                hashSpy={true}
+                offset={-100}
                 duration={500}
                 activeClass="!text-foreground !border-accent"
                 className="cursor-pointer text-muted-foreground border-b-2 border-transparent hover:text-foreground transition-all py-1"
             >
               About
             </ScrollLink>
+
             <ScrollLink
                 to="structure"
                 smooth={true}
                 spy={true}
-                hashSpy={true}
+                offset={-100}
                 duration={500}
                 activeClass="!text-foreground !border-accent"
                 className="cursor-pointer text-muted-foreground border-b-2 border-transparent hover:text-foreground transition-all py-1"
             >
               Structure
             </ScrollLink>
+
             <ScrollLink
                 to="curriculum"
                 smooth={true}
                 spy={true}
-                hashSpy={true}
+                offset={-100}
                 duration={500}
                 activeClass="!text-foreground !border-accent"
                 className="cursor-pointer text-muted-foreground border-b-2 border-transparent hover:text-foreground transition-all py-1"
             >
               Curriculum
             </ScrollLink>
+
+            {/* === SPEAKERS LINK (Moved here) === */}
+            <ScrollLink
+                to="speakers"
+                spy={true}
+                smooth={true}
+                offset={-100}
+                duration={500}
+                activeClass="!text-foreground !border-accent"
+                className="cursor-pointer text-muted-foreground border-b-2 border-transparent hover:text-foreground transition-all py-1"
+            >
+              Speakers
+            </ScrollLink>
+
             <ScrollLink
                 to="faq"
                 smooth={true}
                 spy={true}
-                hashSpy={true}
+                offset={-100}
                 duration={500}
                 activeClass="!text-foreground !border-accent"
                 className="cursor-pointer text-muted-foreground border-b-2 border-transparent hover:text-foreground transition-all py-1"
