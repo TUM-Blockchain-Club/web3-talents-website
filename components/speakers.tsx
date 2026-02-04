@@ -35,7 +35,7 @@ export function Speakers() {
             Meet Our Guest Speakers
           </h2>
           <p className="text-muted-foreground mb-12 max-w-2xl">
-            Learn directly from the builders and thought leaders shaping the Web3 ecosystem.
+            Learn directly from the builders and leaders shaping the Web3 ecosystem.
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
