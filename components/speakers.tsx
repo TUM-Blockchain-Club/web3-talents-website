@@ -52,9 +52,7 @@ export function Speakers() {
                     key={index}
                     className="group bg-card border border-border rounded-xl p-6 hover:border-accent/50 transition-all hover:-translate-y-1"
                 >
-                  {/* === CONDITIONAL RENDERING LOGIC === */}
                   {speaker.linkedin ? (
-                      // OPTION A: If they HAVE a LinkedIn, wrap in Link + Pointer Cursor
                       <Link href={speaker.linkedin} target="_blank" rel="noopener noreferrer">
                         <div className="mb-6 relative w-24 h-24 mx-auto rounded-full overflow-hidden border-2 border-accent/20 group-hover:border-accent transition-colors cursor-pointer">
                           <Image
@@ -66,7 +64,6 @@ export function Speakers() {
                         </div>
                       </Link>
                   ) : (
-                      // OPTION B: If NO LinkedIn, just show the image (No Link, No Pointer)
                       <div className="mb-6 relative w-24 h-24 mx-auto rounded-full overflow-hidden border-2 border-accent/20 group-hover:border-accent transition-colors">
                         <Image
                             src={speaker.image}
