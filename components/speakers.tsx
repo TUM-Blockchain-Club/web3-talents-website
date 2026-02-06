@@ -1,5 +1,5 @@
 import Image from "next/image"
-import Link from "next/link" // <--- Don't forget this import
+import Link from "next/link"
 
 interface Speaker {
   name: string
@@ -8,7 +8,7 @@ interface Speaker {
   week: string
   topic: string
   image: string
-  linkedin: string // <--- Added this field
+  linkedin?: string
 }
 
 export function Speakers() {
@@ -25,6 +25,14 @@ export function Speakers() {
       linkedin: "https://de.linkedin.com/in/davidan",
     },
     // Add more speakers here
+    {
+      name: "Jonas Gebele",
+      role: "Research Associate",
+      company: "Technical University of Munich",
+      week: "Week 2",
+      topic: "Cryptography and Hashing",
+      image: "/speakers/csm_jonas-gebele_bfc36846d9.webp",
+    }
   ]
 
   return (
@@ -35,7 +43,7 @@ export function Speakers() {
             Meet Our Guest Speakers
           </h2>
           <p className="text-muted-foreground mb-12 max-w-2xl">
-            Learn directly from the builders and leaders shaping the Web3 ecosystem.
+            Learn directly from the builders and thought leaders shaping the Web3 ecosystem.
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -44,20 +52,30 @@ export function Speakers() {
                     key={index}
                     className="group bg-card border border-border rounded-xl p-6 hover:border-accent/50 transition-all hover:-translate-y-1"
                 >
-
-                  <Link href={speaker.linkedin} target="_blank" rel="noopener noreferrer">
-                    <div className="mb-6 relative w-24 h-24 mx-auto rounded-full overflow-hidden border-2 border-accent/20 group-hover:border-accent transition-colors cursor-pointer">
-
-
-                      <Image
-                          src={speaker.image}
-                          alt={speaker.name}
-                          fill
-                          className="object-cover"
-                      />
-
-                    </div>
-                  </Link>
+                  {/* === CONDITIONAL RENDERING LOGIC === */}
+                  {speaker.linkedin ? (
+                      // OPTION A: If they HAVE a LinkedIn, wrap in Link + Pointer Cursor
+                      <Link href={speaker.linkedin} target="_blank" rel="noopener noreferrer">
+                        <div className="mb-6 relative w-24 h-24 mx-auto rounded-full overflow-hidden border-2 border-accent/20 group-hover:border-accent transition-colors cursor-pointer">
+                          <Image
+                              src={speaker.image}
+                              alt={speaker.name}
+                              fill
+                              className="object-cover"
+                          />
+                        </div>
+                      </Link>
+                  ) : (
+                      // OPTION B: If NO LinkedIn, just show the image (No Link, No Pointer)
+                      <div className="mb-6 relative w-24 h-24 mx-auto rounded-full overflow-hidden border-2 border-accent/20 group-hover:border-accent transition-colors">
+                        <Image
+                            src={speaker.image}
+                            alt={speaker.name}
+                            fill
+                            className="object-cover"
+                        />
+                      </div>
+                  )}
 
                   <div className="text-center">
                     <div className="inline-block bg-accent/10 text-accent text-xs font-bold px-2 py-1 rounded mb-3">
