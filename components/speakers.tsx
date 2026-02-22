@@ -32,6 +32,14 @@ export function Speakers() {
       week: "Week 2",
       topic: "Cryptography and Hashing",
       image: "/speakers/csm_jonas-gebele_bfc36846d9.webp",
+    },
+    {
+      name: "Laurent Castillo",
+      role: "VP of Architecture",
+      company: "Ledger",
+      week: "Week 3",
+      topic: "Wallets & Peer-to-Peer Networks & Propagation",
+      image: "/speakers/Laurent.png",
     }
   ]
 
