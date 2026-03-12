@@ -40,6 +40,14 @@ export function Speakers() {
       week: "Week 3",
       topic: "Wallets & Peer-to-Peer Networks & Propagation",
       image: "/speakers/Laurent.png",
+    },
+    {
+      name: "Andi Schmitt",
+      role: "Co-founder",
+      company: "LightUpKryptos",
+      week: "Week 4",
+      topic: "Bitcoin Data Structure and Transactions",
+      image: "/speakers/andi.jpeg",
     }
   ]
 
