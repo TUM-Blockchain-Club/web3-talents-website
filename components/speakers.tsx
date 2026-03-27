@@ -48,6 +48,14 @@ export function Speakers() {
       week: "Week 4",
       topic: "Bitcoin Data Structure and Transactions",
       image: "/speakers/andi.jpeg",
+    },
+    {
+      name: "Gopi Mehta",
+      role: "Ex-President, Head of Education Research",
+      company: "TUM Blockchain Club",
+      week: "Week 5",
+      topic: "Proof of Work, Mining, and Immutability",
+      image: "/speakers/Gopi_yig.png",
     }
   ]
 
