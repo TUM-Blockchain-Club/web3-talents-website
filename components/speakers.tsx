@@ -56,6 +56,14 @@ export function Speakers() {
       week: "Week 5",
       topic: "Proof of Work, Mining, and Immutability",
       image: "/speakers/Gopi_yig.png",
+    },
+    {
+      name: "Filip Rezabek",
+      role: "Co-Founder SpaceComputer, Researcher",
+      company: "SpaceComputer, FlashBots, TUM",
+      week: "Week 6",
+      topic: "Consensus Mechanisms: Beyond Proof-of-Work Lecture:",
+      image: "/speakers/Filip.jpeg",
     }
   ]
 
