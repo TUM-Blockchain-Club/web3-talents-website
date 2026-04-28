@@ -64,6 +64,22 @@ export function Speakers() {
       week: "Week 6",
       topic: "Consensus Mechanisms: Beyond Proof-of-Work Lecture:",
       image: "/speakers/Filip.jpeg",
+    },
+    {
+      name: "David Kurz",
+      role: "Business Development",
+      company: "Bitvavo",
+      week: "Week 7",
+      topic: "Ethereum: The World Computer (Architecture)",
+      image: "/speakers/davidkurz.jpg",
+    },
+    {
+      name: "Julian Hötzel",
+      role: "Business Development",
+      company: "Bitvavo",
+      week: "Week 7",
+      topic: "Ethereum: The World Computer (Architecture)",
+      image: "/speakers/julian.hötzel.png",
     }
   ]
 
