@@ -8,7 +8,7 @@ export function Hero() {
           {/* Badge */}
           <div className="mb-8">
             <p className="text-muted-foreground font-bold text-sm tracking-widest uppercase inline-block">
-              Applications Closed
+              Applications for second iteration opens soon
             </p>
           </div>
 
@@ -25,9 +25,9 @@ export function Hero() {
           {/* CTA Button */}
           <div className="mb-16">
             <div
-                className="inline-flex items-center justify-center bg-muted text-muted-foreground/50 px-12 py-8 rounded-lg text-xl font-bold cursor-not-allowed select-none border border-border/50"
+                className="inline-flex w-fit max-w-full items-center justify-center bg-accent/12 text-foreground/75 px-8 py-5 rounded-lg text-xl font-bold cursor-not-allowed select-none border border-accent/25 text-center"
             >
-              Applications Closed
+              Applications for Second Iteration Open Soon
             </div>
           </div>
 
