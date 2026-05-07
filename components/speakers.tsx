@@ -80,6 +80,15 @@ export function Speakers() {
       week: "Week 7",
       topic: "Ethereum: The World Computer (Architecture)",
       image: "/speakers/julian.hötzel.png",
+
+    },
+    {
+      name: "Rafael Kaaz",
+      role: "Head of Operations",
+      company: "CashLink",
+      week: "Week 8",
+      topic: "Smart Contracts & Applications (The Software)",
+      image: "/speakers/rafael.png",
     }
   ]
 
