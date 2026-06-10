@@ -89,6 +89,38 @@ export function Speakers() {
       week: "Week 8",
       topic: "Smart Contracts & Applications (The Software)",
       image: "/speakers/rafael.png",
+    },
+    {
+      name: "Prof. Dr. Philipp Maume",
+      role: "Professor of Law",
+      company: "Technical University of Munich",
+      week: "Week 9",
+      topic: "The Financial Layer: Stablecoins, RWA & DeFi Intro",
+      image: "/speakers/maume.jpg",
+    },
+    {
+      name: "Dr. Christian Ziegler",
+      role: "CTO",
+      company: "Stealth Startup",
+      week: "Week 10",
+      topic: "Future Outlook: Beyond Finance (DePIN, Identity & DAO)",
+      image: "/speakers/cz.jpg",
+    },
+    {
+      name: "Felix Hoops",
+      role: "PHD Candidate - Self Sovereign Identity",
+      company: "Technical University of Munich",
+      week: "Week 10",
+      topic: "Future Outlook: Beyond Finance (DePIN, Identity & DAO)",
+      image: "/speakers/felix.png",
+    },
+    {
+      name: "Gaurav Sharma",
+      role: "CEO/CTO",
+      company: "IO.net",
+      week: "Week 10",
+      topic: "Future Outlook: Beyond Finance (DePIN, Identity & DAO)",
+      image: "/speakers/gs.jpeg",
     }
   ]
 
