@@ -433,10 +433,10 @@ body.web3t-dashboard-page #page,body.web3t-dashboard-page #page.drawers,body.web
 .web3t-hero__sub{margin-top:18px;font-size:clamp(1rem, 1.5vw, 1.2rem);color:rgb(255 255 255 / .85)}
 .web3t-hero__actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
 .web3t-hero__actions .web3t-btn{height:46px;font-size:1rem;padding:10px 18px}
-/* The static image remains underneath as a no-JS/no-WebGL/motion fallback. */
-.web3t-hero__distortion{display:none;position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+/* The static image remains underneath as a no-JS/no-canvas/motion fallback. */
+.web3t-hero__particles{display:none;position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 @media (min-width:900px) and (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
-  .web3t-hero__bg.is-distorting .web3t-hero__distortion{display:block}
+  .web3t-hero__bg.is-particles-active .web3t-hero__particles{display:block}
   .web3t-hero__art-hit{position:absolute;inset:0 0 0 50%;pointer-events:auto}
 }
 @media (max-width:720px){.web3t-hero__bg{opacity:.4;right:-80px}.web3t-hero::after{background:linear-gradient(180deg,rgb(0 0 0 / .55) 0%,rgb(0 0 0 / .8) 55%,var(--w3-bg) 100%)}.web3t-hero__inner{align-items:flex-start}.web3t-hero__pill{align-self:flex-start;text-align:left}}

@@ -18,10 +18,12 @@ copy and small screens cannot overlap the illustrations or adjacent cards.
 
 The compact homepage hero uses the original background image as its static
 fallback. On fine-pointer desktops with no reduced-motion preference,
-`hero-motion.js` uses a WebGL displacement field within 105 CSS pixels of the
-cursor. Pixels outside that circle retain their original sampling coordinates.
-The effect eases out on leave and stops rendering when idle, hidden, or blurred.
-Touch, narrow screens, disabled JavaScript, unavailable WebGL, and reduced-motion
+`hero-motion.js` samples the original artwork into tiny 3px cells. Within a 76px
+cursor brush, colored pixels leave the image and flow outward with repulsion,
+curl, and damped spring physics. Each moving cell is removed from its source;
+the rest of the image remains intact. Pixels spring home when the cursor moves
+away, and rendering stops once all pixels settle, or when hidden or blurred.
+Touch, narrow screens, disabled JavaScript, unavailable canvas, and reduced-motion
 preferences keep the original still image. Public cohort and
 event dates remain “coming soon” until confirmed dates are available.
 

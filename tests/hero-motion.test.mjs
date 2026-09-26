@@ -1,29 +1,42 @@
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { test } from 'node:test'
-import { pointerPosition, settle, createRenderer, fragmentSource, motionQuery } from '../public/hero-motion.js'
+import { pointerPosition, stepParticle, createRenderer, particleRadius, cellSize, motionQuery } from '../public/hero-motion.js'
 
 test('pointer coordinates track the exact hovered position in the artwork', () => {
   const bounds = { left: 300, top: 90, width: 1000, height: 600 }
-  assert.deepEqual(pointerPosition({ clientX: 1050, clientY: 240 }, bounds), [.75, .75])
-  assert.deepEqual(pointerPosition({ clientX: 800, clientY: 390 }, bounds), [.5, .5])
+  assert.deepEqual(pointerPosition({ clientX: 1050, clientY: 240 }, bounds), { x: 750, y: 150 })
+  assert.deepEqual(pointerPosition({ clientX: 800, clientY: 390 }, bounds), { x: 500, y: 300 })
 })
 
-test('distortion ramps up and settles completely after leaving', () => {
-  let strength = 0
-  for (let i = 0; i < 40; i++) strength = settle(strength, 1, 16)
-  assert.ok(strength > .99 && strength <= 1)
-  for (let i = 0; i < 50; i++) strength = settle(strength, 0, 16)
-  assert.ok(strength < .002 && strength >= 0)
+const makePixel = () => ({ homeX: 500, homeY: 250, x: 500, y: 250, vx: 0, vy: 0, seed: 1.3 })
+
+test('nearby pixels physically separate and spring back to their exact origin', () => {
+  const pixel = makePixel()
+  for (let i = 0; i < 50; i++) stepParticle(pixel, { x: 490, y: 250 }, 16, i * 16)
+  assert.ok(Math.hypot(pixel.x - pixel.homeX, pixel.y - pixel.homeY) > 15)
+  let moving
+  for (let i = 0; i < 150; i++) moving = stepParticle(pixel, null, 16, i * 16)
+  assert.equal(moving, false)
+  assert.ok(Math.hypot(pixel.x - pixel.homeX, pixel.y - pixel.homeY) < .15)
 })
 
-test('shader changes sample coordinates only inside the cursor radius', () => {
-  assert.match(fragmentSource, /vec2 sampleUV = uv;/)
-  assert.match(fragmentSource, /if \(distance < radius && strength > 0.0\)/)
-  assert.match(fragmentSource, /1.0 - smoothstep\(0.0, radius, distance\)/)
+test('pixels outside the brush stay exactly still', () => {
+  const pixel = makePixel()
+  const original = { ...pixel }
+  for (let i = 0; i < 100; i++) stepParticle(pixel, { x: 500 + particleRadius + 1, y: 250 }, 16, i * 16)
+  assert.deepEqual(pixel, original)
+  assert.ok(cellSize <= 3, 'Use tiny pixels, not large shards')
 })
 
-test('WebGL absence falls back to the original image', () => {
+test('particle directly under cursor stays finite and moves outward', () => {
+  const pixel = makePixel()
+  stepParticle(pixel, { x: 500, y: 250 }, 5000, 0)
+  assert.ok(Number.isFinite(pixel.x) && Number.isFinite(pixel.y))
+  assert.ok(Math.hypot(pixel.vx, pixel.vy) > 0)
+})
+
+test('canvas absence falls back to the original image', () => {
   assert.equal(createRenderer({ getContext: () => null }, {}), null)
 })
 

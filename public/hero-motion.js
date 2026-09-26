@@ -1,104 +1,115 @@
-// A small displacement field, not a whole-image transform. The source image
-// remains visible until the texture and shaders are ready, and on any failure.
+// The image remains intact outside the cursor's small particle brush. Each
+// awakened pixel has velocity and a spring pulling it back to its source.
 export const motionQuery = '(min-width: 900px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)';
+export const particleRadius = 76;
+export const cellSize = 3;
 
 export function pointerPosition(event, bounds) {
-    return [(event.clientX - bounds.left) / bounds.width, 1 - (event.clientY - bounds.top) / bounds.height];
+    return { x: event.clientX - bounds.left, y: event.clientY - bounds.top };
 }
 
-export function settle(current, target, milliseconds) {
-    return current + (target - current) * (1 - Math.exp(-milliseconds / 110));
-}
-
-export const fragmentSource = `
-precision mediump float;
-varying vec2 uv;
-uniform sampler2D artwork;
-uniform vec2 pointer;
-uniform float aspect;
-uniform float radius;
-uniform float strength;
-uniform float time;
-void main() {
-    vec2 delta = (uv - pointer) * vec2(aspect, 1.0);
-    float distance = length(delta);
-    vec2 sampleUV = uv;
-    // Pixels outside this circle are sampled at their original coordinates.
-    if (distance < radius && strength > 0.0) {
-        float falloff = (1.0 - smoothstep(0.0, radius, distance))
-            * smoothstep(0.0, radius * 0.25, distance);
-        vec2 direction = delta / max(distance, 0.0001);
-        vec2 tangent = vec2(-direction.y, direction.x);
-        float wave = sin(distance / radius * 9.0 - time * 2.0);
-        vec2 offset = (direction * 0.19 + tangent * wave * 0.07)
-            * radius * falloff * strength;
-        sampleUV -= offset / vec2(aspect, 1.0);
+export function stepParticle(p, pointer, milliseconds, time) {
+    // Bounded timesteps keep springs stable after a slow frame.
+    const dt = Math.min(milliseconds, 32) / 16.667;
+    const spring = .018 + .008 * (1 + Math.sin(p.seed * 3));
+    let fx = (p.homeX - p.x) * spring;
+    let fy = (p.homeY - p.y) * spring;
+    if (pointer) {
+        const dx = p.x - pointer.x;
+        const dy = p.y - pointer.y;
+        const distance = Math.hypot(dx, dy);
+        if (distance < particleRadius) {
+            const angle = distance > .01 ? Math.atan2(dy, dx) : p.seed;
+            const force = (1 - distance / particleRadius) ** 2;
+            // Radial repulsion plus a little curl: separate pixels, fluid motion.
+            const curl = Math.sin(time * .0015 + p.seed) * 1.7 + 1.3;
+            const push = 4.5 + Math.sin(p.seed * 2 + time * .001) * 2;
+            fx += (Math.cos(angle) * push - Math.sin(angle) * curl) * force;
+            fy += (Math.sin(angle) * push + Math.cos(angle) * curl) * force;
+        }
     }
-    gl_FragColor = texture2D(artwork, clamp(sampleUV, 0.0, 1.0));
-}`;
+    const drag = Math.pow(.84, dt);
+    p.vx = (p.vx + fx * dt) * drag;
+    p.vy = (p.vy + fy * dt) * drag;
+    p.x += p.vx * dt;
+    p.y += p.vy * dt;
+    const displacement = Math.hypot(p.x - p.homeX, p.y - p.homeY);
+    const speed = Math.hypot(p.vx, p.vy);
+    return displacement > .15 || speed > .05;
+}
 
 export function createRenderer(canvas, image) {
-    const gl = canvas.getContext('webgl', { alpha: false, antialias: false, depth: false });
-    if (!gl) return null;
-    const shaders = [];
-    const compile = (type, source) => {
-        const shader = gl.createShader(type);
-        shaders.push(shader);
-        gl.shaderSource(shader, source);
-        gl.compileShader(shader);
-        if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) throw new Error('Shader unavailable');
-        return shader;
+    const ctx = canvas.getContext('2d', { alpha: false });
+    if (!ctx) return null;
+    let bounds, colors, cols, rows;
+    const pixels = new Map();
+    const sample = document.createElement('canvas');
+    const sampleContext = sample.getContext('2d', { willReadFrequently: true });
+    if (!sampleContext) return null;
+    return {
+        resize(nextBounds) {
+            pixels.clear();
+            bounds = nextBounds;
+            cols = Math.ceil(bounds.width / cellSize);
+            rows = Math.ceil(bounds.height / cellSize);
+            sample.width = cols;
+            sample.height = rows;
+            sampleContext.drawImage(image, 0, 0, cols, rows);
+            colors = sampleContext.getImageData(0, 0, cols, rows).data;
+        },
+        reset() { pixels.clear(); },
+        dispose() { pixels.clear(); colors = null; sample.width = sample.height = 0; },
+        draw(pointer, time, milliseconds) {
+            if (!colors) return false;
+            if (pointer) {
+                const left = Math.max(Math.floor(cols / 2), Math.floor((pointer.x - particleRadius) / cellSize));
+                const right = Math.min(cols - 1, Math.ceil((pointer.x + particleRadius) / cellSize));
+                const top = Math.max(0, Math.floor((pointer.y - particleRadius) / cellSize));
+                const bottom = Math.min(rows - 1, Math.ceil((pointer.y + particleRadius) / cellSize));
+                for (let row = top; row <= bottom; row++) {
+                    for (let col = left; col <= right; col++) {
+                        const id = row * cols + col;
+                        if (pixels.has(id)) continue;
+                        const x = (col + .5) * cellSize;
+                        const y = (row + .5) * cellSize;
+                        if (Math.hypot(x - pointer.x, y - pointer.y) >= particleRadius) continue;
+                        const i = id * 4;
+                        const r = colors[i], g = colors[i + 1], b = colors[i + 2];
+                        // Don't turn the nearly black background into a cloud.
+                        if (Math.max(r, g, b) < 45) continue;
+                        pixels.set(id, {
+                            homeX: x, homeY: y, x, y, vx: 0, vy: 0,
+                            seed: (id * 2.399963) % (Math.PI * 2),
+                            color: `rgb(${Math.min(255, r * 1.3)},${Math.min(255, g * 1.3)},${Math.min(255, b * 1.3)})`,
+                        });
+                    }
+                }
+            }
+            ctx.setTransform(canvas.width / bounds.width, 0, 0, canvas.height / bounds.height, 0, 0);
+            ctx.globalAlpha = 1;
+            ctx.drawImage(image, 0, 0, bounds.width, bounds.height);
+            ctx.fillStyle = '#010518';
+            for (const [id, pixel] of pixels) {
+                if (!stepParticle(pixel, pointer, milliseconds, time)) {
+                    pixels.delete(id);
+                    continue;
+                }
+                pixel.amount = Math.min(1, Math.hypot(pixel.x - pixel.homeX, pixel.y - pixel.homeY) / 7);
+                // Remove each moving pixel from the original, not just an overlay
+                // of confetti on top of an otherwise unchanged logo.
+                ctx.globalAlpha = pixel.amount;
+                ctx.fillRect(pixel.homeX - cellSize / 2, pixel.homeY - cellSize / 2, cellSize, cellSize);
+            }
+            for (const pixel of pixels.values()) {
+                ctx.globalAlpha = pixel.amount;
+                ctx.fillStyle = pixel.color;
+                const size = 2 + .5 * Math.sin(pixel.seed);
+                ctx.fillRect(pixel.x - size / 2, pixel.y - size / 2, size, size);
+            }
+            ctx.globalAlpha = 1;
+            return pixels.size > 0;
+        },
     };
-    const program = gl.createProgram();
-    let buffer, texture;
-    const dispose = () => {
-        if (buffer) gl.deleteBuffer(buffer);
-        if (texture) gl.deleteTexture(texture);
-        shaders.forEach(shader => gl.deleteShader(shader));
-        gl.deleteProgram(program);
-    };
-    try {
-        gl.attachShader(program, compile(gl.VERTEX_SHADER, `
-            attribute vec2 position;
-            varying vec2 uv;
-            void main() { uv = (position + 1.0) * 0.5; gl_Position = vec4(position, 0.0, 1.0); }
-        `));
-        gl.attachShader(program, compile(gl.FRAGMENT_SHADER, fragmentSource));
-        gl.linkProgram(program);
-        if (!gl.getProgramParameter(program, gl.LINK_STATUS)) throw new Error('Program unavailable');
-        gl.useProgram(program);
-        buffer = gl.createBuffer();
-        gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
-        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, -1,1, 1,-1, 1,1]), gl.STATIC_DRAW);
-        const position = gl.getAttribLocation(program, 'position');
-        gl.enableVertexAttribArray(position);
-        gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
-        texture = gl.createTexture();
-        gl.bindTexture(gl.TEXTURE_2D, texture);
-        gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
-        gl.uniform1i(gl.getUniformLocation(program, 'artwork'), 0);
-        const uniforms = Object.fromEntries(['pointer', 'aspect', 'radius', 'strength', 'time'].map(name => [name, gl.getUniformLocation(program, name)]));
-        return {
-            dispose,
-            draw(bounds, point, strength, time) {
-                gl.viewport(0, 0, canvas.width, canvas.height);
-                gl.uniform2f(uniforms.pointer, point[0], point[1]);
-                gl.uniform1f(uniforms.aspect, bounds.width / bounds.height);
-                gl.uniform1f(uniforms.radius, 105 / bounds.height);
-                gl.uniform1f(uniforms.strength, strength);
-                gl.uniform1f(uniforms.time, time / 1000);
-                gl.drawArrays(gl.TRIANGLES, 0, 6);
-            },
-        };
-    } catch {
-        dispose();
-        return null;
-    }
 }
 
 export function initHero(art) {
@@ -108,26 +119,25 @@ export function initHero(art) {
         cleanup?.();
         cleanup = null;
         if (!media.matches) return;
-        let cancelled = false, frame = 0, active = false, strength = 0, last = 0;
-        let point = [.75, .5], bounds, renderer, observer;
+        let cancelled = false, frame = 0, active = false, last = 0;
+        let point, bounds, renderer, observer;
         const canvas = document.createElement('canvas');
-        canvas.className = 'web3t-hero__distortion';
+        canvas.className = 'web3t-hero__particles';
         const hit = document.createElement('span');
         hit.className = 'web3t-hero__art-hit';
         const hide = () => {
             active = false;
-            strength = 0;
             cancelAnimationFrame(frame);
             frame = 0;
-            art.classList.remove('is-distorting');
+            renderer?.reset();
+            art.classList.remove('is-particles-active');
         };
         const tick = time => {
             frame = 0;
-            strength = settle(strength, active ? 1 : 0, Math.min(time - last || 16, 50));
+            const moving = renderer.draw(active ? point : null, time, Math.min(time - last || 16, 32));
             last = time;
-            if (!active && strength < .002) { hide(); return; }
-            renderer.draw(bounds, point, strength, time);
-            art.classList.add('is-distorting');
+            if (!active && !moving) { hide(); return; }
+            art.classList.add('is-particles-active');
             frame = requestAnimationFrame(tick);
         };
         const move = event => {
@@ -143,25 +153,33 @@ export function initHero(art) {
         hit.addEventListener('pointermove', move);
         hit.addEventListener('pointerleave', leave);
         hit.addEventListener('pointercancel', leave);
-        canvas.addEventListener('webglcontextlost', () => { cancelled = true; hide(); });
         window.addEventListener('blur', hide);
         document.addEventListener('visibilitychange', visibility);
         const image = new Image();
         image.onload = () => {
             if (cancelled) return;
-            renderer = createRenderer(canvas, image);
-            if (!renderer) return;
-            art.append(canvas, hit);
-            const resize = () => {
-                hide();
-                bounds = art.getBoundingClientRect();
-                const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
-                canvas.width = Math.round(bounds.width * ratio);
-                canvas.height = Math.round(bounds.height * ratio);
-            };
-            observer = new ResizeObserver(resize);
-            observer.observe(art);
-            resize();
+            try {
+                renderer = createRenderer(canvas, image);
+                if (!renderer) return;
+                const resize = () => {
+                    hide();
+                    bounds = art.getBoundingClientRect();
+                    const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
+                    canvas.width = Math.round(bounds.width * ratio);
+                    canvas.height = Math.round(bounds.height * ratio);
+                    renderer.resize(bounds);
+                };
+                resize();
+                art.append(canvas, hit);
+                observer = new ResizeObserver(resize);
+                observer.observe(art);
+            } catch {
+                // The original background remains visible if canvas is blocked.
+                renderer?.dispose();
+                renderer = null;
+                canvas.remove();
+                hit.remove();
+            }
         };
         image.src = '/assets/hero-bg.png';
         cleanup = () => {
