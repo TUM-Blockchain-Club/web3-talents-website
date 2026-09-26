@@ -16,6 +16,15 @@ from Moodle). Course wrapper classes must match the `.web3t-courses` and
 grid with decorative puzzle images; their text stays in normal flow so longer
 copy and small screens cannot overlap the illustrations or adjacent cards.
 
+The compact homepage hero uses the original background image as its static
+fallback. On fine-pointer desktops with no reduced-motion preference, `app.js`
+creates forty clipped shards over the right-hand artwork. A fixed hit area
+triggers reversible CSS transitions; touch, narrow screens, disabled JavaScript,
+and reduced-motion preferences keep the original still image. Public cohort and
+event dates remain “coming soon” until confirmed dates are available.
+
+Run regression checks with `node --test tests/*.test.mjs`.
+
 Login and Apply actions are intentionally disconnected from Moodle; `public/app.js`
 marks them unavailable. No Moodle server, admin workflow, or database is changed.
 
