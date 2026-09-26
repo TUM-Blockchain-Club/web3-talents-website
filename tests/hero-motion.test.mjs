@@ -1,58 +1,36 @@
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import { runInNewContext } from 'node:vm'
 import { test } from 'node:test'
+import { pointerPosition, settle, createRenderer, fragmentSource, motionQuery } from '../public/hero-motion.js'
 
-const script = readFileSync(new URL('../public/app.js', import.meta.url), 'utf8')
-
-function setup(matches) {
-  const classes = new Set()
-  const hero = {
-    children: [],
-    classList: { add: c => classes.add(c), remove: c => classes.delete(c), contains: c => classes.has(c) },
-    append(fragment) { this.children.push(...fragment.children) },
-  }
-  const media = { matches, addEventListener(event, fn) { this.change = fn } }
-  const window = { matchMedia: () => media, addEventListener(event, fn) { this[event] = fn } }
-  const document = {
-    querySelectorAll: () => [],
-    querySelector: () => hero,
-    createDocumentFragment: () => ({ children: [], append(child) { this.children.push(child) } }),
-    createElement: () => ({ style: { setProperty() {} }, addEventListener(event, fn) { this[event] = fn } }),
-  }
-  runInNewContext(script, { document, window })
-  return { hero, media, classes, window }
-}
-
-test('hover scatters forty shards and pointer leave/cancel restores them', () => {
-  const { hero, classes, window } = setup(true)
-  assert.equal(hero.children.length, 41)
-  const hit = hero.children.at(-1)
-  for (const reset of [() => hit.pointerleave(), () => hit.pointercancel(), () => window.blur()]) {
-    hit.pointerenter()
-    assert.ok(classes.has('is-scattered'))
-    reset()
-    assert.ok(!classes.has('is-scattered'))
-  }
+test('pointer coordinates track the exact hovered position in the artwork', () => {
+  const bounds = { left: 300, top: 90, width: 1000, height: 600 }
+  assert.deepEqual(pointerPosition({ clientX: 1050, clientY: 240 }, bounds), [.75, .75])
+  assert.deepEqual(pointerPosition({ clientX: 800, clientY: 390 }, bounds), [.5, .5])
 })
 
-test('touch/narrow/reduced-motion preferences leave original artwork untouched', () => {
-  const { hero, classes } = setup(false)
-  assert.equal(hero.children.length, 0)
-  assert.ok(!classes.has('is-ready'))
+test('distortion ramps up and settles completely after leaving', () => {
+  let strength = 0
+  for (let i = 0; i < 40; i++) strength = settle(strength, 1, 16)
+  assert.ok(strength > .99 && strength <= 1)
+  for (let i = 0; i < 50; i++) strength = settle(strength, 0, 16)
+  assert.ok(strength < .002 && strength >= 0)
 })
 
-test('preference changes reset hover without duplicating shards', () => {
-  const { hero, media, classes } = setup(true)
-  const hit = hero.children.at(-1)
-  hit.pointerenter()
-  media.matches = false
-  media.change()
-  hit.pointerenter()
-  assert.ok(!classes.has('is-scattered'))
-  media.matches = true
-  media.change()
-  assert.equal(hero.children.length, 41)
+test('shader changes sample coordinates only inside the cursor radius', () => {
+  assert.match(fragmentSource, /vec2 sampleUV = uv;/)
+  assert.match(fragmentSource, /if \(distance < radius && strength > 0.0\)/)
+  assert.match(fragmentSource, /1.0 - smoothstep\(0.0, radius, distance\)/)
+})
+
+test('WebGL absence falls back to the original image', () => {
+  assert.equal(createRenderer({ getContext: () => null }, {}), null)
+})
+
+test('touch, narrow screens, and reduced-motion preferences exclude the effect', () => {
+  for (const guard of ['min-width: 900px', 'hover: hover', 'pointer: fine', 'prefers-reduced-motion: no-preference']) {
+    assert.ok(motionQuery.includes(guard))
+  }
 })
 
 test('public pages no longer advertise old cohort or event dates', () => {

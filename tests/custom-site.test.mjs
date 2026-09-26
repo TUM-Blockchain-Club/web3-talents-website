@@ -18,7 +18,7 @@ test('public pages use clean local navigation and existing static assets', () =>
   for (const page of ['index', 'courses', 'course', 'community']) {
     const html = readPage(page)
     assert.doesNotMatch(html, /href="[^"\s]*\.html(?:[#?"])/)
-    for (const [, asset] of html.matchAll(/(?:src|href)="\/(assets\/[^"?#]+|styles\.css|app\.js)"/g)) {
+    for (const [, asset] of html.matchAll(/(?:src|href)="\/(assets\/[^"?#]+|styles\.css|app\.js|hero-motion\.js)"/g)) {
       assert.ok(existsSync(new URL(asset, publicDir)), `${page}: missing ${asset}`)
     }
   }
