@@ -1,7 +1,6 @@
 import assert from 'node:assert/strict'
-import { readFileSync } from 'node:fs'
 import { test } from 'node:test'
-import { pointerPosition, stepParticle, createRenderer, particleRadius, cellSize, motionQuery } from '../public/hero-motion.js'
+import { pointerPosition, stepParticle, createRenderer, particleRadius, cellSize, motionQuery } from '../lib/hero-particles.mjs'
 
 test('pointer coordinates track the exact hovered position in the artwork', () => {
   const bounds = { left: 300, top: 90, width: 1000, height: 600 }
@@ -43,13 +42,5 @@ test('canvas absence falls back to the original image', () => {
 test('touch, narrow screens, and reduced-motion preferences exclude the effect', () => {
   for (const guard of ['min-width: 900px', 'hover: hover', 'pointer: fine', 'prefers-reduced-motion: no-preference']) {
     assert.ok(motionQuery.includes(guard))
-  }
-})
-
-test('public pages no longer advertise old cohort or event dates', () => {
-  for (const page of ['index', 'courses', 'course', 'community']) {
-    const html = readFileSync(new URL(`../public/${page}.html`, import.meta.url), 'utf8')
-    assert.doesNotMatch(html, /August 2026|July 15|JULY 2026|Dec 15|January 15th|June, 13|Jun-2024|17 days to apply|Applications Open/)
-    assert.match(html, /coming soon/i)
   }
 })

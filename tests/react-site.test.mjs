@@ -1,0 +1,67 @@
+import assert from 'node:assert/strict';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
+import { test } from 'node:test';
+import config from '../next.config.mjs';
+import { renderPage } from './react-render.cjs';
+import { inventory } from './page-inventory.mjs';
+
+const baseline = JSON.parse(readFileSync(new URL('./public-content-baseline.json', import.meta.url), 'utf8'));
+const pages = ['home', 'courses', 'course', 'community'];
+const publicDir = new URL('../public/', import.meta.url);
+
+for (const page of pages) {
+  test(`${page}: actual React render preserves all copy, headings, and images`, () => {
+    assert.deepEqual(inventory(renderPage(page)), baseline[page]);
+  });
+  test(`${page}: local assets exist and public actions remain disconnected`, () => {
+    const html = renderPage(page);
+    for (const [, asset] of html.matchAll(/(?:src|href)="\/(assets\/[^"?#]+)"/g)) {
+      assert.ok(existsSync(new URL(asset, publicDir)), `Missing ${asset}`);
+    }
+    for (const [action] of html.matchAll(/<a\b[^>]*data-(?:login|apply)[^>]*>/g)) {
+      assert.match(action, /aria-disabled="true"/);
+      assert.doesNotMatch(action, /href=/);
+    }
+    assert.doesNotMatch(html, /(?:130\.61\.104\.92|login\/index\.php|\.html["#?])/);
+    assert.doesNotMatch(html, /August 2026|July 15|JULY 2026|Dec 15|January 15th|June, 13|Jun-2024|17 days to apply|Applications Open/);
+  });
+}
+
+test('every old URL redirects to an existing React route, without HTML rewrites', async () => {
+  assert.equal(config.rewrites, undefined);
+  for (const redirect of await config.redirects()) {
+    assert.equal(redirect.permanent, true);
+    assert.ok(existsSync(new URL(`../app${redirect.destination === '/' ? '' : redirect.destination}/page.tsx`, import.meta.url)));
+    assert.equal(existsSync(new URL(redirect.source.slice(1), publicDir)), false);
+  }
+});
+
+test('course wrappers and original stylesheet remain intact', () => {
+  const css = readFileSync(new URL('styles.css', publicDir), 'utf8');
+  for (const page of ['courses', 'course']) {
+    assert.match(renderPage(page), new RegExp(`class="web3t web3t-${page}"`));
+    assert.ok(css.includes(`.web3t-${page}`));
+  }
+});
+
+test('components use React markup, not embedded HTML or legacy global scripts', () => {
+  const directory = new URL('../components/public-site/', import.meta.url);
+  for (const file of readdirSync(directory).filter(name => name.endsWith('.tsx'))) {
+    const source = readFileSync(new URL(file, directory), 'utf8');
+    assert.doesNotMatch(source, /dangerouslySetInnerHTML|innerHTML|<script|document\.querySelector/);
+  }
+  assert.equal(existsSync(new URL('app.js', publicDir)), false);
+  assert.equal(existsSync(new URL('hero-motion.js', publicDir)), false);
+});
+
+test('tabs and accordion initial states expose appropriate accessibility semantics', () => {
+  const html = renderPage('course');
+  assert.equal([...html.matchAll(/role="tab"/g)].length, 3);
+  assert.equal([...html.matchAll(/aria-selected="true"/g)].length, 1);
+  assert.equal([...html.matchAll(/role="tabpanel"/g)].length, 3);
+  assert.equal([...html.matchAll(/role="tabpanel"[^>]*hidden=""/g)].length, 2);
+  for (const [button] of html.matchAll(/<button[^>]*class="web3t-course-phase__head"[^>]*>/g)) {
+    assert.match(button, /aria-expanded="false"/);
+    assert.match(button, /aria-controls="course-accordion-\d+"/);
+  }
+});

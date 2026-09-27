@@ -1,30 +1,10 @@
-import { Header } from "@/components/header"
-import { Hero } from "@/components/hero"
-import { Mission } from "@/components/mission"
-import { ParticipantTypes } from "@/components/participant-types"
-import { Expectations } from "@/components/expectations"
-import { CourseStructure } from "@/components/course-structure"
-import { Curriculum } from "@/components/curriculum"
-import { Speakers } from "@/components/speakers" // <--- Import this
-import { FAQ } from "@/components/faq"
-import { Footer } from "@/components/footer"
+import type { Metadata } from "next";
+import { HomePage } from "@/components/public-site/home-sections";
 
-export default function Home() {
-  return (
-      <main className="min-h-screen bg-background">
-        <Header />
-        <Hero />
-        <Mission />
-        <ParticipantTypes />
-        <Expectations />
-        <CourseStructure />
-        <Curriculum />
+export const metadata: Metadata = {
+  title: "Web3 Talents — TUM Blockchain Club",
+  description:
+    "A free, peer-led cohort programme for learning Web3, run by TUM Blockchain Club.",
+};
 
-        {/* Speakers placed between Curriculum and FAQ */}
-        <Speakers />
-
-        <FAQ />
-        <Footer />
-      </main>
-  )
-}
+export default HomePage;

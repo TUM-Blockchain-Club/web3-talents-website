@@ -1,29 +1,24 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
-import "./globals.css"
-
-const _geist = Geist({ subsets: ["latin"] })
-const _geistMono = Geist_Mono({ subsets: ["latin"] })
+import type React from "react";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Web3 Talents | TUM Blockchain Club",
-  description: "A 20-week online program to educate, connect, and build careers in Web3",
-  generator: "v0.app",
-}
+  title: "Web3 Talents — TUM Blockchain Club",
+  description:
+    "A free, peer-led cohort programme for learning Web3, run by TUM Blockchain Club.",
+  icons: { icon: "/assets/logo.png" },
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={`font-sans antialiased`}>
-        {children}
-        <Analytics />
-      </body>
+    <html lang="en">
+      <head>
+        <link rel="stylesheet" href="/styles.css" />
+      </head>
+      <body className="web3t-page">{children}</body>
     </html>
-  )
+  );
 }
