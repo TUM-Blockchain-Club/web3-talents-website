@@ -27,8 +27,12 @@ matching clean URL.
 - `carousel.tsx`: responsive scroll carousel with working pagination.
 - `accordion.tsx`: FAQ/curriculum items and an optional expand-all group.
 - `course-tabs.tsx`: keyboard-accessible course description/curriculum/FAQ tabs.
-- `particle-logo.tsx`: React lifecycle for the existing pixel effect;
-  `lib/hero-particles.mjs` contains the unchanged particle physics.
+- `particle-logo.tsx`: lifecycle and still fallback for the drifting logo field.
+  `lib/logo-field.mjs` controls nine logo tracks, speeds, sizes, sprite sampling,
+  and localized hover breakup. It crops the actual symbol from `assets/logo.png`.
+  `lib/hero-particles.mjs` supplies the shared spring/repulsion physics.
+  The field pauses off-screen or in background tabs, honors reduced motion, and
+  provides a pause/resume button. Hover particles keep following the moving logo.
 - `unavailable-action.tsx`: disabled public calls to action. Intentionally no
   Moodle login, application, or registration destination.
 
@@ -39,11 +43,14 @@ React hydrates the interactive components, and internal links use client routing
 
 ## Appearance
 
-`public/styles.css` and `public/assets/` are unchanged. Existing class names,
+The React migration retained `public/styles.css` and `public/assets/`. Existing class names,
 wrappers, fonts, colors, spacing, text, and asset URLs are preserved. Native image
 elements deliberately retain the current sizing rules. Do not import the older
 `app/globals.css` or older top-level `components/` homepage into these routes:
 those belong to the previous, different design.
+
+The homepage hero now uses a drifting field of small logo symbols instead of the
+single large background illustration; its text, dimensions, and links are unchanged.
 
 Example of adding another course card inside the existing carousel:
 
