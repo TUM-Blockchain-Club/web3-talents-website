@@ -7,8 +7,21 @@ import {
   createLogoFieldRenderer,
   hoverRadius,
   driftQuery,
+  logoSource,
+  artworkAlpha,
 } from "../lib/logo-field.mjs";
 import { stepParticle } from "../lib/hero-particles.mjs";
+
+test("original blue artwork replaces the rainbow logo and drifts twice as fast", () => {
+  assert.equal(logoSource, "/assets/hero-bg.png");
+  assert.deepEqual(
+    logoTracks.map((track) => track.speed),
+    [48, 38, 54, 44, 62, 34, 40, 58, 46],
+  );
+  assert.equal(artworkAlpha(4, 7, 22), 0);
+  assert.equal(artworkAlpha(25, 80, 220), 1);
+  assert.equal(artworkAlpha(25, 32, 56), 0.5);
+});
 
 test("nine differently sized logos move left to right at their configured speed", () => {
   assert.equal(logoTracks.length, 9);
@@ -54,6 +67,7 @@ test("renderer disperses actual logo cells locally and reassembles them", () => 
     clearRect() {},
     fillRect() {},
     setTransform() {},
+    putImageData() {},
     getImageData() {
       return {
         data: new Uint8ClampedArray(canvas.width * canvas.height * 4).fill(255),
