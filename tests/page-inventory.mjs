@@ -5,7 +5,8 @@ const decode = text => text.replace(/&(#x[\da-f]+|#\d+|[a-z]+);/gi, (match, enti
 export function inventory(html) {
   const body = html.includes('<body') ? html.split(/<body[^>]*>/)[1].split('<script')[0] : html;
   return {
-    text: decode(body.replace(/<[^>]*>/g, ' ')).replace(/\s+/g, ' ').trim(),
+    // New program navigation repeats existing titles but does not change page copy.
+    text: decode(body.replace(/<div class="web3t-program-picker"[^>]*>[\s\S]*?<\/div>/g, '').replace(/<[^>]*>/g, ' ')).replace(/\s+/g, ' ').trim(),
     images: [...body.matchAll(/<img\b[^>]*\bsrc="([^"]+)"/g)].map(match => match[1]),
     headings: [...body.matchAll(/<(h[123])\b[^>]*>([\s\S]*?)<\/\1>/g)].map(match => decode(match[2].replace(/<[^>]*>/g, ' ')).replace(/\s+/g, ' ').trim()),
   };

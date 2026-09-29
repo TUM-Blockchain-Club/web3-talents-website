@@ -258,7 +258,7 @@ export function CommunityFaq() {
 export function CommunityPage() {
   return (
     <div className="web3t web3t-communitypg" id="top">
-      <SiteHeader home={false} />
+      <SiteHeader current="community" />
 
       <CommunityHero />
 

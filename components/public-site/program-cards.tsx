@@ -23,6 +23,25 @@ export function ProgramCards() {
   const active = preview ?? selected;
   return (
     <div className="web3t-program__carousel" data-carousel="stack">
+      <div
+        className="web3t-program-picker"
+        role="group"
+        aria-label="Choose a program"
+      >
+        {programs.map((program, i) => (
+          <button
+            key={program.title}
+            type="button"
+            aria-pressed={active === i}
+            onClick={() => {
+              setSelected(i);
+              setPreview(null);
+            }}
+          >
+            {program.title}
+          </button>
+        ))}
+      </div>
       <div className="web3t-stack" onPointerLeave={() => setPreview(null)}>
         {programs.map((program, i) => (
           <article

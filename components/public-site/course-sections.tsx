@@ -513,7 +513,7 @@ export function StudentReviews() {
 export function CoursePage() {
   return (
     <div className="web3t web3t-course" id="top">
-      <SiteHeader home={false} />
+      <SiteHeader current="courses" />
 
       <div className="web3t-course__top">
         <div className="web3t-course__cubes" aria-hidden="true"></div>

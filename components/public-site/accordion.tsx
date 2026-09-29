@@ -79,8 +79,13 @@ export function AccordionItem({
       >
         {heading}
       </button>
-      <div className={bodyClassName} id={itemId} aria-hidden={!open}>
-        {children}
+      <div
+        className={`${bodyClassName} web3t-accordion-panel`}
+        id={itemId}
+        aria-hidden={!open}
+        inert={!open}
+      >
+        <div className="web3t-accordion-panel__inner">{children}</div>
       </div>
     </Tag>
   );

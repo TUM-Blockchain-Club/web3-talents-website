@@ -24,7 +24,8 @@ matching clean URL.
 - `site-header.tsx` / `site-footer.tsx`: shared navigation and branding.
 - `cards.tsx`: course, speaker, testimonial, diversity, and club-event cards.
 - `program-cards.tsx`: interactive stacked program cards and their content.
-- `carousel.tsx`: responsive scroll carousel with working pagination.
+- `carousel.tsx`: responsive scroll carousel with pagination, previous/next
+  buttons, native touch scrolling, and arrow-key navigation on the viewport.
 - `accordion.tsx`: FAQ/curriculum items and an optional expand-all group.
 - `course-tabs.tsx`: keyboard-accessible course description/curriculum/FAQ tabs.
 - `particle-logo.tsx`: lifecycle and still fallback for the drifting logo field.
@@ -55,6 +56,15 @@ those belong to the previous, different design.
 The homepage hero now uses a drifting field of small logo symbols instead of the
 single large background illustration; its text, dimensions, and links are unchanged.
 
+`public/interactions.css` adds hover/focus feedback, active navigation underlines,
+tab transitions, and intrinsic-height accordion transitions without replacing the
+original stylesheet. Program selector pills make both stacked cards reachable on
+mobile. Value-card descriptions remain visible on touch devices. The shared
+header initializes `lib/page-interactions.mjs` against its page container for
+one-time, subtle scroll entrances; content is never hidden while waiting for JS.
+Observers and animations are disposed on navigation. Reduced-motion preferences
+disable animated transitions and scroll entrances (including changes at runtime).
+
 Example of adding another course card inside the existing carousel:
 
 ```tsx
@@ -72,6 +82,8 @@ npm run dev
 
 Tests server-render the real TSX pages and compare their text, headings, and
 images against the pre-migration content inventory. They also cover redirects,
-assets, disabled CTAs, initial accessibility state, and particle physics.
+assets, disabled CTAs, initial accessibility state, particle physics, and entrance
+animation cleanup/reduced motion. Program-selector labels repeat existing titles
+and are excluded from the original prose inventory, with separate semantic tests.
 When intentionally changing content, update the corresponding inventory entry.
 Browser checks are still needed for interactive behavior and visual changes.

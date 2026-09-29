@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 
 export function Carousel({
   children,
@@ -13,6 +13,7 @@ export function Carousel({
   label: string;
 }) {
   const viewport = useRef<HTMLDivElement>(null);
+  const id = useId();
   const [pages, setPages] = useState(0);
   const [active, setActive] = useState(0);
   useEffect(() => {
@@ -66,7 +67,8 @@ export function Carousel({
     if (!element || pages < 2) return;
     element.scrollTo({
       left: Math.round(
-        (index / (pages - 1)) * (element.scrollWidth - element.clientWidth),
+        (Math.max(0, Math.min(pages - 1, index)) / (pages - 1)) *
+          (element.scrollWidth - element.clientWidth),
       ),
       behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
         ? "instant"
@@ -78,6 +80,25 @@ export function Carousel({
       <div
         className={`${scrollerClassName}${pages === 0 ? " is-centered" : ""}`}
         data-scroller=""
+        id={id}
+        role="region"
+        aria-label={label}
+        tabIndex={pages > 1 ? 0 : undefined}
+        onKeyDown={(event) => {
+          if (event.target !== event.currentTarget || pages < 2) return;
+          if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+            event.preventDefault();
+            goTo(
+              Math.max(
+                0,
+                Math.min(
+                  pages - 1,
+                  active + (event.key === "ArrowRight" ? 1 : -1),
+                ),
+              ),
+            );
+          }
+        }}
         ref={viewport}
       >
         {children}
@@ -88,6 +109,18 @@ export function Carousel({
         aria-label={label}
         style={pages ? undefined : { display: "none" }}
       >
+        <button
+          className="web3t-carousel-arrow"
+          type="button"
+          aria-label={`Previous page — ${label}`}
+          aria-controls={id}
+          disabled={active === 0}
+          onClick={() => goTo(active - 1)}
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m14 6-6 6 6 6M8 12h12" />
+          </svg>
+        </button>
         {Array.from({ length: pages }, (_, i) => (
           <button
             key={i}
@@ -98,6 +131,18 @@ export function Carousel({
             onClick={() => goTo(i)}
           />
         ))}
+        <button
+          className="web3t-carousel-arrow"
+          type="button"
+          aria-label={`Next page — ${label}`}
+          aria-controls={id}
+          disabled={active === pages - 1}
+          onClick={() => goTo(active + 1)}
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m10 6 6 6-6 6M4 12h12" />
+          </svg>
+        </button>
       </div>
     </div>
   );

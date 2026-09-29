@@ -179,7 +179,7 @@ export function CourseStructure() {
 export function CoursesPage() {
   return (
     <div className="web3t web3t-courses" id="top">
-      <SiteHeader home={false} />
+      <SiteHeader current="courses" />
 
       <CoursesHero />
 

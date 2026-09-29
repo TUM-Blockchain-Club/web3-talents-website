@@ -17,6 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="stylesheet" href="/styles.css" />
+        <link rel="stylesheet" href="/interactions.css" />
       </head>
       <body className="web3t-page">{children}</body>
     </html>
