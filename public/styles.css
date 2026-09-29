@@ -430,6 +430,7 @@ body.web3t-dashboard-page #page,body.web3t-dashboard-page #page.drawers,body.web
 .web3t-hero__logo-field.is-ready .web3t-hero__logo-fallback{display:none}
 .web3t-hero__motion-toggle{position:absolute;right:24px;bottom:18px;z-index:3;border:1px solid rgb(255 255 255 / .22);border-radius:100px;background:rgb(6 7 23 / .7);padding:7px 12px;color:#bcb8d0;font:inherit;font-size:.75rem;cursor:pointer}
 .web3t-hero__motion-toggle:hover,.web3t-hero__motion-toggle:focus-visible{border-color:#a69aff;color:#fff}
+.web3t-hero__motion-toggle:not(:focus-visible){width:1px;height:1px;padding:0;border:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 @media (prefers-reduced-motion:reduce){.web3t-hero__motion-toggle{display:none}}
 @media (max-width:600px){.web3t-hero__logo-fallback i{height:calc(var(--logo-height) * .65)}.web3t-hero__motion-toggle{right:18px;bottom:12px}}
 .web3t-hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgb(0 0 0 / .92) 0%,rgb(0 0 0 / .82) 34%,rgb(0 0 0 / .1) 65%,#fff0 78%);pointer-events:none}

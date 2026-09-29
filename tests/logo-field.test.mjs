@@ -15,7 +15,7 @@ import { stepParticle } from "../lib/hero-particles.mjs";
 test("original blue artwork replaces the rainbow logo and drifts twice as fast", () => {
   assert.equal(logoSource, "/assets/hero-bg.png");
   assert.deepEqual(
-    logoTracks.map((track) => track.speed),
+    logoTracks.slice(0, 9).map((track) => track.speed),
     [48, 38, 54, 44, 62, 34, 40, 58, 46],
   );
   assert.equal(artworkAlpha(4, 7, 22), 0);
@@ -23,9 +23,10 @@ test("original blue artwork replaces the rainbow logo and drifts twice as fast",
   assert.equal(artworkAlpha(25, 32, 56), 0.5);
 });
 
-test("nine differently sized logos move left to right at their configured speed", () => {
-  assert.equal(logoTracks.length, 9);
+test("eighteen differently sized logos move left to right at their configured speed", () => {
+  assert.equal(logoTracks.length, 18);
   for (const track of logoTracks) {
+    assert.ok(track.speed >= 34 && track.speed <= 62);
     const before = logoPosition(track, 1280, 538, 0);
     const after = logoPosition(track, 1280, 538, 0.1);
     assert.ok(Math.abs(after.x - before.x - track.speed * 0.1) < 0.00001);
