@@ -73,8 +73,8 @@ test("page entrances run once, respect preference changes, and clean up on navig
 test("program selection is accessible and route navigation marks the current section", () => {
   const home = renderPage("home");
   assert.match(home, /role="group" aria-label="Choose a program"/);
-  assert.match(home, /aria-pressed="true"[^>]*>Blockchain Fundamentals/);
-  assert.match(home, /aria-pressed="false"[^>]*>Web3 Applications/);
+  assert.match(home, /aria-pressed="true"[^>]*>Course 01/);
+  assert.match(home, /aria-pressed="false"[^>]*>Course 02/);
   for (const page of ["courses", "course", "community"]) {
     const section = page === "course" ? "courses" : page;
     assert.match(

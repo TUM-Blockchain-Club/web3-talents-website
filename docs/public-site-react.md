@@ -80,8 +80,13 @@ npm run build
 npm run dev
 ```
 
+Public content currently uses clearly labeled placeholders for courses, speaker
+announcements, participant feedback, community photos, and events. Do not restore
+sample headshots, invented quotes, addresses, dates, or unconfirmed curricula.
+The existing unused image assets remain in the repository, but are not rendered.
+
 Tests server-render the real TSX pages and compare their text, headings, and
-images against the pre-migration content inventory. They also cover redirects,
+images against the current placeholder content inventory. They also cover redirects,
 assets, disabled CTAs, initial accessibility state, particle physics, and entrance
 animation cleanup/reduced motion. Program-selector labels repeat existing titles
 and are excluded from the original prose inventory, with separate semantic tests.

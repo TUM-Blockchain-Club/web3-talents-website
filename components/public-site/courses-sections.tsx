@@ -12,8 +12,8 @@ export function CoursesHero() {
           Find your path into <span className="web3t-grad">Web3</span>
         </h1>
         <p className="web3t-co-hero__sub">
-          Cohort-based programs from beginner fundamentals to specialised
-          tracks. Fully online, free, and peer-led.
+          Course information is being finalized. Titles, dates, and requirements
+          will be published once confirmed.
         </p>
       </div>
     </section>
@@ -29,9 +29,9 @@ export function CourseCatalog() {
           scrollerClassName="web3t-co-cards"
           label="Courses slider"
         >
-          <CourseCard title={<>Blockchain Fundamentals</>} variant="lilac" />
-          <CourseCard title={<>Web3 Applications</>} variant="blue" />
-          <CourseCard title={<>Blockchain and AI</>} variant="cyan" />
+          <CourseCard title={<>Course 01</>} variant="lilac" />
+          <CourseCard title={<>Course 02</>} variant="blue" />
+          <CourseCard title={<>Course 03</>} variant="cyan" />
         </Carousel>
       </div>
     </section>
@@ -47,129 +47,35 @@ export function CourseStructure() {
       <div className="web3t-rail">
         <div className="web3t-co-structure__head">
           <h2 id="web3t-co-structure-title" className="web3t-h2">
-            Every course follows the same structure
+            Program information
           </h2>
-          <p className="web3t-co-structure__sub">
-            So you always know what&rsquo;s next
-          </p>
+          <p className="web3t-co-structure__sub">Details to be announced</p>
         </div>
-
         <div className="web3t-co-timeline">
-          <div className="web3t-co-step web3t-co-step--foundation">
-            <div className="web3t-co-step__rail">
-              <span className="web3t-co-badge" data-n="1">
-                1
-              </span>
-            </div>
-            <div className="web3t-co-scard web3t-co-scard--foundation">
-              <div className="web3t-co-scard__tags">
-                <span className="web3t-co-pill">Foundation</span>
-                <span className="web3t-co-scard__label">AT THE START</span>
+          {[
+            [
+              "Curriculum",
+              "Confirmed topics and learning outcomes will be listed here.",
+            ],
+            [
+              "Format",
+              "Session format, duration, and workload are to be confirmed.",
+            ],
+            [
+              "Applications",
+              "Eligibility and application instructions will be published when available.",
+            ],
+          ].map(([title, description], i) => (
+            <div className="web3t-co-step" key={title}>
+              <div className="web3t-co-step__rail">
+                <span className="web3t-co-badge">{i + 1}</span>
               </div>
-              <p className="web3t-co-scard__heading">
-                <img
-                  src="/assets/icon-lecture.svg"
-                  alt=""
-                  className="web3t-co-scard__icon"
-                />
-                Lecture + Assignment
-              </p>
-              <p className="web3t-co-scard__body">
-                Build your conceptual foundation through a lecture from expert
-                speakers, then apply it with a hands-on assignment in one
-                subtopic.
-              </p>
-            </div>
-          </div>
-
-          <div className="web3t-co-cycle">
-            <div className="web3t-co-cycle__head">
-              <span className="web3t-co-pill web3t-co-pill--cycle">
-                PROGRESSIVE LEARNING CYCLE
-              </span>
-              <p className="web3t-co-cycle__caption">
-                Research and teaching alternate, repeating until you&#039;ve
-                covered the whole topic.
-              </p>
-            </div>
-            <div className="web3t-co-cycle__body">
-              <div className="web3t-co-step web3t-co-step--research">
-                <div className="web3t-co-step__rail">
-                  <span className="web3t-co-badge" data-n="2">
-                    2
-                  </span>
-                </div>
-                <div className="web3t-co-scard web3t-co-scard--research">
-                  <div className="web3t-co-scard__tags">
-                    <span className="web3t-co-pill">Research</span>
-                    <span className="web3t-co-scard__label">
-                      IN SPECIALIST GROUPS
-                    </span>
-                  </div>
-                  <p className="web3t-co-scard__heading">
-                    <img
-                      src="/assets/icon-research.svg"
-                      alt=""
-                      className="web3t-co-scard__icon"
-                    />
-                    Processing in Specialist Groups
-                  </p>
-                  <p className="web3t-co-scard__body">
-                    Meet peers in small specialist subgroups. Everyone
-                    researches the same subtopic from the lecture, becomes an
-                    expert on it, and prepares a presentation.
-                  </p>
-                </div>
-              </div>
-              <div className="web3t-co-step web3t-co-step--teach">
-                <div className="web3t-co-step__rail">
-                  <span className="web3t-co-badge" data-n="3">
-                    3
-                  </span>
-                </div>
-                <div className="web3t-co-scard web3t-co-scard--teach">
-                  <div className="web3t-co-scard__tags">
-                    <span className="web3t-co-pill">Teach</span>
-                    <span className="web3t-co-scard__label">
-                      PEER-TO-PEER, THEN A NEW LECTURE
-                    </span>
-                  </div>
-                  <p className="web3t-co-scard__heading">
-                    <img
-                      src="/assets/icon-teach.svg"
-                      alt=""
-                      className="web3t-co-scard__icon"
-                    />
-                    Group Teaching + New Lecture
-                  </p>
-
-                  <ol className="web3t-co-scard__list">
-                    <li>
-                      Specialist groups teach their subtopics to each other —
-                      you present your findings and learn theirs, piecing
-                      together the full picture through peer-to-peer teaching.
-                    </li>
-                    <li>
-                      Then a new lecture from an expert speaker adds fresh input
-                      — kicking off the next round of the cycle.
-                    </li>
-                  </ol>
-                </div>
+              <div className="web3t-co-scard web3t-co-scard--foundation">
+                <p className="web3t-co-scard__heading">{title}</p>
+                <p className="web3t-co-scard__body">{description}</p>
               </div>
             </div>
-            <div className="web3t-co-loopback">
-              <img
-                src="/assets/icon-loopback.svg"
-                alt=""
-                className="web3t-co-loopback__icon"
-              />
-              <p>
-                The new lecture loops you back to{" "}
-                <span className="web3t-co-loopback__step">Step 2</span> - a
-                fresh subtopic each round.
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

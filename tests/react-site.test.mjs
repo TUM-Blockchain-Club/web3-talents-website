@@ -10,7 +10,7 @@ const pages = ['home', 'courses', 'course', 'community'];
 const publicDir = new URL('../public/', import.meta.url);
 
 for (const page of pages) {
-  test(`${page}: actual React render preserves all copy, headings, and images`, () => {
+  test(`${page}: actual React render matches the approved placeholder content`, () => {
     assert.deepEqual(inventory(renderPage(page)), baseline[page]);
   });
   test(`${page}: local assets exist and public actions remain disconnected`, () => {
@@ -33,6 +33,14 @@ test('every old URL redirects to an existing React route, without HTML rewrites'
     assert.equal(redirect.permanent, true);
     assert.ok(existsSync(new URL(`../app${redirect.destination === '/' ? '' : redirect.destination}/page.tsx`, import.meta.url)));
     assert.equal(existsSync(new URL(redirect.source.slice(1), publicDir)), false);
+  }
+});
+
+test('unverified people, quotes, events and course claims are absent on every public page', () => {
+  for (const page of pages) {
+    const html = renderPage(page);
+    assert.doesNotMatch(html, /testimonial-avatar|speaker-(?:[123]|david-an)\.png|community-photo\.png|<blockquote|Course Participant|Cohort [123]|Blabla|Annual Alumni|Jan 2027|20[ -][Ww](?:eek|EEK)|10-week|3–4 hours|Blockchain Fundamentals|Web3 Applications|Blockchain and AI|Dr\. David|Jonas Gebele|Bitvavo|recognised certificate/);
+    assert.match(html, /to be (?:confirmed|announced)|coming soon/i);
   }
 });
 

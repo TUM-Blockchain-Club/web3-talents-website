@@ -18,7 +18,7 @@ export function SiteFooter({
             className="web3t-footer__logo"
           />
           <p className="web3t-footer__tagline">
-            Free. Peer-led. No experience needed.
+            Learn. Connect. Explore Web3.
           </p>
           <UnavailableAction className="web3t-btn web3t-btn--primary web3t-footer__apply">
             Apply Now →

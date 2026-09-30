@@ -5,16 +5,16 @@ import { UnavailableAction } from "./unavailable-action";
 
 const programs = [
   {
-    title: "Blockchain Fundamentals",
+    title: "Course 01",
     description:
-      "Learn the foundations of blockchain technology and build the skills to understand, evaluate, and work with decentralized systems.",
-    start: "Jan 2027",
+      "Course title, topics, and learning outcomes will be published once confirmed.",
+    start: "TO BE ANNOUNCED",
   },
   {
-    title: "Web3 Applications",
+    title: "Course 02",
     description:
-      "Explore how decentralized technologies are used to build products, communities, and real-world solutions.",
-    start: "COMING SOON",
+      "Further course information will be added here. This is a placeholder, not an announced program.",
+    start: "TO BE ANNOUNCED",
   },
 ];
 export function ProgramCards() {
@@ -71,7 +71,7 @@ export function ProgramCards() {
               <p className="web3t-course-card__body">{program.description}</p>
               <div className="web3t-course-card__actions">
                 <UnavailableAction className="web3t-btn web3t-btn--primary web3t-btn--sm">
-                  Apply Now
+                  Coming soon
                 </UnavailableAction>
                 <Link
                   className="web3t-btn web3t-btn--outline web3t-btn--sm"
@@ -85,11 +85,11 @@ export function ProgramCards() {
             <dl className="web3t-course-card__info" inert={active !== i}>
               <div>
                 <dt>DURATION</dt>
-                <dd>20 WEEKS</dd>
+                <dd>TO BE CONFIRMED</dd>
               </div>
               <div>
                 <dt>FORMAT</dt>
-                <dd>PEER-LEED · LIVE</dd>
+                <dd>TO BE CONFIRMED</dd>
               </div>
               <div>
                 <dt>START DATE</dt>
@@ -97,7 +97,7 @@ export function ProgramCards() {
               </div>
               <div>
                 <dt>COST</dt>
-                <dd>FREE</dd>
+                <dd>TO BE CONFIRMED</dd>
               </div>
             </dl>
           </article>

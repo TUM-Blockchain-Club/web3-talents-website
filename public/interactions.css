@@ -1,4 +1,44 @@
 /* Interaction layer: preserve the original layout, artwork and palette. */
+.web3t .web3t-content-placeholder {
+  display: block;
+  min-height: 180px;
+  padding: clamp(24px, 3vw, 36px);
+  border: 1px solid #aca6ff40;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #100e2e, #090d22);
+}
+.web3t-content-placeholder__label {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: #aca6ff;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.web3t .web3t-content-placeholder h3 {
+  font-size: 1.35rem;
+  margin-bottom: 12px;
+}
+.web3t .web3t-content-placeholder p {
+  color: #b7b1c8;
+  line-height: 1.6;
+  max-width: 60ch;
+}
+.web3t .web3t-community-photo-placeholder {
+  display: grid;
+  place-items: center;
+  min-height: 260px;
+  padding: 32px;
+  color: #aca6ff;
+  text-align: center;
+  border: 1px solid #aca6ff40;
+  background: radial-gradient(ellipse at center, #29205d, #100e2e);
+}
+.web3t .web3t-course-card__info dd {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  font-size: clamp(0.9rem, 1.4vw, 1.2rem);
+}
 html {
   scroll-behavior: smooth;
 }

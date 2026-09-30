@@ -29,11 +29,9 @@ export function CommunityHero() {
               />
             </div>
           </div>
-          <img
-            className="web3t-cm-hero__photo"
-            src="/assets/community-photo.png"
-            alt="Web3 Talents community"
-          />
+          <div className="web3t-cm-hero__photo web3t-community-photo-placeholder">
+            Community photos coming soon
+          </div>
         </div>
       </div>
     </section>
@@ -83,10 +81,10 @@ export function UpcomingEvents() {
     <section className="web3t-cm-events" aria-labelledby="web3t-cm-ev-title">
       <div className="web3t-rail">
         <h2 id="web3t-cm-ev-title" className="web3t-h2 web3t-cm-events__title">
-          Join Us for the Next Events
+          Upcoming community events
         </h2>
         <div className="web3t-cm-event">
-          <span className="web3t-cm-event__upcoming">UPCOMING</span>
+          <span className="web3t-cm-event__upcoming">TO BE ANNOUNCED</span>
           <div className="web3t-cm-event__thumb" aria-hidden="true"></div>
           <div className="web3t-cm-event__main">
             <span className="web3t-cm-event__date">
@@ -94,25 +92,23 @@ export function UpcomingEvents() {
             </span>
             <div className="web3t-cm-event__mid">
               <div className="web3t-cm-event__info">
-                <h3 className="web3t-cm-event__name">
-                  Annual Alumni Meet-Up and QnA
-                </h3>
+                <h3 className="web3t-cm-event__name">Event to be announced</h3>
                 <p className="web3t-cm-event__loc">
                   <img
                     src="/assets/events-pin.svg"
                     alt=""
                     className="web3t-cm-event__pin"
                   />
-                  23 Blabla Street, Munich
+                  Date and location to be confirmed
                 </p>
               </div>
               <div className="web3t-cm-event__cta">
                 <UnavailableAction className="web3t-btn web3t-btn--primary">
                   Sign Up
                 </UnavailableAction>
-                <a className="web3t-btn web3t-btn--outline" href="#top">
-                  More Info
-                </a>
+                <UnavailableAction className="web3t-btn web3t-btn--outline">
+                  Details coming soon
+                </UnavailableAction>
               </div>
             </div>
           </div>
@@ -130,24 +126,22 @@ export function ClubEvents() {
           id="web3t-cm-pz-title"
           className="web3t-h2 web3t-cm-puzzlesec__title"
         >
-          More Club Events
+          Community event updates
         </h2>
         <div className="web3t-cm-puzzle">
-          <ClubEventCard variant="lt" title={<>Club Conference</>}>
-            Join us at our annual club conference to connect with students,
-            founders, and Web3 enthusiasts.
+          <ClubEventCard variant="lt" title={<>Event announcements</>}>
+            Confirmed community events will be announced here.
           </ClubEventCard>
-          <ClubEventCard variant="rt" title={<>Q&amp;A Sessions</>}>
-            Ask your questions and learn directly from industry experts during
-            our interactive Q&amp;A sessions.
+          <ClubEventCard variant="rt" title={<>Session details</>}>
+            Topics, hosts, and formats will be listed once confirmed.
           </ClubEventCard>
-          <ClubEventCard variant="lb" title={<>Group Trips</>}>
-            Explore the blockchain ecosystem beyond campus through exciting
-            group trips and company visits.
+          <ClubEventCard variant="lb" title={<>Locations</>}>
+            Event locations or online joining details will be shared when
+            available.
           </ClubEventCard>
-          <ClubEventCard variant="rb" title={<>Hackathons</>}>
-            Build, innovate, and collaborate with fellow students at our
-            hands-on Web3 hackathons.
+          <ClubEventCard variant="rb" title={<>Participation</>}>
+            Registration and eligibility details will accompany each confirmed
+            event.
           </ClubEventCard>
         </div>
       </div>
@@ -182,8 +176,7 @@ export function CommunityFaq() {
             }
           >
             <p>
-              Yes — every Web3 Talents course is completely free, supported by
-              our partners and the TUM Blockchain Club.
+              Fees, if any, will be stated in the confirmed course information.
             </p>
           </AccordionItem>
           <AccordionItem
@@ -203,8 +196,8 @@ export function CommunityFaq() {
             }
           >
             <p>
-              Applications open before each cohort. Head to the Courses page and
-              hit Apply Now to register your interest.
+              Application instructions are not available yet. They will be
+              published with the confirmed course details.
             </p>
           </AccordionItem>
           <AccordionItem
@@ -224,8 +217,8 @@ export function CommunityFaq() {
             }
           >
             <p>
-              Expect a few hours a week across the 20-week cohort — a live
-              session plus some group work and a short assignment.
+              Duration, session times, and expected workload are to be
+              confirmed.
             </p>
           </AccordionItem>
           <AccordionItem
@@ -245,8 +238,8 @@ export function CommunityFaq() {
             }
           >
             <p>
-              Absolutely — most community events are open to everyone. Just sign
-              up and come along.
+              Participation requirements will be included with each confirmed
+              event.
             </p>
           </AccordionItem>
         </div>

@@ -55,9 +55,9 @@ export function TestimonialCard({
 export function CourseCard({
   title,
   variant,
-  level = "BEGINNER · 20 WEEKS",
+  level = "COURSE PREVIEW",
   status = "Coming Soon",
-  subtitle = "Your first Web3 course",
+  subtitle = "Title and curriculum to be confirmed",
   date = "Dates coming soon",
 }: {
   title: ReactNode;
