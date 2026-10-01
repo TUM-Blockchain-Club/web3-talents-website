@@ -25,6 +25,13 @@ test("original blue artwork replaces the rainbow logo and drifts twice as fast",
 
 test("eighteen differently sized logos move left to right at their configured speed", () => {
   assert.equal(logoTracks.length, 18);
+  assert.deepEqual(
+    logoTracks.map((track) => track.height),
+    [
+      115, 162, 129, 179, 120, 193, 157, 109, 154, 92, 104, 95, 112, 101, 126,
+      104, 123, 98,
+    ],
+  );
   for (const track of logoTracks) {
     assert.ok(track.speed >= 34 && track.speed <= 62);
     const before = logoPosition(track, 1280, 538, 0);

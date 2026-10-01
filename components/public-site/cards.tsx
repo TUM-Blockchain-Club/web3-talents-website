@@ -42,7 +42,9 @@ export function TestimonialCard({
 }) {
   const prefix = className.split(" ")[0];
   return (
-    <figure className={className}>
+    <figure
+      className={`${className}${avatar ? "" : " web3t-quote--text-only"}`}
+    >
       {avatar && <img className={`${prefix}__avatar`} src={avatar} alt="" />}
       <blockquote>
         <p>{children}</p>

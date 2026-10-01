@@ -21,7 +21,9 @@ matching clean URL.
 
 ## Reusable pieces
 
-- `site-header.tsx` / `site-footer.tsx`: shared navigation and branding.
+- `site-header.tsx` / `site-footer.tsx`: shared navigation and branding. The header
+  pairs the blue/purple hero symbol with the existing white wordmark; the footer
+  retains its original branding.
 - `cards.tsx`: course, speaker, testimonial, diversity, and club-event cards.
 - `program-cards.tsx`: interactive stacked program cards and their content.
 - `carousel.tsx`: responsive scroll carousel with pagination, previous/next
@@ -33,6 +35,7 @@ matching clean URL.
   and localized hover breakup. It reuses the original blue/purple artwork from
   `assets/hero-bg.png`, compositing away its dark background. Drift speeds are
   34–62 pixels per second (twice the initial speed).
+  Symbols are approximately 40% larger than the initial eighteen-logo field.
   `lib/hero-particles.mjs` supplies the shared spring/repulsion physics.
   The field pauses off-screen or in background tabs, honors reduced motion, and
   provides a pause/resume control visible only on keyboard focus, keeping it out of
@@ -80,13 +83,15 @@ npm run build
 npm run dev
 ```
 
-Public content currently uses clearly labeled placeholders for courses, speaker
-announcements, participant feedback, community photos, and events. Do not restore
-sample headshots, invented quotes, addresses, dates, or unconfirmed curricula.
-The existing unused image assets remain in the repository, but are not rendered.
+Courses, community photos, and events retain clearly labeled placeholders. Speaker
+profiles and the previous testimonial statements were restored at the user's
+request; testimonial photos remain removed. This restoration is not independent
+verification of the statements. Do not reintroduce event addresses, dates, or
+unconfirmed curricula. Unused testimonial image assets remain in the repository
+but are not rendered on the public pages.
 
 Tests server-render the real TSX pages and compare their text, headings, and
-images against the current placeholder content inventory. They also cover redirects,
+images against the current public content inventory. They also cover redirects,
 assets, disabled CTAs, initial accessibility state, particle physics, and entrance
 animation cleanup/reduced motion. Program-selector labels repeat existing titles
 and are excluded from the original prose inventory, with separate semantic tests.

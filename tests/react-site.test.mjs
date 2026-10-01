@@ -10,7 +10,7 @@ const pages = ['home', 'courses', 'course', 'community'];
 const publicDir = new URL('../public/', import.meta.url);
 
 for (const page of pages) {
-  test(`${page}: actual React render matches the approved placeholder content`, () => {
+  test(`${page}: actual React render matches the current public content`, () => {
     assert.deepEqual(inventory(renderPage(page)), baseline[page]);
   });
   test(`${page}: local assets exist and public actions remain disconnected`, () => {
@@ -36,11 +36,23 @@ test('every old URL redirects to an existing React route, without HTML rewrites'
   }
 });
 
-test('unverified people, quotes, events and course claims are absent on every public page', () => {
+test('testimonial photos and unconfirmed event/course specifics stay removed', () => {
   for (const page of pages) {
     const html = renderPage(page);
-    assert.doesNotMatch(html, /testimonial-avatar|speaker-(?:[123]|david-an)\.png|community-photo\.png|<blockquote|Course Participant|Cohort [123]|Blabla|Annual Alumni|Jan 2027|20[ -][Ww](?:eek|EEK)|10-week|3–4 hours|Blockchain Fundamentals|Web3 Applications|Blockchain and AI|Dr\. David|Jonas Gebele|Bitvavo|recognised certificate/);
+    assert.doesNotMatch(html, /testimonial-avatar|community-photo\.png|Blabla|Annual Alumni|Jan 2027|20[ -][Ww](?:eek|EEK)|10-week|3–4 hours|recognised certificate/);
     assert.match(html, /to be (?:confirmed|announced)|coming soon/i);
+  }
+});
+
+test('speaker profiles and all testimonial statements are restored without testimonial images', () => {
+  for (const [page, count] of [['home', 5], ['course', 8]]) {
+    const html = renderPage(page);
+    assert.match(html, /Dr\. David An/);
+    assert.match(html, /Jonas Gebele/);
+    assert.equal([...html.matchAll(/<blockquote>/g)].length, count);
+    const testimonials = [...html.matchAll(/<figure\b[^>]*web3t-quote--text-only[^>]*>[\s\S]*?<\/figure>/g)];
+    assert.equal(testimonials.length, count);
+    for (const [testimonial] of testimonials) assert.doesNotMatch(testimonial, /<img\b/);
   }
 });
 
@@ -50,6 +62,18 @@ test('course wrappers and original stylesheet remain intact', () => {
     assert.match(renderPage(page), new RegExp(`class="web3t web3t-${page}"`));
     assert.ok(css.includes(`.web3t-${page}`));
   }
+});
+
+test('header uses the blue symbol and preserves an accessible home link on every page', () => {
+  for (const page of pages) {
+    const header = renderPage(page).match(/<header\b[\s\S]*?<\/header>/)[0];
+    assert.match(header, /aria-label="Web3 Talents home"/);
+    assert.match(header, /web3t-nav__blue-symbol/);
+    assert.match(header, /web3t-nav__wordmark/);
+    assert.doesNotMatch(header, /<img/);
+  }
+  const css = readFileSync(new URL('interactions.css', publicDir), 'utf8');
+  assert.match(css, /\.web3t-nav__blue-symbol\s*\{[^}]*hero-bg\.png/);
 });
 
 test('components use React markup, not embedded HTML or legacy global scripts', () => {

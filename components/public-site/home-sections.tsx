@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ContentPlaceholder } from "./content-placeholder";
+import { SpeakerCard, TestimonialCard } from "./cards";
 import { SiteHeader } from "./site-header";
 import { SiteFooter } from "./site-footer";
 import { ParticleLogo } from "./particle-logo";
@@ -132,16 +132,52 @@ export function HomeSpeakers() {
       <div className="web3t-rail">
         <div className="web3t-speakers__head">
           <h2 id="web3t-speakers-title" className="web3t-h2">
-            Speaker announcements
+            Meet Our Speakers
           </h2>
           <p className="web3t-speakers__sub">
-            Confirmed speakers and session details will be published here.
+            Learn directly from the builders and leaders shaping the Web3
+            ecosystem.
           </p>
         </div>
-        <ContentPlaceholder title="Speakers to be announced">
-          Names, biographies, and photos will be added once participation is
-          confirmed.
-        </ContentPlaceholder>
+        <Carousel
+          className="web3t-speakers__carousel"
+          scrollerClassName="web3t-speakers__scroller"
+          label="Speaker slider"
+        >
+          <SpeakerCard
+            prefix="web3t-speaker"
+            image="/assets/speaker-1.png"
+            imageAlt="Dr. David An"
+            name={<>Dr. David An</>}
+            role={<>Partner</>}
+            organization={<>@Dracoon Ventures</>}
+            topic={
+              <>Topic: &quot;Proof of Work, Mining, and Immutability&quot;</>
+            }
+          />
+          <SpeakerCard
+            prefix="web3t-speaker"
+            image="/assets/speaker-2.png"
+            imageAlt="Jonas Gebele"
+            name={<>Jonas Gebele</>}
+            role={<>Research Associate</>}
+            organization={<>@Technical University of Munich</>}
+            topic={<>Topic: &quot;Cryptography and Hashing&quot;</>}
+          />
+          <SpeakerCard
+            prefix="web3t-speaker"
+            image="/assets/speaker-3.png"
+            imageAlt="David Kurz"
+            name={<>David Kurz</>}
+            role={<>Business Development</>}
+            organization={<>@Bitvavo</>}
+            topic={
+              <>
+                Topic: &quot;Ethereum: The World Computer (Architecture)&quot;
+              </>
+            }
+          />
+        </Carousel>
       </div>
     </section>
   );
@@ -234,21 +270,53 @@ export function HomeCommunity() {
         <Carousel
           className="web3t-community__carousel"
           scrollerClassName="web3t-community__scroller"
-          label="Community updates"
+          label="Testimonial slider"
         >
-          <ContentPlaceholder
+          <TestimonialCard
             className="web3t-testimonial"
-            title="Participant feedback"
+            attribution={<>Course Participant, Cohort 1</>}
           >
-            Verified feedback will be shared here when available. No
-            testimonials are published yet.
-          </ContentPlaceholder>
-          <ContentPlaceholder
+            &ldquo;I joined the course with almost no prior knowledge of Web3,
+            but the structure made it easy to follow. The sessions were
+            beginner-friendly, and the community helped me feel more confident
+            asking questions and exploring the topic further.&rdquo;
+          </TestimonialCard>
+          <TestimonialCard
             className="web3t-testimonial"
-            title="Community stories"
+            attribution={<>Course Participant, Cohort 2</>}
           >
-            Approved community stories and photos will be added here.
-          </ContentPlaceholder>
+            &ldquo;The group research format was useful because it made me go
+            deeper into one topic instead of only listening passively.
+            Presenting it to others also helped me understand where I still had
+            gaps.&rdquo;
+          </TestimonialCard>
+          <TestimonialCard
+            className="web3t-testimonial"
+            attribution={<>Course Participant, Cohort 2</>}
+          >
+            &ldquo;The group research format was useful because it made me go
+            deeper into one topic instead of only listening passively.
+            Presenting it to others also helped me understand where I still had
+            gaps.&rdquo;
+          </TestimonialCard>
+          <TestimonialCard
+            className="web3t-testimonial"
+            attribution={<>Course Participant, Cohort 1</>}
+          >
+            &ldquo;I joined the course with almost no prior knowledge of Web3,
+            but the structure made it easy to follow. The sessions were
+            beginner-friendly, and the community helped me feel more confident
+            asking questions and exploring the topic further.&rdquo;
+          </TestimonialCard>
+          <TestimonialCard
+            className="web3t-testimonial"
+            attribution={<>Course Participant, Cohort 1</>}
+          >
+            &ldquo;I joined the course with almost no prior knowledge of Web3,
+            but the structure made it easy to follow. The sessions were
+            beginner-friendly, and the community helped me feel more confident
+            asking questions and exploring the topic further.&rdquo;
+          </TestimonialCard>
         </Carousel>
         <div className="web3t-community__actions">
           <a className="web3t-btn web3t-btn--primary" href="#how">

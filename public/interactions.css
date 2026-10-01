@@ -1,4 +1,12 @@
 /* Interaction layer: preserve the original layout, artwork and palette. */
+.web3t .web3t-quote--text-only blockquote {
+  flex: 1 1 auto;
+  max-width: none;
+  min-width: 0;
+}
+.web3t .web3t-quote--text-only blockquote p {
+  line-height: 1.6;
+}
 .web3t .web3t-content-placeholder {
   display: block;
   min-height: 180px;
@@ -337,5 +345,25 @@ html {
   .web3t-step:hover .web3t-step__badge,
   .web3t-co-card:hover .web3t-co-card__glow {
     transform: none;
+  }
+}
+.web3t .web3t-nav__blue-symbol {
+  display: block;
+  height: 43px;
+  aspect-ratio: 550 / 760;
+  background: url(assets/hero-bg.png) 89.88764% 29.41176% / 261.81818%
+    108.94737% no-repeat;
+  mix-blend-mode: screen;
+}
+.web3t .web3t-nav__wordmark {
+  display: block;
+  height: 43px;
+  aspect-ratio: 730 / 162;
+  background: url(assets/logo.png) right center / auto 100% no-repeat;
+}
+@media (max-width: 560px) {
+  .web3t .web3t-nav__blue-symbol,
+  .web3t .web3t-nav__wordmark {
+    height: 36px;
   }
 }

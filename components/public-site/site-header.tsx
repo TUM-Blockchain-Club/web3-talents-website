@@ -32,14 +32,12 @@ export function SiteHeader({
     >
       <Link
         className="web3t-nav__brand"
+        aria-label="Web3 Talents home"
         href={home ? "#top" : "/"}
         onClick={() => setOpen(false)}
       >
-        <img
-          src="/assets/logo.png"
-          alt="Web3 Talents"
-          className="web3t-nav__logo"
-        />
+        <span className="web3t-nav__blue-symbol" aria-hidden="true" />
+        <span className="web3t-nav__wordmark" aria-hidden="true" />
       </Link>
       <button
         ref={toggle}

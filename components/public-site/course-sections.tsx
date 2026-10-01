@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { UnavailableAction } from "./unavailable-action";
-import { ContentPlaceholder } from "./content-placeholder";
+import { SpeakerCard, TestimonialCard } from "./cards";
 import { SiteHeader } from "./site-header";
 import { SiteFooter } from "./site-footer";
 import { AccordionItem, AccordionGroup, ExpandAll } from "./accordion";
@@ -166,9 +166,71 @@ export function CourseSpeakers() {
       >
         Speakers
       </h2>
-      <ContentPlaceholder title="Speakers to be announced">
-        Confirmed names, biographies, and approved photos will be added here.
-      </ContentPlaceholder>
+      <div className="web3t-course-speakers__grid">
+        <SpeakerCard
+          prefix="web3t-course-speaker"
+          image="/assets/speaker-david-an.png"
+          imageAlt="Dr. David An"
+          name={<>Dr. David An</>}
+          role={<>Partner</>}
+          organization={<>@Dragon Ventures</>}
+          topic={<>Topic: &quot;Blockchain Fundamentals&quot;</>}
+        />
+        <SpeakerCard
+          prefix="web3t-course-speaker"
+          image="/assets/speaker-2.png"
+          imageAlt="Jonas Gebele"
+          name={<>Jonas Gebele</>}
+          role={<>Research Associate</>}
+          organization={<>@Technical University of Munich</>}
+          topic={<>Topic: &quot;Cryptography &amp; Hashing&quot;</>}
+        />
+        <SpeakerCard
+          prefix="web3t-course-speaker"
+          image="/assets/speaker-placeholder.svg"
+          imageAlt="Andi Schmitt"
+          name={<>Andi Schmitt</>}
+          role={<>Co-founder</>}
+          organization={<>@LightUpKryptos</>}
+          topic={
+            <>Topic: &quot;Bitcoin Data Structure and Transactions&quot;</>
+          }
+        />
+        <SpeakerCard
+          prefix="web3t-course-speaker"
+          image="/assets/speaker-placeholder.svg"
+          imageAlt="Profesor Dr. Philip Maume"
+          name={<>Profesor Dr. Philip Maume</>}
+          role={<>Professor of Law</>}
+          organization={<>@Technical University of Munich</>}
+          topic={<>Topic: &quot;The Financial Layer: Stablecoins, RWA&quot;</>}
+        />
+        <SpeakerCard
+          prefix="web3t-course-speaker"
+          image="/assets/speaker-placeholder.svg"
+          imageAlt="Dr. Christian Ziegler"
+          name={<>Dr. Christian Ziegler</>}
+          role={<>CTO</>}
+          organization={<>@Stealth Startup</>}
+          topic={
+            <>
+              Topic: &quot;Future Outlook: Beyond Finance DePIN Identity &amp;
+              DAO&quot;
+            </>
+          }
+        />
+        <SpeakerCard
+          prefix="web3t-course-speaker"
+          image="/assets/speaker-3.png"
+          imageAlt="David Kurz"
+          name={<>David Kurz</>}
+          role={<>Business Development</>}
+          organization={<>@Bitvavo</>}
+          topic={
+            <>Topic: &quot;Ethereum: The World Computer (Architecture)&quot;</>
+          }
+        />
+      </div>
     </section>
   );
 }
@@ -184,12 +246,89 @@ export function StudentReviews() {
         id="web3t-course-students-title"
         className="web3t-course-students__title"
       >
-        Participant feedback
+        Hear From the{" "}
+        <span className="web3t-course-students__grad">Students</span>
       </h2>
-      <ContentPlaceholder title="Verified feedback coming soon">
-        No testimonials are published yet. Approved participant feedback will be
-        added here when available.
-      </ContentPlaceholder>
+      <div className="web3t-course-students__masonry">
+        <div className="web3t-course-students__col">
+          <TestimonialCard
+            className="web3t-course-quote web3t-course-quote--blue"
+            attribution={<>Course Participant, Cohort 1</>}
+          >
+            &ldquo;I joined the course with almost no prior knowledge of Web3,
+            but the structure made it easy to follow. The sessions were
+            beginner-friendly, and the community helped me feel more confident
+            asking questions and exploring the topic further.&rdquo;
+          </TestimonialCard>
+          <TestimonialCard
+            className="web3t-course-quote web3t-course-quote--purple"
+            attribution={<>Course Participant, Cohort 2</>}
+          >
+            &ldquo;It was a good starting point if you&#039;re curious about
+            blockchain but don&#039;t know where to begin. Some topics were
+            challenging, but the structure made them manageable. Before joining,
+            I had heard about Bitcoin, Ethereum, and DeFi, but I didn&#039;t
+            really understand how they connected. The course helped me build a
+            clearer mental map of the Web3 ecosystem.&rdquo;
+          </TestimonialCard>
+          <TestimonialCard
+            className="web3t-course-quote web3t-course-quote--blue"
+            attribution={<>Course Participant, Cohort 1</>}
+          >
+            &ldquo;I joined the course with almost no prior knowledge of Web3,
+            but the structure made it easy to follow. The sessions were
+            beginner-friendly, and the community helped me feel more confident
+            asking questions and exploring the topic further.&rdquo;
+          </TestimonialCard>
+          <TestimonialCard
+            className="web3t-course-quote web3t-course-quote--violet"
+            attribution={<>Course Participant, Cohort 1</>}
+          >
+            &ldquo;I joined the course with almost no prior knowledge of Web3,
+            but the structure made it easy to follow. The sessions were
+            beginner-friendly, and the community helped me feel more confident
+            asking questions and exploring the topic further.&rdquo;
+          </TestimonialCard>
+        </div>
+        <div className="web3t-course-students__col">
+          <TestimonialCard
+            className="web3t-course-quote web3t-course-quote--blue web3t-course-quote--noavatar"
+            attribution={<>Course Participant, Cohort 1</>}
+          >
+            &ldquo;I liked that the course didn&#039;t assume everyone already
+            knew the terminology. It started with the basics and then slowly
+            connected the topics, which made the more technical parts easier to
+            understand.&rdquo;
+          </TestimonialCard>
+          <TestimonialCard
+            className="web3t-course-quote web3t-course-quote--purple"
+            attribution={<>Course Participant, Cohort 1</>}
+          >
+            &ldquo;I joined the course with almost no prior knowledge of Web3,
+            but the structure made it easy to follow. The sessions were
+            beginner-friendly, and the community helped me feel more confident
+            asking questions and exploring the topic further.&rdquo;
+          </TestimonialCard>
+          <TestimonialCard
+            className="web3t-course-quote web3t-course-quote--violet"
+            attribution={<>Course Participant, Cohort 3</>}
+          >
+            &ldquo;The group research format was useful because it made me go
+            deeper into one topic instead of only listening passively.
+            Presenting it to others also helped me understand where I still had
+            gaps.&rdquo;
+          </TestimonialCard>
+          <TestimonialCard
+            className="web3t-course-quote web3t-course-quote--blue"
+            attribution={<>Course Participant, Cohort 1</>}
+          >
+            &ldquo;I joined the course with almost no prior knowledge of Web3,
+            but the structure made it easy to follow. The sessions were
+            beginner-friendly, and the community helped me feel more confident
+            asking questions and exploring the topic further.&rdquo;
+          </TestimonialCard>
+        </div>
+      </div>
     </section>
   );
 }
