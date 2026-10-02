@@ -104,7 +104,7 @@ export function UpcomingEvents() {
               </div>
               <div className="web3t-cm-event__cta">
                 <UnavailableAction className="web3t-btn web3t-btn--primary">
-                  Sign Up
+                  Registration coming soon
                 </UnavailableAction>
                 <UnavailableAction className="web3t-btn web3t-btn--outline">
                   Details coming soon
@@ -253,16 +253,17 @@ export function CommunityPage() {
     <div className="web3t web3t-communitypg" id="top">
       <SiteHeader current="community" />
 
-      <CommunityHero />
+      <main id="main-content" tabIndex={-1}>
+        <CommunityHero />
 
-      <CommunityDiversity />
+        <CommunityDiversity />
 
-      <UpcomingEvents />
+        <UpcomingEvents />
 
-      <ClubEvents />
+        <ClubEvents />
 
-      <CommunityFaq />
-
+        <CommunityFaq />
+      </main>
       <SiteFooter page="community" />
     </div>
   );

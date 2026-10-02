@@ -338,23 +338,24 @@ export function CoursePage() {
     <div className="web3t web3t-course" id="top">
       <SiteHeader current="courses" />
 
-      <div className="web3t-course__top">
-        <div className="web3t-course__cubes" aria-hidden="true"></div>
+      <main id="main-content" tabIndex={-1}>
+        <div className="web3t-course__top">
+          <div className="web3t-course__cubes" aria-hidden="true"></div>
 
-        <CourseHero />
+          <CourseHero />
 
-        <CourseInformation />
-      </div>
+          <CourseInformation />
+        </div>
 
-      <div className="web3t-course__lower">
-        <div className="web3t-course__starfield" aria-hidden="true"></div>
-        <span className="web3t-course__line" aria-hidden="true"></span>
+        <div className="web3t-course__lower">
+          <div className="web3t-course__starfield" aria-hidden="true"></div>
+          <span className="web3t-course__line" aria-hidden="true"></span>
 
-        <CourseSpeakers />
+          <CourseSpeakers />
 
-        <StudentReviews />
-      </div>
-
+          <StudentReviews />
+        </div>
+      </main>
       <SiteFooter page="course" />
     </div>
   );

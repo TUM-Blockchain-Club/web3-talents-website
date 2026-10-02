@@ -20,7 +20,15 @@ export function SpeakerCard({
 }) {
   return (
     <article className={prefix}>
-      <img className={`${prefix}__photo`} src={image} alt={imageAlt} />
+      <img
+        className={`${prefix}__photo`}
+        src={image}
+        alt={imageAlt}
+        width={220}
+        height={220}
+        loading="lazy"
+        decoding="async"
+      />
       <h3 className={`${prefix}__name`}>{name}</h3>
       <p className={`${prefix}__role`}>{role}</p>
       <p className={`${prefix}__org`}>{organization}</p>

@@ -18,11 +18,34 @@ export function SiteHeader({
     const root = header.current?.parentElement;
     if (root) return initPageInteractions(root);
   }, []);
+  useEffect(() => {
+    if (!open) return;
+    const closeOutside = (event: PointerEvent) => {
+      if (
+        event.target instanceof Node &&
+        !header.current?.contains(event.target)
+      )
+        setOpen(false);
+    };
+    const desktop = matchMedia("(min-width: 800px)");
+    const closeOnDesktop = () => {
+      if (desktop.matches) setOpen(false);
+    };
+    document.addEventListener("pointerdown", closeOutside);
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => {
+      document.removeEventListener("pointerdown", closeOutside);
+      desktop.removeEventListener("change", closeOnDesktop);
+    };
+  }, [open]);
   return (
     <header
       ref={header}
       className={`web3t-nav${open ? " is-open" : ""}`}
       data-nav=""
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setOpen(false);
+      }}
       onKeyDown={(event) => {
         if (event.key === "Escape" && open) {
           setOpen(false);
@@ -30,6 +53,13 @@ export function SiteHeader({
         }
       }}
     >
+      <a
+        className="web3t-skip-link"
+        href="#main-content"
+        onClick={() => setOpen(false)}
+      >
+        Skip to content
+      </a>
       <Link
         className="web3t-nav__brand"
         aria-label="Web3 Talents home"
@@ -43,7 +73,7 @@ export function SiteHeader({
         ref={toggle}
         className="web3t-nav__burger"
         type="button"
-        aria-label="Toggle menu"
+        aria-label={open ? "Close menu" : "Open menu"}
         aria-expanded={open}
         aria-controls="public-navigation"
         onClick={() => setOpen((value) => !value)}
@@ -52,6 +82,13 @@ export function SiteHeader({
       </button>
       <div className="web3t-nav__menu" id="public-navigation">
         <nav className="web3t-nav__links" aria-label="Primary">
+          <Link
+            href={home ? "#top" : "/"}
+            aria-current={home ? "page" : undefined}
+            onClick={() => setOpen(false)}
+          >
+            Home
+          </Link>
           <Link
             href="/courses"
             aria-current={current === "courses" ? "page" : undefined}
@@ -73,6 +110,7 @@ export function SiteHeader({
             kind="login"
           >
             Login
+            <span className="web3t-action-status">Coming soon</span>
           </UnavailableAction>
         </div>
       </div>

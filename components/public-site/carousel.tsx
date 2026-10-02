@@ -126,7 +126,8 @@ export function Carousel({
             key={i}
             type="button"
             className={`web3t-dot${i === active ? " is-active" : ""}`}
-            aria-label={`Go to page ${i + 1}`}
+            aria-label={`Go to page ${i + 1} — ${label}`}
+            aria-controls={id}
             aria-current={i === active ? "true" : undefined}
             onClick={() => goTo(i)}
           />

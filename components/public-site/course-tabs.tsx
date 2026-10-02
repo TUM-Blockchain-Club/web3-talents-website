@@ -85,6 +85,7 @@ export function CoursePanel({
       id={`${context.id}-panel-${tab}`}
       aria-labelledby={`${context.id}-tab-${tab}`}
       hidden={!active}
+      tabIndex={0}
     >
       {children}
     </div>

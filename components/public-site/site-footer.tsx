@@ -16,12 +16,14 @@ export function SiteFooter({
             src="/assets/logo.png"
             alt="Web3 Talents"
             className="web3t-footer__logo"
+            width={900}
+            height={162}
+            loading="lazy"
+            decoding="async"
           />
-          <p className="web3t-footer__tagline">
-            Learn. Connect. Explore Web3.
-          </p>
+          <p className="web3t-footer__tagline">Learn. Connect. Explore Web3.</p>
           <UnavailableAction className="web3t-btn web3t-btn--primary web3t-footer__apply">
-            Apply Now →
+            Applications coming soon
           </UnavailableAction>
         </div>
         <nav className="web3t-footer__nav" aria-label="Footer">
@@ -41,32 +43,23 @@ export function SiteFooter({
           </ul>
           <ul>
             <li>
-              <Link
-                href={home || page === "community" ? "/courses" : "/#program"}
-              >
-                About Us
-              </Link>
+              <Link href="/community">About Us</Link>
             </li>
             <li>
               <a href="https://www.tum-blockchain.com">TUM Blockchain Club</a>
             </li>
             <li>
-              <Link
-                href={
-                  home
-                    ? "/community"
-                    : page === "community"
-                      ? "#faq"
-                      : "/community#faq"
-                }
-              >
+              <Link href={page === "community" ? "#faq" : "/community#faq"}>
                 FAQ
               </Link>
             </li>
           </ul>
         </nav>
         <div className="web3t-footer__social">
-          <a href="https://www.tum-blockchain.com" aria-label="LinkedIn">
+          <a
+            href="https://www.linkedin.com/company/tum-blockchain-club/"
+            aria-label="TUM Blockchain Club on LinkedIn"
+          >
             <img
               src="/assets/social-linkedin.svg"
               alt=""
@@ -75,7 +68,7 @@ export function SiteFooter({
           </a>
           <a
             className="web3t-footer__contact"
-            href="https://www.tum-blockchain.com"
+            href="https://forms.tum-blockchain.com/contact"
           >
             Contact Us
           </a>

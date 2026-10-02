@@ -87,12 +87,13 @@ export function CoursesPage() {
     <div className="web3t web3t-courses" id="top">
       <SiteHeader current="courses" />
 
-      <CoursesHero />
+      <main id="main-content" tabIndex={-1}>
+        <CoursesHero />
 
-      <CourseCatalog />
+        <CourseCatalog />
 
-      <CourseStructure />
-
+        <CourseStructure />
+      </main>
       <SiteFooter page="courses" />
     </div>
   );

@@ -76,6 +76,10 @@ Example of adding another course card inside the existing carousel:
 
 ## Checks
 
+`public/usability.css` contains the focused usability refinements (compact sticky
+header, keyboard navigation, readable secondary text, and unclipped content).
+See [the usability audit](frontend-usability-audit.md) for research and verification.
+
 ```sh
 npm test
 npm run typecheck

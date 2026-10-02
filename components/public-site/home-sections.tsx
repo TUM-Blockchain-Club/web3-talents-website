@@ -339,18 +339,19 @@ export function HomePage() {
     <div className="web3t web3t-home" id="top">
       <SiteHeader home={true} />
 
-      <HomeHero />
+      <main id="main-content" tabIndex={-1}>
+        <HomeHero />
 
-      <ProgramSection />
+        <ProgramSection />
 
-      <LearningSteps />
+        <LearningSteps />
 
-      <HomeSpeakers />
+        <HomeSpeakers />
 
-      <CourseValues />
+        <CourseValues />
 
-      <HomeCommunity />
-
+        <HomeCommunity />
+      </main>
       <SiteFooter page="home" />
     </div>
   );
