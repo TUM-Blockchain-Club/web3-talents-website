@@ -31,11 +31,13 @@ matching clean URL.
 - `accordion.tsx`: FAQ/curriculum items and an optional expand-all group.
 - `course-tabs.tsx`: keyboard-accessible course description/curriculum/FAQ tabs.
 - `particle-logo.tsx`: lifecycle and still fallback for the drifting logo field.
-  `lib/logo-field.mjs` controls eighteen logo tracks, speeds, sizes, sprite sampling,
+  `lib/logo-field.mjs` controls twenty-seven logo tracks, speeds, sizes, sprite sampling,
   and localized hover breakup. It reuses the original blue/purple artwork from
   `assets/hero-bg.png`, compositing away its dark background. Drift speeds are
   34–62 pixels per second (twice the initial speed).
   Symbols are approximately 40% larger than the initial eighteen-logo field.
+  Nine additional staggered tracks increase density by 50% without changing the
+  existing logo sizes, drift speeds, or hover radius.
   `lib/hero-particles.mjs` supplies the shared spring/repulsion physics.
   The field pauses off-screen or in background tabs, honors reduced motion, and
   provides a pause/resume control visible only on keyboard focus, keeping it out of
