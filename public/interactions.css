@@ -1,4 +1,17 @@
 /* Interaction layer: preserve the original layout, artwork and palette. */
+.web3t-stack {
+  position: relative;
+  isolation: isolate;
+}
+/* Keep the exposed-card hover region fixed while the two cards trade places. */
+@media (min-width: 761px) {
+  .web3t-stack::before {
+    content: "";
+    position: absolute;
+    inset: 0 -38px -68px 0;
+    z-index: -1;
+  }
+}
 .web3t .web3t-quote--text-only blockquote {
   flex: 1 1 auto;
   max-width: none;

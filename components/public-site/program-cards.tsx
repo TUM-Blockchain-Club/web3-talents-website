@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { UnavailableAction } from "./unavailable-action";
+import { programPreviewAtPoint } from "../../lib/program-hover.mjs";
 
 const programs = [
   {
@@ -42,7 +43,23 @@ export function ProgramCards() {
           </button>
         ))}
       </div>
-      <div className="web3t-stack" onPointerLeave={() => setPreview(null)}>
+      <div
+        className="web3t-stack"
+        onPointerLeave={() => setPreview(null)}
+        onPointerMove={(event) => {
+          const bounds = event.currentTarget.getBoundingClientRect();
+          setPreview(
+            programPreviewAtPoint({
+              x: event.clientX - bounds.left,
+              y: event.clientY - bounds.top,
+              width: bounds.width,
+              height: bounds.height,
+              selected,
+              pointerType: event.pointerType,
+            }),
+          );
+        }}
+      >
         {programs.map((program, i) => (
           <article
             key={program.title}
@@ -51,10 +68,10 @@ export function ProgramCards() {
             tabIndex={active === i ? undefined : 0}
             role={active === i ? undefined : "button"}
             aria-label={active === i ? undefined : `Show ${program.title}`}
-            onPointerEnter={(event) => {
-              if (event.pointerType === "mouse") setPreview(i);
+            onClick={() => {
+              setSelected(preview ?? i);
+              setPreview(null);
             }}
-            onClick={() => setSelected(i)}
             onKeyDown={(event) => {
               if (
                 event.target === event.currentTarget &&
