@@ -23,8 +23,9 @@ export function CourseHero() {
       </h1>
       <p className="web3t-course-hero__badge">Coming soon</p>
       <p className="web3t-course-hero__desc">
-        Blockchain Fundamentals 1 is coming soon. Curriculum, dates, format, and
-        requirements will be published once confirmed.
+        Blockchain Fundamentals 1 combines expert lectures, small-group
+        research, and peer teaching. Curriculum, dates, and requirements will be
+        published once confirmed.
       </p>
       <div className="web3t-course-hero__actions">
         <UnavailableAction className="web3t-btn web3t-btn--primary web3t-course-hero__apply">
@@ -65,8 +66,12 @@ export function CourseInformation() {
         </div>
         <CoursePanel tab="desc">
           <p className="web3t-course-about__desc">
-            The full description and learning outcomes for Blockchain Fundamentals
-            1 will be published here once confirmed.
+            An industry expert introduces each topic through a live lecture. In
+            small peer groups, you research a subtopic and prepare a
+            presentation. You then teach your findings to other groups and learn
+            from theirs. A follow-up expert lecture connects the pieces and
+            deepens your understanding. Detailed learning outcomes will be
+            published once confirmed.
           </p>
         </CoursePanel>
         <CoursePanel tab="curriculum">
@@ -92,7 +97,10 @@ export function CourseInformation() {
                   heading={
                     <>
                       <span className="web3t-course-phase__name">
-                        {title} — to be confirmed
+                        {title}
+                        {title === "Learning activities"
+                          ? ""
+                          : " — to be confirmed"}
                       </span>
                       <span
                         className="web3t-course-phase__chev"
@@ -102,8 +110,9 @@ export function CourseInformation() {
                   }
                 >
                   <p>
-                    Confirmed {title.toLowerCase()} will be published with the
-                    official course announcement.
+                    {title === "Learning activities"
+                      ? "Expert lectures, hands-on assignments, small-group research, and peer presentations form the learning cycle."
+                      : `Confirmed ${title.toLowerCase()} will be published with the official course announcement.`}
                   </p>
                 </AccordionItem>
               ))}

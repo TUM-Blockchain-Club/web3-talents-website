@@ -5,7 +5,6 @@ export const metadata: Metadata = {
   title: "Web3 Talents — TUM Blockchain Club",
   description:
     "Explore the Web3 Talents community. Official program information and announcements coming soon.",
-  icons: { icon: "/assets/logo.png" },
 };
 
 export default function RootLayout({

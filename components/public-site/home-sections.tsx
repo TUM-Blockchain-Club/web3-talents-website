@@ -65,8 +65,8 @@ export function LearningSteps() {
           How Our Courses Work
         </h2>
         <p className="web3t-steps__sub">
-          The program format is being finalized. This section will outline the
-          confirmed learning journey.
+          Our courses are built on a peer-teaching approach to ensure a thorough
+          understanding of the material.
         </p>
       </div>
       <div className="web3t-steps__canvas">
@@ -77,8 +77,11 @@ export function LearningSteps() {
               1
             </span>
             <div className="web3t-step__text">
-              <h3>Session format</h3>
-              <p>Confirmed session formats will be described here.</p>
+              <h3>Expert Input</h3>
+              <p>
+                An <strong>industry expert</strong> introduces the topic through
+                a live lecture.
+              </p>
             </div>
           </li>
           <li className="web3t-step web3t-step--2">
@@ -86,9 +89,10 @@ export function LearningSteps() {
               2
             </span>
             <div className="web3t-step__text">
-              <h3>Learning activities</h3>
+              <h3>Become a Specialist</h3>
               <p>
-                Learning activities and participation details will be announced.
+                In small <strong>peer groups</strong>, you research, discuss and
+                prepare a presentation on a subtopic.
               </p>
             </div>
           </li>
@@ -97,10 +101,10 @@ export function LearningSteps() {
               3
             </span>
             <div className="web3t-step__text">
-              <h3>Peer collaboration</h3>
+              <h3>Teach your Peers</h3>
               <p>
-                Collaboration opportunities will be shared with the course
-                details.
+                You <strong>present your findings</strong> to other groups and
+                they teach you theirs.
               </p>
             </div>
           </li>
@@ -109,10 +113,10 @@ export function LearningSteps() {
               4
             </span>
             <div className="web3t-step__text">
-              <h3>Next steps</h3>
+              <h3>Expert Validation</h3>
               <p>
-                Program milestones and completion requirements are to be
-                confirmed.
+                A <strong>second expert lecture</strong> connects all the pieces
+                and deepens your understanding.
               </p>
             </div>
           </li>
@@ -222,8 +226,8 @@ export function CourseValues() {
             <span className="web3t-value-card__icon" aria-hidden="true"></span>
             <div className="web3t-value-card__reveal">
               <p>
-                Session formats and learning activities will be announced with
-                the program.
+                Expert lectures, small-group research, and peer teaching help
+                you build a thorough understanding of each topic.
               </p>
             </div>
           </article>

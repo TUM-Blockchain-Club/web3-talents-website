@@ -45,7 +45,32 @@ test('Blockchain Fundamentals 1 is named consistently without announcing other c
   assert.match(inventory(renderPage('home')).text, /Course 02 Further course information/);
   assert.match(inventory(renderPage('courses')).text, /Course 02 Title and curriculum to be confirmed/);
   assert.match(inventory(renderPage('courses')).text, /Course 03 Title and curriculum to be confirmed/);
-  assert.match(inventory(renderPage('course')).text, /Curriculum, dates, format, and requirements will be published once confirmed/);
+  assert.match(inventory(renderPage('course')).text, /Curriculum, dates, and requirements will be published once confirmed/);
+});
+
+test('confirmed peer-teaching format is restored without unconfirmed schedules or fees', () => {
+  const home = inventory(renderPage('home')).text;
+  for (const label of ['Expert Input', 'Become a Specialist', 'Teach your Peers', 'Expert Validation']) {
+    assert.ok(home.includes(label));
+  }
+  assert.doesNotMatch(home, /program format is being finalized|Session formats and learning activities will be announced/);
+  const courses = inventory(renderPage('courses')).text;
+  for (const label of ['Lecture + Assignment', 'Processing in Specialist Groups', 'Group Teaching + New Lecture', 'PROGRESSIVE LEARNING CYCLE']) {
+    assert.ok(courses.includes(label));
+  }
+  const course = inventory(renderPage('course')).text;
+  assert.match(course, /small peer groups/);
+  assert.doesNotMatch(course, /Learning activities — to be confirmed/);
+  assert.match(home, /COST TO BE CONFIRMED/);
+});
+
+test('favicon uses the original standalone Web3 Talents mark, not the wide wordmark', () => {
+  const layout = readFileSync(new URL('../app/layout.tsx', import.meta.url), 'utf8');
+  assert.doesNotMatch(layout, /icons\s*:/);
+  const icon = readFileSync(new URL('../app/icon.png', import.meta.url));
+  assert.equal(icon.subarray(1, 4).toString(), 'PNG');
+  assert.equal(icon.readUInt32BE(16), 1400);
+  assert.equal(icon.readUInt32BE(20), 1400);
 });
 
 test('testimonial photos and unconfirmed event/course specifics stay removed', () => {

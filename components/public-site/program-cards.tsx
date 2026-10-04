@@ -106,7 +106,7 @@ export function ProgramCards() {
               </div>
               <div>
                 <dt>FORMAT</dt>
-                <dd>TO BE CONFIRMED</dd>
+                <dd>PEER-LED LEARNING</dd>
               </div>
               <div>
                 <dt>START DATE</dt>
