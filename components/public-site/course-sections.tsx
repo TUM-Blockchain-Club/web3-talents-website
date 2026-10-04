@@ -11,20 +11,20 @@ export function CourseHero() {
     <section className="web3t-course-hero" aria-labelledby="web3t-course-title">
       <nav className="web3t-course-hero__breadcrumb" aria-label="Breadcrumb">
         <Link href="/courses">All Courses</Link>
-        <span>&gt; Course preview</span>
+        <span>&gt; Blockchain Fundamentals 1</span>
       </nav>
       <div className="web3t-course-hero__meta">
         <span className="web3t-course-hero__date">Details to be announced</span>
       </div>
       <h1 id="web3t-course-title" className="web3t-course-hero__title">
-        Course
+        Blockchain
         <br />
-        preview
+        Fundamentals 1
       </h1>
-      <p className="web3t-course-hero__badge">Placeholder information</p>
+      <p className="web3t-course-hero__badge">Coming soon</p>
       <p className="web3t-course-hero__desc">
-        This page is reserved for confirmed course information. The title,
-        curriculum, dates, format, and requirements are not yet announced.
+        Blockchain Fundamentals 1 is coming soon. Curriculum, dates, format, and
+        requirements will be published once confirmed.
       </p>
       <div className="web3t-course-hero__actions">
         <UnavailableAction className="web3t-btn web3t-btn--primary web3t-course-hero__apply">
@@ -65,8 +65,8 @@ export function CourseInformation() {
         </div>
         <CoursePanel tab="desc">
           <p className="web3t-course-about__desc">
-            The official course description and learning outcomes will appear
-            here. This preview does not represent an announced course.
+            The full description and learning outcomes for Blockchain Fundamentals
+            1 will be published here once confirmed.
           </p>
         </CoursePanel>
         <CoursePanel tab="curriculum">

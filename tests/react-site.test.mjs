@@ -36,6 +36,18 @@ test('every old URL redirects to an existing React route, without HTML rewrites'
   }
 });
 
+test('Blockchain Fundamentals 1 is named consistently without announcing other courses or dates', () => {
+  for (const page of ['home', 'courses', 'course']) {
+    const content = inventory(renderPage(page));
+    assert.ok(content.headings.includes('Blockchain Fundamentals 1'));
+    assert.doesNotMatch(content.text, /Course 01|Placeholder information|This preview does not represent an announced course/);
+  }
+  assert.match(inventory(renderPage('home')).text, /Course 02 Further course information/);
+  assert.match(inventory(renderPage('courses')).text, /Course 02 Title and curriculum to be confirmed/);
+  assert.match(inventory(renderPage('courses')).text, /Course 03 Title and curriculum to be confirmed/);
+  assert.match(inventory(renderPage('course')).text, /Curriculum, dates, format, and requirements will be published once confirmed/);
+});
+
 test('testimonial photos and unconfirmed event/course specifics stay removed', () => {
   for (const page of pages) {
     const html = renderPage(page);

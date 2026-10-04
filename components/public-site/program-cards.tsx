@@ -6,9 +6,9 @@ import { programPreviewAtPoint } from "../../lib/program-hover.mjs";
 
 const programs = [
   {
-    title: "Course 01",
+    title: "Blockchain Fundamentals 1",
     description:
-      "Course title, topics, and learning outcomes will be published once confirmed.",
+      "Course details, topics, and learning outcomes will be published once confirmed.",
     start: "TO BE ANNOUNCED",
   },
   {

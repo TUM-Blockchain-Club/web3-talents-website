@@ -12,7 +12,7 @@ export function CoursesHero() {
           Find your path into <span className="web3t-grad">Web3</span>
         </h1>
         <p className="web3t-co-hero__sub">
-          Course information is being finalized. Titles, dates, and requirements
+          Course details are being finalized. Dates, curriculum, and requirements
           will be published once confirmed.
         </p>
       </div>
@@ -29,7 +29,11 @@ export function CourseCatalog() {
           scrollerClassName="web3t-co-cards"
           label="Courses slider"
         >
-          <CourseCard title={<>Course 01</>} variant="lilac" />
+          <CourseCard
+            title={<>Blockchain Fundamentals 1</>}
+            variant="lilac"
+            subtitle="Curriculum and course details to be confirmed"
+          />
           <CourseCard title={<>Course 02</>} variant="blue" />
           <CourseCard title={<>Course 03</>} variant="cyan" />
         </Carousel>
