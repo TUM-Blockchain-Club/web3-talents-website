@@ -3,6 +3,9 @@
   position: relative;
   isolation: isolate;
 }
+.web3t-stack--single::before {
+  display: none;
+}
 /* Keep the exposed-card hover region fixed while the two cards trade places. */
 @media (min-width: 761px) {
   .web3t-stack::before {

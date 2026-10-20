@@ -39,12 +39,11 @@ test("touch and pen do not preview or override explicit selection", () => {
     );
   }
 });
-test("hover is handled by stationary stack coordinates rather than animated card entry", () => {
+test("single program has no hover switching or hidden course", () => {
   const source = readFileSync(
     new URL("../components/public-site/program-cards.tsx", import.meta.url),
     "utf8",
   );
-  assert.doesNotMatch(source, /onPointerEnter/);
-  assert.match(source, /event\.currentTarget\.getBoundingClientRect\(\)/);
-  assert.match(source, /programPreviewAtPoint/);
+  assert.doesNotMatch(source, /onPointer|programPreviewAtPoint|useState|is-back|inert=/);
+  assert.match(source, /web3t-stack--single/);
 });

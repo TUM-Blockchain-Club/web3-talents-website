@@ -42,9 +42,12 @@ test('Blockchain Fundamentals 1 is named consistently without announcing other c
     assert.ok(content.headings.includes('Blockchain Fundamentals 1'));
     assert.doesNotMatch(content.text, /Course 01|Placeholder information|This preview does not represent an announced course/);
   }
-  assert.match(inventory(renderPage('home')).text, /Course 02 Further course information/);
-  assert.match(inventory(renderPage('courses')).text, /Course 02 Title and curriculum to be confirmed/);
-  assert.match(inventory(renderPage('courses')).text, /Course 03 Title and curriculum to be confirmed/);
+  for (const page of ['home', 'courses']) {
+    const html = renderPage(page);
+    assert.doesNotMatch(inventory(html).text, /Course 0[123]|Further course information|Title and curriculum to be confirmed/);
+    assert.equal(inventory(html).headings.filter(title => title === 'Blockchain Fundamentals 1').length, 1);
+  }
+  assert.doesNotMatch(renderPage('courses'), /Courses slider/);
   assert.match(inventory(renderPage('course')).text, /Curriculum, dates, and requirements will be published once confirmed/);
 });
 

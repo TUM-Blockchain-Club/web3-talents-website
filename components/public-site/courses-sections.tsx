@@ -1,7 +1,6 @@
 import { CourseCard } from "./cards";
 import { SiteHeader } from "./site-header";
 import { SiteFooter } from "./site-footer";
-import { Carousel } from "./carousel";
 
 export function CoursesHero() {
   return (
@@ -24,19 +23,13 @@ export function CourseCatalog() {
   return (
     <section className="web3t-co-cardsec" aria-label="Available courses">
       <div className="web3t-rail">
-        <Carousel
-          className="web3t-co-cards-carousel"
-          scrollerClassName="web3t-co-cards"
-          label="Courses slider"
-        >
+        <div className="web3t-co-cards is-centered">
           <CourseCard
             title={<>Blockchain Fundamentals 1</>}
             variant="lilac"
             subtitle="Curriculum and course details to be confirmed"
           />
-          <CourseCard title={<>Course 02</>} variant="blue" />
-          <CourseCard title={<>Course 03</>} variant="cyan" />
-        </Carousel>
+        </div>
       </div>
     </section>
   );

@@ -38,14 +38,14 @@ export function ProgramSection() {
     >
       <div className="web3t-rail">
         <h2 id="web3t-program-title" className="web3t-h2">
-          Our Upcoming Programs
+          Our Upcoming Program
         </h2>
         <p className="web3t-program__notice">
           <span
             className="web3t-program__notice-icon"
             aria-hidden="true"
           ></span>
-          New courses and applications coming soon
+          Applications coming soon
         </p>
         <ProgramCards />
       </div>

@@ -70,11 +70,10 @@ test("page entrances run once, respect preference changes, and clean up on navig
   }
 });
 
-test("program selection is accessible and route navigation marks the current section", () => {
+test("single program needs no selector and route navigation marks the current section", () => {
   const home = renderPage("home");
-  assert.match(home, /role="group" aria-label="Choose a program"/);
-  assert.match(home, /aria-pressed="true"[^>]*>Blockchain Fundamentals 1/);
-  assert.match(home, /aria-pressed="false"[^>]*>Course 02/);
+  assert.match(home, /<h3>Blockchain Fundamentals 1<\/h3>/);
+  assert.doesNotMatch(home, /Choose a program|aria-pressed=|Course 02|is-back/);
   for (const page of ["courses", "course", "community"]) {
     const section = page === "course" ? "courses" : page;
     assert.match(
