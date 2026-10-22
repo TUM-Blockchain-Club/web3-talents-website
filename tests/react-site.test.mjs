@@ -64,7 +64,7 @@ test('confirmed peer-teaching format is restored without unconfirmed schedules o
   const course = inventory(renderPage('course')).text;
   assert.match(course, /small peer groups/);
   assert.doesNotMatch(course, /Learning activities — to be confirmed/);
-  assert.match(home, /COST TO BE CONFIRMED/);
+  assert.match(home, /COST FREE/);
 });
 
 test('favicon uses the original standalone Web3 Talents mark, not the wide wordmark', () => {
@@ -79,8 +79,18 @@ test('favicon uses the original standalone Web3 Talents mark, not the wide wordm
 test('testimonial photos and unconfirmed event/course specifics stay removed', () => {
   for (const page of pages) {
     const html = renderPage(page);
-    assert.doesNotMatch(html, /testimonial-avatar|community-photo\.png|Blabla|Annual Alumni|Jan 2027|20[ -][Ww](?:eek|EEK)|10-week|3–4 hours|recognised certificate/);
+    assert.doesNotMatch(html, /testimonial-avatar|community-photo\.png|Blabla|Annual Alumni|Jan 2027|10-week|3–4 hours|recognised certificate/);
     assert.match(html, /to be (?:confirmed|announced)|coming soon/i);
+  }
+});
+
+test('confirmed free twenty-week program is consistent while start date stays TBD', () => {
+  for (const page of pages) {
+    const text = inventory(renderPage(page)).text;
+    assert.match(text, /20[ -]weeks?/i);
+    assert.match(text, /free/i);
+    assert.doesNotMatch(text, /COST TO BE CONFIRMED|DURATION TO BE CONFIRMED|Fees, if any|any fees|Duration, session times/);
+    if (page !== 'community') assert.match(text, /START DATE:? TBD/i);
   }
 });
 

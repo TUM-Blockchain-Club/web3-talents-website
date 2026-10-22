@@ -175,9 +175,7 @@ export function CommunityFaq() {
               </>
             }
           >
-            <p>
-              Fees, if any, will be stated in the confirmed course information.
-            </p>
+            <p>Yes. Blockchain Fundamentals 1 is free to join.</p>
           </AccordionItem>
           <AccordionItem
             itemId="community-accordion-2"
@@ -217,8 +215,8 @@ export function CommunityFaq() {
             }
           >
             <p>
-              Duration, session times, and expected workload are to be
-              confirmed.
+              Blockchain Fundamentals 1 runs for 20 weeks. The start date,
+              session times, and weekly workload are still to be confirmed.
             </p>
           </AccordionItem>
           <AccordionItem

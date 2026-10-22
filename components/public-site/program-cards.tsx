@@ -28,7 +28,7 @@ export function ProgramCards() {
           <dl className="web3t-course-card__info">
             <div>
               <dt>DURATION</dt>
-              <dd>TO BE CONFIRMED</dd>
+              <dd>20 WEEKS</dd>
             </div>
             <div>
               <dt>FORMAT</dt>
@@ -36,11 +36,11 @@ export function ProgramCards() {
             </div>
             <div>
               <dt>START DATE</dt>
-              <dd>TO BE ANNOUNCED</dd>
+              <dd>TBD</dd>
             </div>
             <div>
               <dt>COST</dt>
-              <dd>TO BE CONFIRMED</dd>
+              <dd>FREE</dd>
             </div>
           </dl>
         </article>

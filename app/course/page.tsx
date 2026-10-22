@@ -3,7 +3,8 @@ import { CoursePage } from "@/components/public-site/course-sections";
 
 export const metadata: Metadata = {
   title: "Blockchain Fundamentals 1 — Web3 Talents",
-  description: "Blockchain Fundamentals 1 is coming soon. Curriculum, dates, and requirements to be announced.",
+  description:
+    "Blockchain Fundamentals 1 is a free, 20-week program. Start date to be announced.",
 };
 
 export default CoursePage;

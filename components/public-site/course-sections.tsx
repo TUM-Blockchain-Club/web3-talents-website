@@ -14,18 +14,18 @@ export function CourseHero() {
         <span>&gt; Blockchain Fundamentals 1</span>
       </nav>
       <div className="web3t-course-hero__meta">
-        <span className="web3t-course-hero__date">Details to be announced</span>
+        <span className="web3t-course-hero__date">Start date: TBD</span>
       </div>
       <h1 id="web3t-course-title" className="web3t-course-hero__title">
         Blockchain
         <br />
         Fundamentals 1
       </h1>
-      <p className="web3t-course-hero__badge">Coming soon</p>
+      <p className="web3t-course-hero__badge">Free · 20 weeks</p>
       <p className="web3t-course-hero__desc">
-        Blockchain Fundamentals 1 combines expert lectures, small-group
-        research, and peer teaching. Curriculum, dates, and requirements will be
-        published once confirmed.
+        Blockchain Fundamentals 1 is a free, 20-week program combining expert
+        lectures, small-group research, and peer teaching. Curriculum, dates,
+        and requirements will be published once confirmed.
       </p>
       <div className="web3t-course-hero__actions">
         <UnavailableAction className="web3t-btn web3t-btn--primary web3t-course-hero__apply">
@@ -128,11 +128,11 @@ export function CourseInformation() {
               ],
               [
                 "How much time is required?",
-                "Duration, session times, and workload are to be announced.",
+                "The program runs for 20 weeks. The start date, session times, and weekly workload are still to be announced.",
               ],
               [
                 "How do I apply?",
-                "Application instructions and any fees will be published when confirmed. Applications are not available on this preview.",
+                "The program is free. Application instructions will be published when confirmed. Applications are not available yet.",
               ],
             ].map(([question, answer], i) => (
               <AccordionItem

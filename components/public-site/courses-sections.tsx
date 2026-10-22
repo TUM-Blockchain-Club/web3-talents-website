@@ -27,7 +27,9 @@ export function CourseCatalog() {
           <CourseCard
             title={<>Blockchain Fundamentals 1</>}
             variant="lilac"
-            subtitle="Curriculum and course details to be confirmed"
+            level="20 WEEKS · FREE"
+            subtitle="Curriculum and requirements to be confirmed"
+            date="Start date: TBD"
           />
         </div>
       </div>
