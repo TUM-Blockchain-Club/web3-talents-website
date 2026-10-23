@@ -5,6 +5,12 @@ import { SiteHeader } from "./site-header";
 import { SiteFooter } from "./site-footer";
 import { AccordionItem, AccordionGroup, ExpandAll } from "./accordion";
 import { CourseTabs, CourseTab, CoursePanel } from "./course-tabs";
+import {
+  courseFacts,
+  curriculum,
+  applicationDetails,
+  participationDetails,
+} from "./course-content";
 
 export function CourseHero() {
   return (
@@ -14,7 +20,9 @@ export function CourseHero() {
         <span>&gt; Blockchain Fundamentals 1</span>
       </nav>
       <div className="web3t-course-hero__meta">
-        <span className="web3t-course-hero__date">Start date: TBD</span>
+        <span className="web3t-course-hero__date">
+          Start date: {courseFacts.start}
+        </span>
       </div>
       <h1 id="web3t-course-title" className="web3t-course-hero__title">
         Blockchain
@@ -24,12 +32,16 @@ export function CourseHero() {
       <p className="web3t-course-hero__badge">Free · 20 weeks</p>
       <p className="web3t-course-hero__desc">
         Blockchain Fundamentals 1 is a free, 20-week program combining expert
-        lectures, small-group research, and peer teaching. Curriculum, dates,
-        and requirements will be published once confirmed.
+        lectures, small-group research, and peer teaching across 10 topics. Join
+        us online on Tuesdays, starting {courseFacts.start}.
+      </p>
+      <p className="web3t-course-hero__desc">
+        Application deadline: {courseFacts.deadline}. Acceptance announcements:{" "}
+        {courseFacts.decisions}.
       </p>
       <div className="web3t-course-hero__actions">
         <UnavailableAction className="web3t-btn web3t-btn--primary web3t-course-hero__apply">
-          Applications unavailable
+          {courseFacts.applicationNote}
         </UnavailableAction>
       </div>
     </section>
@@ -43,7 +55,8 @@ export function CourseInformation() {
         Course information
       </h2>
       <p className="web3t-course-about__learn">
-        Learning outcomes will be published once confirmed.
+        From digital trust and Bitcoin to smart contracts, DeFi, and crypto
+        taxation: build your understanding one topic at a time.
       </p>
       <CourseTabs>
         <div
@@ -66,27 +79,36 @@ export function CourseInformation() {
         </div>
         <CoursePanel tab="desc">
           <p className="web3t-course-about__desc">
-            An industry expert introduces each topic through a live lecture. In
-            small peer groups, you research a subtopic and prepare a
-            presentation. You then teach your findings to other groups and learn
-            from theirs. A follow-up expert lecture connects the pieces and
-            deepens your understanding. Detailed learning outcomes will be
-            published once confirmed.
+            Lecture weeks and presentation weeks alternate. An industry expert
+            introduces a topic in a live lecture with Q&amp;A. In small peer
+            groups of three, you research one of four subtopics and prepare a
+            10–15-minute presentation. The following week, you teach your
+            subtopic to other groups and learn from theirs — the jigsaw learning
+            model. A new topic begins at the next lecture session.
+          </p>
+          <p className="web3t-course-about__desc">
+            Sessions last 1.5 hours and take place online on Tuesdays. Teams
+            rotate during the program so you can work with more peers. Use
+            Moodle for materials and assignments, and Zoom for meetings;
+            recordings and additional learning resources are provided. Cameras
+            are required during sessions.
+          </p>
+          <p className="web3t-course-about__desc">
+            For each presentation, create an original diagram, timeline, or
+            comparison table, and use primary sources such as whitepapers and
+            developer documentation. Set aside additional time outside sessions
+            for research and preparation.
           </p>
         </CoursePanel>
         <CoursePanel tab="curriculum">
           <AccordionGroup
-            itemIds={[
-              "course-accordion-1",
-              "course-accordion-2",
-              "course-accordion-3",
-            ]}
+            itemIds={curriculum.map((_, i) => `course-accordion-${i + 1}`)}
           >
             <p className="web3t-course-about__expand">
               <ExpandAll />
             </p>
             <ul className="web3t-course-about__phases">
-              {["Topics", "Learning activities", "Schedule"].map((title, i) => (
+              {curriculum.map(({ title, topics }, i) => (
                 <AccordionItem
                   key={title}
                   itemId={`course-accordion-${i + 1}`}
@@ -96,12 +118,7 @@ export function CourseInformation() {
                   bodyClassName="web3t-course-phase__body"
                   heading={
                     <>
-                      <span className="web3t-course-phase__name">
-                        {title}
-                        {title === "Learning activities"
-                          ? ""
-                          : " — to be confirmed"}
-                      </span>
+                      <span className="web3t-course-phase__name">{title}</span>
                       <span
                         className="web3t-course-phase__chev"
                         aria-hidden="true"
@@ -109,11 +126,13 @@ export function CourseInformation() {
                     </>
                   }
                 >
-                  <p>
-                    {title === "Learning activities"
-                      ? "Expert lectures, hands-on assignments, small-group research, and peer presentations form the learning cycle."
-                      : `Confirmed ${title.toLowerCase()} will be published with the official course announcement.`}
-                  </p>
+                  {topics.map(([topic, description]) => (
+                    <p key={topic}>
+                      <strong>{topic}</strong>
+                      <br />
+                      {description}
+                    </p>
+                  ))}
                 </AccordionItem>
               ))}
             </ul>
@@ -126,18 +145,20 @@ export function CourseInformation() {
                 "Who can join?",
                 "Eligibility and prerequisites will be confirmed with the course details.",
               ],
+              ["How much time is required?", participationDetails],
+              ["How do I apply?", applicationDetails],
               [
-                "How much time is required?",
-                "The program runs for 20 weeks. The start date, session times, and weekly workload are still to be announced.",
+                "What time are the sessions?",
+                "Sessions take place on Tuesdays and last 1.5 hours. The planned start is between 5:00 and 5:30 PM; the exact time and timezone will be confirmed. The first session is December 1, 2026. Holiday-break dates and the final calendar will be shared separately.",
               ],
               [
-                "How do I apply?",
-                "The program is free. Application instructions will be published when confirmed. Applications are not available yet.",
+                "Will I receive a certificate?",
+                "Eligible participants receive a PDF and NFT certificate after the cohort. Detailed participation and points requirements will be confirmed before the program begins.",
               ],
             ].map(([question, answer], i) => (
               <AccordionItem
                 key={question}
-                itemId={`course-accordion-${i + 4}`}
+                itemId={`course-accordion-${i + curriculum.length + 1}`}
                 as="li"
                 className="web3t-course-phase"
                 headClassName="web3t-course-phase__head"

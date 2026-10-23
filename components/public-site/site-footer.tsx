@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { UnavailableAction } from "./unavailable-action";
+import { courseFacts } from "./course-content";
 
 export function SiteFooter({
   page,
@@ -23,7 +24,7 @@ export function SiteFooter({
           />
           <p className="web3t-footer__tagline">Learn. Connect. Explore Web3.</p>
           <UnavailableAction className="web3t-btn web3t-btn--primary web3t-footer__apply">
-            Applications coming soon
+            {courseFacts.applicationNote}
           </UnavailableAction>
         </div>
         <nav className="web3t-footer__nav" aria-label="Footer">

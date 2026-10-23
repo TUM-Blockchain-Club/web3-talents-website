@@ -36,7 +36,7 @@ test('every old URL redirects to an existing React route, without HTML rewrites'
   }
 });
 
-test('Blockchain Fundamentals 1 is named consistently without announcing other courses or dates', () => {
+test('Blockchain Fundamentals 1 is named consistently without announcing other courses', () => {
   for (const page of ['home', 'courses', 'course']) {
     const content = inventory(renderPage(page));
     assert.ok(content.headings.includes('Blockchain Fundamentals 1'));
@@ -48,17 +48,17 @@ test('Blockchain Fundamentals 1 is named consistently without announcing other c
     assert.equal(inventory(html).headings.filter(title => title === 'Blockchain Fundamentals 1').length, 1);
   }
   assert.doesNotMatch(renderPage('courses'), /Courses slider/);
-  assert.match(inventory(renderPage('course')).text, /Curriculum, dates, and requirements will be published once confirmed/);
+  assert.match(inventory(renderPage('course')).text, /10 topics/);
 });
 
 test('confirmed peer-teaching format is restored without unconfirmed schedules or fees', () => {
   const home = inventory(renderPage('home')).text;
-  for (const label of ['Expert Input', 'Become a Specialist', 'Teach your Peers', 'Expert Validation']) {
+  for (const label of ['Expert Input', 'Become a Specialist', 'Teach your Peers', 'Build on What You Learn']) {
     assert.ok(home.includes(label));
   }
   assert.doesNotMatch(home, /program format is being finalized|Session formats and learning activities will be announced/);
   const courses = inventory(renderPage('courses')).text;
-  for (const label of ['Lecture + Assignment', 'Processing in Specialist Groups', 'Group Teaching + New Lecture', 'PROGRESSIVE LEARNING CYCLE']) {
+  for (const label of ['Lecture + Assignment', 'Processing in Specialist Groups', 'Group Teaching', 'PROGRESSIVE LEARNING CYCLE']) {
     assert.ok(courses.includes(label));
   }
   const course = inventory(renderPage('course')).text;
@@ -84,14 +84,45 @@ test('testimonial photos and unconfirmed event/course specifics stay removed', (
   }
 });
 
-test('confirmed free twenty-week program is consistent while start date stays TBD', () => {
+test('confirmed free twenty-week program and December start are consistent', () => {
   for (const page of pages) {
     const text = inventory(renderPage(page)).text;
     assert.match(text, /20[ -]weeks?/i);
     assert.match(text, /free/i);
     assert.doesNotMatch(text, /COST TO BE CONFIRMED|DURATION TO BE CONFIRMED|Fees, if any|any fees|Duration, session times/);
-    if (page !== 'community') assert.match(text, /START DATE:? TBD/i);
+    assert.match(text, /December 1, 2026/);
+    assert.doesNotMatch(text, /TBD|start date.*to be announced|Applications coming soon|Curriculum and requirements to be confirmed/);
   }
+});
+
+test('confirmed application dates are published without inventing a form URL or timezone', () => {
+  for (const page of ['home', 'course', 'community']) {
+    assert.match(inventory(renderPage(page)).text, /November 8, 2026 at 23:59/);
+  }
+  for (const page of ['course', 'community']) {
+    const text = inventory(renderPage(page)).text;
+    assert.match(text, /November 22, 2026/);
+    assert.match(text, /deadline timezone is still to be confirmed/);
+    assert.match(text, /additional time/i);
+  }
+  for (const page of pages) assert.match(inventory(renderPage(page)).text, /Application link pending/);
+});
+
+test('curriculum covers all ten topic pairs and preserves unique accordion targets', () => {
+  const html = renderPage('course');
+  const text = inventory(html).text;
+  for (let start = 1; start < 20; start += 2) {
+    assert.match(text, new RegExp(`Weeks ${start}–${start + 1}:`));
+  }
+  for (const topic of ['Decentralization', 'Cryptography', 'Wallets', 'Bitcoin', 'Proof-of-Stake', 'Ethereum', 'Smart Contracts', 'Tokenomics', 'Real World Assets', 'Taxation']) {
+    assert.ok(text.includes(topic));
+  }
+  const ids = [...html.matchAll(/ id="(course-accordion-\d+)"/g)].map(match => match[1]);
+  assert.equal(ids.length, 10);
+  assert.equal(new Set(ids).size, ids.length);
+  assert.match(text, /10–15-minute presentation/);
+  assert.match(text, /Cameras are required/);
+  assert.doesNotMatch(text, /second expert lecture|follow-up expert lecture|option B|Screening:|burned out|Speaker can pitch/);
 });
 
 test('speaker profiles and all testimonial statements are restored without testimonial images', () => {

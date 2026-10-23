@@ -3,6 +3,7 @@ import { ClubEventCard, DiversityCard } from "./cards";
 import { SiteHeader } from "./site-header";
 import { SiteFooter } from "./site-footer";
 import { AccordionItem } from "./accordion";
+import { applicationDetails, participationDetails } from "./course-content";
 
 export function CommunityHero() {
   return (
@@ -193,10 +194,7 @@ export function CommunityFaq() {
               </>
             }
           >
-            <p>
-              Application instructions are not available yet. They will be
-              published with the confirmed course details.
-            </p>
+            <p>{applicationDetails}</p>
           </AccordionItem>
           <AccordionItem
             itemId="community-accordion-3"
@@ -214,10 +212,7 @@ export function CommunityFaq() {
               </>
             }
           >
-            <p>
-              Blockchain Fundamentals 1 runs for 20 weeks. The start date,
-              session times, and weekly workload are still to be confirmed.
-            </p>
+            <p>{participationDetails}</p>
           </AccordionItem>
           <AccordionItem
             itemId="community-accordion-4"

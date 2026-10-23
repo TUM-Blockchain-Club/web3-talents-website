@@ -5,6 +5,7 @@ import { SiteFooter } from "./site-footer";
 import { ParticleLogo } from "./particle-logo";
 import { Carousel } from "./carousel";
 import { ProgramCards } from "./program-cards";
+import { courseFacts } from "./course-content";
 
 export function HomeHero() {
   return (
@@ -12,7 +13,7 @@ export function HomeHero() {
       <ParticleLogo />
       <div className="web3t-rail web3t-hero__inner">
         <p className="web3t-hero__pill">
-          Next cohort <strong>coming soon</strong>
+          Next cohort starts <strong>{courseFacts.start}</strong>
         </p>
         <h1 id="web3t-hero-title">Your first steps into Web3 start here.</h1>
         <p className="web3t-hero__sub">Learn. Connect. Explore Web3.</p>
@@ -45,7 +46,7 @@ export function ProgramSection() {
             className="web3t-program__notice-icon"
             aria-hidden="true"
           ></span>
-          Applications coming soon
+          Application deadline: {courseFacts.deadline}
         </p>
         <ProgramCards />
       </div>
@@ -91,8 +92,8 @@ export function LearningSteps() {
             <div className="web3t-step__text">
               <h3>Become a Specialist</h3>
               <p>
-                In small <strong>peer groups</strong>, you research, discuss and
-                prepare a presentation on a subtopic.
+                In <strong>teams of three</strong>, you research a subtopic and
+                prepare a 10–15-minute presentation.
               </p>
             </div>
           </li>
@@ -103,8 +104,8 @@ export function LearningSteps() {
             <div className="web3t-step__text">
               <h3>Teach your Peers</h3>
               <p>
-                You <strong>present your findings</strong> to other groups and
-                they teach you theirs.
+                The following week, you <strong>present your findings</strong>{" "}
+                to other groups and learn from their subtopics.
               </p>
             </div>
           </li>
@@ -113,10 +114,10 @@ export function LearningSteps() {
               4
             </span>
             <div className="web3t-step__text">
-              <h3>Expert Validation</h3>
+              <h3>Build on What You Learn</h3>
               <p>
-                A <strong>second expert lecture</strong> connects all the pieces
-                and deepens your understanding.
+                The next <strong>lecture week</strong> introduces a new topic.
+                Repeat this cycle across 10 topics in 20 weeks.
               </p>
             </div>
           </li>
@@ -191,9 +192,7 @@ export function CourseValues() {
   return (
     <section className="web3t-values" aria-label="Why choose Web3 Talents">
       <div className="web3t-rail">
-        <h2 className="web3t-h2 web3t-values__title">
-          Program details to be confirmed
-        </h2>
+        <h2 className="web3t-h2 web3t-values__title">What to expect</h2>
         <div className="web3t-values__grid">
           <article
             className="web3t-value-card web3t-value-card--certification"
@@ -203,8 +202,9 @@ export function CourseValues() {
             <span className="web3t-value-card__icon" aria-hidden="true"></span>
             <div className="web3t-value-card__reveal">
               <p>
-                Certificate availability and requirements will be confirmed with
-                each course.
+                Eligible participants receive a PDF and NFT certificate after
+                completing the cohort. Detailed eligibility criteria will be
+                confirmed before the program begins.
               </p>
             </div>
           </article>
@@ -215,7 +215,10 @@ export function CourseValues() {
             <h3>Speakers</h3>
             <span className="web3t-value-card__icon" aria-hidden="true"></span>
             <div className="web3t-value-card__reveal">
-              <p>Confirmed speaker information will be published here.</p>
+              <p>
+                Expert-led lectures introduce each topic, with time for
+                questions and discussion.
+              </p>
             </div>
           </article>
           <article

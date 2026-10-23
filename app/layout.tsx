@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Web3 Talents — TUM Blockchain Club",
   description:
-    "Explore the Web3 Talents community. Official program information and announcements coming soon.",
+    "Join Web3 Talents for Blockchain Fundamentals 1: a free, 20-week online program starting December 1, 2026. Expert lectures, group research, and peer teaching.",
 };
 
 export default function RootLayout({

@@ -1,6 +1,8 @@
 import { CourseCard } from "./cards";
 import { SiteHeader } from "./site-header";
 import { SiteFooter } from "./site-footer";
+import Link from "next/link";
+import { courseFacts } from "./course-content";
 
 export function CoursesHero() {
   return (
@@ -11,8 +13,8 @@ export function CoursesHero() {
           Find your path into <span className="web3t-grad">Web3</span>
         </h1>
         <p className="web3t-co-hero__sub">
-          Course details are being finalized. Dates, curriculum, and
-          requirements will be published once confirmed.
+          A free, 20-week online program. Explore 10 blockchain topics through
+          expert lectures, small-group research, and peer presentations.
         </p>
       </div>
     </section>
@@ -25,11 +27,12 @@ export function CourseCatalog() {
       <div className="web3t-rail">
         <div className="web3t-co-cards is-centered">
           <CourseCard
-            title={<>Blockchain Fundamentals 1</>}
+            title={<Link href="/course">Blockchain Fundamentals 1</Link>}
             variant="lilac"
             level="20 WEEKS · FREE"
-            subtitle="Curriculum and requirements to be confirmed"
-            date="Start date: TBD"
+            status="Starts December 1"
+            subtitle="10 topics · Weekly online sessions · Peer-led learning"
+            date={`Start date: ${courseFacts.start}`}
           />
         </div>
       </div>
@@ -49,7 +52,7 @@ export function CourseStructure() {
             Every course follows the same structure
           </h2>
           <p className="web3t-co-structure__sub">
-            So you always know what&rsquo;s next
+            {courseFacts.schedule}. Lecture and presentation weeks alternate.
           </p>
         </div>
 
@@ -87,8 +90,8 @@ export function CourseStructure() {
                 PROGRESSIVE LEARNING CYCLE
               </span>
               <p className="web3t-co-cycle__caption">
-                Research and teaching alternate, repeating until you&#039;ve
-                covered the whole topic.
+                Each topic spans two weeks: an expert lecture, then peer
+                presentations. The cycle repeats across 10 topics.
               </p>
             </div>
             <div className="web3t-co-cycle__body">
@@ -114,9 +117,10 @@ export function CourseStructure() {
                     Processing in Specialist Groups
                   </p>
                   <p className="web3t-co-scard__body">
-                    Meet peers in small specialist subgroups. Everyone
-                    researches the same subtopic from the lecture, becomes an
-                    expert on it, and prepares a presentation.
+                    Work in a team of three to research one of four subtopics.
+                    Prepare a 10–15-minute presentation with an original
+                    diagram, timeline, or comparison table, using primary
+                    sources.
                   </p>
                 </div>
               </div>
@@ -130,7 +134,7 @@ export function CourseStructure() {
                   <div className="web3t-co-scard__tags">
                     <span className="web3t-co-pill">Teach</span>
                     <span className="web3t-co-scard__label">
-                      PEER-TO-PEER, THEN A NEW LECTURE
+                      PRESENTATION WEEK
                     </span>
                   </div>
                   <p className="web3t-co-scard__heading">
@@ -139,7 +143,7 @@ export function CourseStructure() {
                       alt=""
                       className="web3t-co-scard__icon"
                     />
-                    Group Teaching + New Lecture
+                    Group Teaching
                   </p>
 
                   <ol className="web3t-co-scard__list">
@@ -149,8 +153,8 @@ export function CourseStructure() {
                       together the full picture through peer-to-peer teaching.
                     </li>
                     <li>
-                      Then a new lecture from an expert speaker adds fresh input
-                      — kicking off the next round of the cycle.
+                      The following week, a new lecture from an expert speaker
+                      introduces the next topic and starts the next cycle.
                     </li>
                   </ol>
                 </div>

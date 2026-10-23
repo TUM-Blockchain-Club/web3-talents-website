@@ -260,3 +260,13 @@
     margin-top: 24px;
   }
 }
+
+/* Keep linked course titles in the existing card palette. */
+.web3t-courses .web3t-co-card__title a {
+  color: inherit;
+  text-decoration: none;
+}
+.web3t-courses .web3t-co-card__title a:is(:hover, :focus-visible) {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}

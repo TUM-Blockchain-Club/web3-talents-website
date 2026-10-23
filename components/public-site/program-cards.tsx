@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { UnavailableAction } from "./unavailable-action";
+import { courseFacts } from "./course-content";
 
 export function ProgramCards() {
   return (
@@ -9,16 +10,17 @@ export function ProgramCards() {
           <div className="web3t-course-card__main">
             <h3>Blockchain Fundamentals 1</h3>
             <p className="web3t-course-card__body">
-              Course details, topics, and learning outcomes will be published
-              once confirmed.
+              Explore 10 topics, from digital trust and Bitcoin to Ethereum,
+              DeFi, and crypto taxation, through expert lectures and peer
+              teaching.
             </p>
             <div className="web3t-course-card__actions">
               <UnavailableAction className="web3t-btn web3t-btn--primary web3t-btn--sm">
-                Coming soon
+                {courseFacts.applicationNote}
               </UnavailableAction>
               <Link
                 className="web3t-btn web3t-btn--outline web3t-btn--sm"
-                href="/courses"
+                href="/course"
               >
                 Course Details
               </Link>
@@ -36,7 +38,7 @@ export function ProgramCards() {
             </div>
             <div>
               <dt>START DATE</dt>
-              <dd>TBD</dd>
+              <dd>{courseFacts.start}</dd>
             </div>
             <div>
               <dt>COST</dt>
