@@ -14,9 +14,16 @@ test("restored course timeline accompanies the unchanged description on the unif
     "For each presentation, create an original diagram, timeline, or comparison table, and use primary sources such as whitepapers and developer documentation. Set aside additional time outside sessions for research and preparation.",
   ]);
   assert.equal([...html.matchAll(/class="web3t-co-timeline"/g)].length, 1);
-  for (const step of ["foundation", "research", "teach"]) {
-    assert.match(html, new RegExp(`web3t-co-step--${step}`));
-  }
+  const weeks = [
+    ...html.matchAll(/<li class="web3t-co-week [^"]*">([\s\S]*?)<\/li>/g),
+  ].map(([, week]) => inventory(week).text);
+  assert.equal(weeks.length, 2);
+  assert.match(
+    weeks[0],
+    /Week 1 Learn & prepare.*Expert lecture.*Research & prepare/,
+  );
+  assert.match(weeks[1], /Week 2 Present & exchange.*Peer teaching/);
+  assert.doesNotMatch(weeks[1], /Research & prepare/);
   for (const icon of ["lecture", "research", "teach", "loopback"]) {
     assert.match(html, new RegExp(`/assets/icon-${icon}.svg`));
   }
@@ -24,6 +31,12 @@ test("restored course timeline accompanies the unchanged description on the unif
     html.indexOf("for research and preparation.") <
       html.indexOf("web3t-co-timeline"),
   );
-  assert.match(inventory(html).text, /The next topic starts again at Step 1/);
-  assert.doesNotMatch(html, /AT THE START|href="\/course"/);
+  assert.match(
+    inventory(html).text,
+    /Repeat with the next topic · 10 topics over 20 weeks/,
+  );
+  assert.doesNotMatch(
+    html,
+    /web3t-co-badge|Step [123]|Week 3\b|AT THE START|href="\/course"/,
+  );
 });

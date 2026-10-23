@@ -297,3 +297,32 @@
   font-size: 1.125rem;
   line-height: 1.5;
 }
+.web3t-course-structure .web3t-co-timeline {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.web3t-course-structure .web3t-co-week { min-width: 0; }
+.web3t-course-structure .web3t-co-week__head h4 {
+  margin-top: 16px;
+  font-size: clamp(1.375rem, 2.5vw, 1.75rem);
+  line-height: 1.25;
+}
+.web3t-course-structure .web3t-co-week__activity .web3t-co-scard__body { margin-top: 12px; }
+.web3t-course-structure .web3t-co-week__activity + .web3t-co-week__activity {
+  padding-top: 20px;
+  border-top: 1px solid rgb(255 255 255 / .12);
+}
+.web3t-course-structure .web3t-co-week__timing {
+  margin-top: 12px;
+  font-size: .9375rem;
+  line-height: 1.5;
+  color: var(--w3-muted);
+}
+.web3t-course-structure .web3t-co-loopback { margin-top: 20px; }
+@media (max-width: 760px) {
+  .web3t-course-structure .web3t-co-timeline { grid-template-columns: minmax(0, 1fr); }
+}
