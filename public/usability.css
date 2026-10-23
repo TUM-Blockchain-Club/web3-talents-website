@@ -270,3 +270,11 @@
   text-decoration: underline;
   text-underline-offset: 0.18em;
 }
+.web3t-course-speakers__note {
+  text-align: center;
+  color: var(--w3-muted);
+  margin: 12px auto 0;
+  max-width: 640px;
+  padding: 0 20px;
+  line-height: 1.6;
+}

@@ -1,5 +1,9 @@
 import { ApplicationLink } from "./application-link";
-import { SpeakerCard, TestimonialCard } from "./cards";
+import { TestimonialCard } from "./cards";
+import {
+  PreviousSpeakerCards,
+  previousSpeakersNote,
+} from "./previous-speakers";
 import { SiteHeader } from "./site-header";
 import { SiteFooter } from "./site-footer";
 import { AccordionItem, AccordionGroup, ExpandAll } from "./accordion";
@@ -188,72 +192,11 @@ export function CourseSpeakers() {
         id="web3t-course-speakers-title"
         className="web3t-course-speakers__title"
       >
-        Speakers
+        Previous speakers
       </h2>
+      <p className="web3t-course-speakers__note">{previousSpeakersNote}</p>
       <div className="web3t-course-speakers__grid">
-        <SpeakerCard
-          prefix="web3t-course-speaker"
-          image="/assets/speaker-david-an.png"
-          imageAlt="Dr. David An"
-          name={<>Dr. David An</>}
-          role={<>Partner</>}
-          organization={<>@Dragon Ventures</>}
-          topic={<>Topic: &quot;Blockchain Fundamentals&quot;</>}
-        />
-        <SpeakerCard
-          prefix="web3t-course-speaker"
-          image="/assets/speaker-2.png"
-          imageAlt="Jonas Gebele"
-          name={<>Jonas Gebele</>}
-          role={<>Research Associate</>}
-          organization={<>@Technical University of Munich</>}
-          topic={<>Topic: &quot;Cryptography &amp; Hashing&quot;</>}
-        />
-        <SpeakerCard
-          prefix="web3t-course-speaker"
-          image="/assets/speaker-placeholder.svg"
-          imageAlt="Andi Schmitt"
-          name={<>Andi Schmitt</>}
-          role={<>Co-founder</>}
-          organization={<>@LightUpKryptos</>}
-          topic={
-            <>Topic: &quot;Bitcoin Data Structure and Transactions&quot;</>
-          }
-        />
-        <SpeakerCard
-          prefix="web3t-course-speaker"
-          image="/assets/speaker-placeholder.svg"
-          imageAlt="Profesor Dr. Philip Maume"
-          name={<>Profesor Dr. Philip Maume</>}
-          role={<>Professor of Law</>}
-          organization={<>@Technical University of Munich</>}
-          topic={<>Topic: &quot;The Financial Layer: Stablecoins, RWA&quot;</>}
-        />
-        <SpeakerCard
-          prefix="web3t-course-speaker"
-          image="/assets/speaker-placeholder.svg"
-          imageAlt="Dr. Christian Ziegler"
-          name={<>Dr. Christian Ziegler</>}
-          role={<>CTO</>}
-          organization={<>@Stealth Startup</>}
-          topic={
-            <>
-              Topic: &quot;Future Outlook: Beyond Finance DePIN Identity &amp;
-              DAO&quot;
-            </>
-          }
-        />
-        <SpeakerCard
-          prefix="web3t-course-speaker"
-          image="/assets/speaker-3.png"
-          imageAlt="David Kurz"
-          name={<>David Kurz</>}
-          role={<>Business Development</>}
-          organization={<>@Bitvavo</>}
-          topic={
-            <>Topic: &quot;Ethereum: The World Computer (Architecture)&quot;</>
-          }
-        />
+        <PreviousSpeakerCards prefix="web3t-course-speaker" />
       </div>
     </section>
   );

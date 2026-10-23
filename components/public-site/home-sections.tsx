@@ -1,5 +1,9 @@
 import Link from "next/link";
-import { SpeakerCard, TestimonialCard } from "./cards";
+import { TestimonialCard } from "./cards";
+import {
+  PreviousSpeakerCards,
+  previousSpeakersNote,
+} from "./previous-speakers";
 import { SiteHeader } from "./site-header";
 import { SiteFooter } from "./site-footer";
 import { ParticleLogo } from "./particle-logo";
@@ -137,51 +141,16 @@ export function HomeSpeakers() {
       <div className="web3t-rail">
         <div className="web3t-speakers__head">
           <h2 id="web3t-speakers-title" className="web3t-h2">
-            Meet Our Speakers
+            Previous speakers
           </h2>
-          <p className="web3t-speakers__sub">
-            Learn directly from the builders and leaders shaping the Web3
-            ecosystem.
-          </p>
+          <p className="web3t-speakers__sub">{previousSpeakersNote}</p>
         </div>
         <Carousel
           className="web3t-speakers__carousel"
           scrollerClassName="web3t-speakers__scroller"
           label="Speaker slider"
         >
-          <SpeakerCard
-            prefix="web3t-speaker"
-            image="/assets/speaker-1.png"
-            imageAlt="Dr. David An"
-            name={<>Dr. David An</>}
-            role={<>Partner</>}
-            organization={<>@Dracoon Ventures</>}
-            topic={
-              <>Topic: &quot;Proof of Work, Mining, and Immutability&quot;</>
-            }
-          />
-          <SpeakerCard
-            prefix="web3t-speaker"
-            image="/assets/speaker-2.png"
-            imageAlt="Jonas Gebele"
-            name={<>Jonas Gebele</>}
-            role={<>Research Associate</>}
-            organization={<>@Technical University of Munich</>}
-            topic={<>Topic: &quot;Cryptography and Hashing&quot;</>}
-          />
-          <SpeakerCard
-            prefix="web3t-speaker"
-            image="/assets/speaker-3.png"
-            imageAlt="David Kurz"
-            name={<>David Kurz</>}
-            role={<>Business Development</>}
-            organization={<>@Bitvavo</>}
-            topic={
-              <>
-                Topic: &quot;Ethereum: The World Computer (Architecture)&quot;
-              </>
-            }
-          />
+          <PreviousSpeakerCards />
         </Carousel>
       </div>
     </section>

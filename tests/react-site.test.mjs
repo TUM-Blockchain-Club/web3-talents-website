@@ -138,6 +138,20 @@ test('curriculum covers all ten topic pairs and preserves unique accordion targe
   assert.doesNotMatch(text, /second expert lecture|follow-up expert lecture|option B|Screening:|burned out|Speaker can pitch/);
 });
 
+test('both pages show the same three previous speakers with real portraits', () => {
+  const sections = ['home', 'course'].map(page => renderPage(page).match(/<section[^>]*id="speakers"[\s\S]*?<\/section>/)[0]);
+  const portraits = sections.map(section => [...section.matchAll(/<img[^>]*src="([^"]+)"[^>]*alt="([^"]+)"/g)].map(([,src,alt]) => ({src,alt})));
+  assert.deepEqual(portraits[0], portraits[1]);
+  assert.deepEqual(portraits[0].map(p => p.alt), ['Dr. David An', 'Jonas Gebele', 'David Kurz']);
+  for (const section of sections) {
+    assert.match(section, /Previous speakers/);
+    assert.match(section, /Speakers from previous cohorts/);
+    assert.match(section, /lineup will be announced separately/);
+    assert.doesNotMatch(section, /speaker-placeholder|Andi Schmitt|Philip Maume|Christian Ziegler/);
+    assert.equal([...section.matchAll(/Previous topic:/g)].length, 3);
+  }
+});
+
 test('speaker profiles and all testimonial statements are restored without testimonial images', () => {
   for (const [page, count] of [['home', 5], ['course', 8]]) {
     const html = renderPage(page);
