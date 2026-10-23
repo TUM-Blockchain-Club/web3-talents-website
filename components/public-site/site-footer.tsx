@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { UnavailableAction } from "./unavailable-action";
-import { courseFacts } from "./course-content";
+import { ApplicationLink } from "./application-link";
 
 export function SiteFooter({
   page,
@@ -23,9 +22,7 @@ export function SiteFooter({
             decoding="async"
           />
           <p className="web3t-footer__tagline">Learn. Connect. Explore Web3.</p>
-          <UnavailableAction className="web3t-btn web3t-btn--primary web3t-footer__apply">
-            {courseFacts.applicationNote}
-          </UnavailableAction>
+          <ApplicationLink className="web3t-btn web3t-btn--primary web3t-footer__apply" />
         </div>
         <nav className="web3t-footer__nav" aria-label="Footer">
           <ul>

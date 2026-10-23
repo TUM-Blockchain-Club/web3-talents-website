@@ -1,4 +1,4 @@
-import { UnavailableAction } from "./unavailable-action";
+import { ApplicationLink } from "./application-link";
 import { SpeakerCard, TestimonialCard } from "./cards";
 import { SiteHeader } from "./site-header";
 import { SiteFooter } from "./site-footer";
@@ -36,9 +36,7 @@ export function CourseHero() {
         {courseFacts.decisions}.
       </p>
       <div className="web3t-course-hero__actions">
-        <UnavailableAction className="web3t-btn web3t-btn--primary web3t-course-hero__apply">
-          {courseFacts.applicationNote}
-        </UnavailableAction>
+        <ApplicationLink className="web3t-btn web3t-btn--primary web3t-course-hero__apply" />
       </div>
     </section>
   );
@@ -153,7 +151,7 @@ export function CourseInformation() {
               ],
             ].map(([question, answer], i) => (
               <AccordionItem
-                key={question}
+                key={`course-faq-${i}`}
                 itemId={`course-accordion-${i + curriculum.length + 1}`}
                 as="li"
                 className="web3t-course-phase"

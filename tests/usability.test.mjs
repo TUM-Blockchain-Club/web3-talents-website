@@ -20,7 +20,8 @@ for (const page of ["home", "courses", "course", "community"]) {
     assert.match(html, /href="https:\/\/forms.tum-blockchain.com\/contact"/);
     assert.match(html, /href="\/community">About Us/);
     assert.match(html, /href="(?:\/community)?#faq">FAQ/);
-    assert.doesNotMatch(html, /Apply Now|>Sign Up</);
+    assert.doesNotMatch(html, />Sign Up</);
+    assert.match(html, /href="https:\/\/tally.so\/r\/BE4l9Y"[^>]*>Apply now<\/a>/);
     assert.match(html, /Login<span class="web3t-action-status">Coming soon/);
   });
 }

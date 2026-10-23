@@ -1,12 +1,12 @@
 // Public-facing facts confirmed from the course team's Notion documents.
-// Exact session time, timezone, eligibility thresholds and the application URL
+// Exact session time, timezone and eligibility thresholds
 // are not yet confirmed; do not infer them from examples or internal notes.
 export const courseFacts = {
   start: "December 1, 2026",
   deadline: "November 8, 2026 at 23:59",
   decisions: "November 22, 2026",
   schedule: "Tuesdays · 1.5-hour online sessions",
-  applicationNote: "Application link pending",
+  applicationUrl: "https://tally.so/r/BE4l9Y",
 };
 
 export const curriculum = [
@@ -77,5 +77,10 @@ export const curriculum = [
   },
 ];
 
-export const applicationDetails = `Applications run from October 12 to ${courseFacts.deadline}. Acceptance announcements: ${courseFacts.decisions}. The application link will be added here once available. The deadline timezone is still to be confirmed.`;
+export const applicationDetails = (
+  <>
+    Apply through the <a href={courseFacts.applicationUrl}>application form</a>.
+    {` Applications run from October 12 to ${courseFacts.deadline}. Acceptance announcements: ${courseFacts.decisions}. The deadline timezone is still to be confirmed.`}
+  </>
+);
 export const participationDetails = `The free, 20-week program starts on ${courseFacts.start}. Join a 1.5-hour online session on Tuesdays, alternating lecture and presentation weeks. Allow additional time for group research and preparation; that workload is not yet specified. The exact start time and timezone are still to be confirmed.`;

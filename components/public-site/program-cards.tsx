@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { UnavailableAction } from "./unavailable-action";
+import { ApplicationLink } from "./application-link";
 import { courseFacts } from "./course-content";
 
 export function ProgramCards() {
@@ -15,9 +15,7 @@ export function ProgramCards() {
               teaching.
             </p>
             <div className="web3t-course-card__actions">
-              <UnavailableAction className="web3t-btn web3t-btn--primary web3t-btn--sm">
-                {courseFacts.applicationNote}
-              </UnavailableAction>
+              <ApplicationLink className="web3t-btn web3t-btn--primary web3t-btn--sm" />
               <Link
                 className="web3t-btn web3t-btn--outline web3t-btn--sm"
                 href="/courses"

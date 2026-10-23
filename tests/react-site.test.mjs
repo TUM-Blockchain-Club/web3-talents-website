@@ -13,14 +13,24 @@ for (const page of pages) {
   test(`${page}: actual React render matches the current public content`, () => {
     assert.deepEqual(inventory(renderPage(page)), baseline[page]);
   });
-  test(`${page}: local assets exist and public actions remain disconnected`, () => {
+  test(`${page}: local assets exist and only application actions are connected`, () => {
     const html = renderPage(page);
     for (const [, asset] of html.matchAll(/(?:src|href)="\/(assets\/[^"?#]+)"/g)) {
       assert.ok(existsSync(new URL(asset, publicDir)), `Missing ${asset}`);
     }
-    for (const [action] of html.matchAll(/<a\b[^>]*data-(?:login|apply)[^>]*>/g)) {
+    for (const [action] of html.matchAll(/<a\b[^>]*data-login[^>]*>/g)) {
       assert.match(action, /aria-disabled="true"/);
       assert.doesNotMatch(action, /href=/);
+    }
+    const applications = [...html.matchAll(/<a\b[^>]*data-apply[^>]*>/g)];
+    assert.ok(applications.some(([action]) => !action.includes('aria-disabled')));
+    for (const [action] of applications) {
+      if (action.includes('aria-disabled="true"')) {
+        assert.doesNotMatch(action, /href=/); // Unconfirmed community events stay unavailable.
+        continue;
+      }
+      assert.match(action, /href="https:\/\/tally.so\/r\/BE4l9Y"/);
+      assert.doesNotMatch(action, /aria-disabled|tabindex="-1"/);
     }
     assert.doesNotMatch(html, /(?:130\.61\.104\.92|login\/index\.php|\.html["#?])/);
     assert.doesNotMatch(html, /August 2026|July 15|JULY 2026|Dec 15|January 15th|June, 13|Jun-2024|17 days to apply|Applications Open/);
@@ -105,7 +115,10 @@ test('confirmed application dates are published without inventing a form URL or 
     assert.match(text, /deadline timezone is still to be confirmed/);
     assert.match(text, /additional time/i);
   }
-  for (const page of pages) assert.match(inventory(renderPage(page)).text, /Application link pending/);
+  for (const page of pages) {
+    assert.match(inventory(renderPage(page)).text, /Apply now/);
+    assert.doesNotMatch(inventory(renderPage(page)).text, /Application link pending|link will be added/);
+  }
 });
 
 test('curriculum covers all ten topic pairs and preserves unique accordion targets', () => {
