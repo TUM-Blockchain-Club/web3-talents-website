@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { initPageInteractions } from "../../lib/page-interactions.mjs";
-import { UnavailableAction } from "./unavailable-action";
+import { ApplicationLink } from "./application-link";
 
 export function SiteHeader({
   home = false,
@@ -105,13 +105,7 @@ export function SiteHeader({
           </Link>
         </nav>
         <div className="web3t-nav__actions">
-          <UnavailableAction
-            className="web3t-btn web3t-btn--ghost"
-            kind="login"
-          >
-            Login
-            <span className="web3t-action-status">Coming soon</span>
-          </UnavailableAction>
+          <ApplicationLink className="web3t-btn web3t-btn--primary" />
         </div>
       </div>
     </header>

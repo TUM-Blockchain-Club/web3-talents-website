@@ -90,7 +90,6 @@ test('testimonial photos and unconfirmed event/course specifics stay removed', (
   for (const page of pages) {
     const html = renderPage(page);
     assert.doesNotMatch(html, /testimonial-avatar|community-photo\.png|Blabla|Annual Alumni|Jan 2027|10-week|3–4 hours|recognised certificate/);
-    assert.match(html, /to be (?:confirmed|announced)|coming soon/i);
   }
 });
 

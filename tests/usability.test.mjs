@@ -22,7 +22,10 @@ for (const page of ["home", "courses", "course", "community"]) {
     assert.match(html, /href="(?:\/community)?#faq">FAQ/);
     assert.doesNotMatch(html, />Sign Up</);
     assert.match(html, /href="https:\/\/tally.so\/r\/BE4l9Y"[^>]*>Apply now<\/a>/);
-    assert.match(html, /Login<span class="web3t-action-status">Coming soon/);
+    const header = html.match(/<header\b[\s\S]*?<\/header>/)?.[0];
+    assert.ok(header);
+    assert.match(header, /href="https:\/\/tally.so\/r\/BE4l9Y"[^>]*>Apply now<\/a>/);
+    assert.doesNotMatch(header, /Login|Coming soon|data-login/);
   });
 }
 
