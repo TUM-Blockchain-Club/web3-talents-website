@@ -4,6 +4,7 @@ import { SiteHeader } from "./site-header";
 import { SiteFooter } from "./site-footer";
 import { AccordionItem, AccordionGroup, ExpandAll } from "./accordion";
 import { CourseTabs, CourseTab, CoursePanel } from "./course-tabs";
+import { CourseArtwork } from "./course-artwork";
 import {
   courseFacts,
   curriculum,
@@ -365,7 +366,7 @@ export function CoursePage() {
 
       <main id="main-content" tabIndex={-1}>
         <div className="web3t-course__top">
-          <div className="web3t-course__cubes" aria-hidden="true"></div>
+          <CourseArtwork />
 
           <CourseHero />
 

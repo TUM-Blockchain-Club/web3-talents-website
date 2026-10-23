@@ -383,3 +383,18 @@ html {
     height: 36px;
   }
 }
+/* Only the cursor's pixels move; the CSS artwork stays exact at rest. */
+.web3t-course__particles {
+  display: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.web3t-course__cubes.is-displacing {
+  background-image: none;
+}
+.web3t-course__cubes.is-displacing .web3t-course__particles {
+  display: block;
+}
