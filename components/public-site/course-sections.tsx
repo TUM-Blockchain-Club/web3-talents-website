@@ -9,6 +9,7 @@ import { SiteFooter } from "./site-footer";
 import { AccordionItem, AccordionGroup, ExpandAll } from "./accordion";
 import { CourseTabs, CourseTab, CoursePanel } from "./course-tabs";
 import { CourseArtwork } from "./course-artwork";
+import { CourseStructure } from "./course-structure";
 import {
   courseFacts,
   curriculum,
@@ -97,6 +98,7 @@ export function CourseInformation() {
             developer documentation. Set aside additional time outside sessions
             for research and preparation.
           </p>
+          <CourseStructure />
         </CoursePanel>
         <CoursePanel tab="curriculum">
           <AccordionGroup
