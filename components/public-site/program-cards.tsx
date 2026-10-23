@@ -20,7 +20,7 @@ export function ProgramCards() {
               </UnavailableAction>
               <Link
                 className="web3t-btn web3t-btn--outline web3t-btn--sm"
-                href="/course"
+                href="/courses"
               >
                 Course Details
               </Link>

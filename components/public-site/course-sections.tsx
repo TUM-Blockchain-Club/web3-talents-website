@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { UnavailableAction } from "./unavailable-action";
 import { SpeakerCard, TestimonialCard } from "./cards";
 import { SiteHeader } from "./site-header";
@@ -15,10 +14,6 @@ import {
 export function CourseHero() {
   return (
     <section className="web3t-course-hero" aria-labelledby="web3t-course-title">
-      <nav className="web3t-course-hero__breadcrumb" aria-label="Breadcrumb">
-        <Link href="/courses">All Courses</Link>
-        <span>&gt; Blockchain Fundamentals 1</span>
-      </nav>
       <div className="web3t-course-hero__meta">
         <span className="web3t-course-hero__date">
           Start date: {courseFacts.start}

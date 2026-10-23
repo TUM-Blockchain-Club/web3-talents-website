@@ -13,6 +13,9 @@ require.extensions['.tsx'] = (module, filename) => {
 const { createElement } = require('react');
 const { renderToStaticMarkup } = require('react-dom/server');
 exports.renderPage = page => {
+  // The catalogue and detail entry points now share one course experience.
+  // The legacy /course URL is redirected to /courses by Next.js.
+  if (page === 'courses') page = 'course';
   const name = page[0].toUpperCase() + page.slice(1) + 'Page';
   return renderToStaticMarkup(createElement(require(`../components/public-site/${page}-sections.tsx`)[name]));
 };

@@ -6,7 +6,8 @@ const nextConfig = {
       { source: '/index.html', destination: '/', permanent: true },
       { source: '/community.html', destination: '/community', permanent: true },
       { source: '/courses.html', destination: '/courses', permanent: true },
-      { source: '/course.html', destination: '/course', permanent: true },
+      { source: '/course.html', destination: '/courses', permanent: true },
+      { source: '/course', destination: '/courses', permanent: true },
     ]
   },
   images: {

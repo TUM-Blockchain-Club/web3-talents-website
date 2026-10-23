@@ -58,7 +58,7 @@ test('confirmed peer-teaching format is restored without unconfirmed schedules o
   }
   assert.doesNotMatch(home, /program format is being finalized|Session formats and learning activities will be announced/);
   const courses = inventory(renderPage('courses')).text;
-  for (const label of ['Lecture + Assignment', 'Processing in Specialist Groups', 'Group Teaching', 'PROGRESSIVE LEARNING CYCLE']) {
+  for (const label of ['Lecture weeks and presentation weeks alternate', 'small peer groups of three', '10–15-minute presentation', 'jigsaw learning model']) {
     assert.ok(courses.includes(label));
   }
   const course = inventory(renderPage('course')).text;
@@ -137,12 +137,31 @@ test('speaker profiles and all testimonial statements are restored without testi
   }
 });
 
-test('course wrappers and original stylesheet remain intact', () => {
+test('unified course page keeps the detail wrapper and cube artwork', () => {
   const css = readFileSync(new URL('styles.css', publicDir), 'utf8');
   for (const page of ['courses', 'course']) {
-    assert.match(renderPage(page), new RegExp(`class="web3t web3t-${page}"`));
-    assert.ok(css.includes(`.web3t-${page}`));
+    assert.match(renderPage(page), /class="web3t web3t-course"/);
+    assert.match(renderPage(page), /class="web3t-course__cubes" aria-hidden="true"/);
+    assert.ok(css.includes('.web3t-course__cubes'));
   }
+});
+
+test('all course entry points use one page and legacy links redirect directly', async () => {
+  const homepage = renderPage('home');
+  assert.match(homepage, /href="\/courses"[^>]*>Course Details<\/a>/);
+  for (const page of pages) {
+    const html = renderPage(page);
+    assert.doesNotMatch(html, /href="\/course"|All Courses/);
+    assert.match(html, /href="\/courses"/);
+  }
+  const routes = await config.redirects();
+  for (const source of ['/course', '/course.html', '/courses.html']) {
+    assert.deepEqual(routes.find(route => route.source === source), { source, destination: '/courses', permanent: true });
+  }
+  const entry = readFileSync(new URL('../app/courses/page.tsx', import.meta.url), 'utf8');
+  assert.match(entry, /import \{ CoursePage \} from "@\/components\/public-site\/course-sections"/);
+  assert.match(entry, /export default CoursePage/);
+  assert.equal(existsSync(new URL('../app/course/page.tsx', import.meta.url)), false);
 });
 
 test('header uses the blue symbol and preserves an accessible home link on every page', () => {
