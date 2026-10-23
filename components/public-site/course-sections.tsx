@@ -77,21 +77,32 @@ export function CourseInformation() {
           </CourseTab>
         </div>
         <CoursePanel tab="desc">
+          <h3 className="web3t-course-about__description-heading">
+            How you’ll learn
+          </h3>
           <p className="web3t-course-about__desc">
             Lecture weeks and presentation weeks alternate. An industry expert
-            introduces a topic in a live lecture with Q&amp;A. In small peer
-            groups of three, you research one of four subtopics and prepare a
-            10–15-minute presentation. The following week, you teach your
-            subtopic to other groups and learn from theirs — the jigsaw learning
-            model. A new topic begins at the next lecture session.
+            introduces a topic in a live lecture with Q&amp;A. In{" "}
+            <strong>small peer groups of three,</strong> you research one of
+            four subtopics and prepare a
+            <strong> 10–15-minute presentation.</strong> The following week, you
+            teach your subtopic to other groups and learn from theirs — the
+            jigsaw learning model. A new topic begins at the next lecture
+            session.
           </p>
+          <h3 className="web3t-course-about__description-heading">
+            Sessions &amp; participation
+          </h3>
           <p className="web3t-course-about__desc">
-            Sessions last 1.5 hours and take place online on Tuesdays. Teams
-            rotate during the program so you can work with more peers. Use
-            Moodle for materials and assignments, and Zoom for meetings;
-            recordings and additional learning resources are provided. Cameras
-            are required during sessions.
+            Sessions last <strong>1.5 hours</strong> and take place online on{" "}
+            <strong>Tuesdays.</strong> Teams rotate during the program so you
+            can work with more peers. Use Moodle for materials and assignments,
+            and Zoom for meetings; recordings and additional learning resources
+            are provided. Cameras are required during sessions.
           </p>
+          <h3 className="web3t-course-about__description-heading">
+            Preparing your presentations
+          </h3>
           <p className="web3t-course-about__desc">
             For each presentation, create an original diagram, timeline, or
             comparison table, and use primary sources such as whitepapers and

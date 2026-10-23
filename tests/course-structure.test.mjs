@@ -5,6 +5,16 @@ import { inventory } from "./page-inventory.mjs";
 
 test("restored course timeline accompanies the unchanged description on the unified page", () => {
   const html = renderPage("course");
+  const descriptionHeadings = [
+    ...html.matchAll(
+      /<h3 class="web3t-course-about__description-heading">(.*?)<\/h3>/g,
+    ),
+  ].map(([, heading]) => inventory(heading).text);
+  assert.deepEqual(descriptionHeadings, [
+    "How you’ll learn",
+    "Sessions & participation",
+    "Preparing your presentations",
+  ]);
   const paragraphs = [
     ...html.matchAll(/<p class="web3t-course-about__desc">([\s\S]*?)<\/p>/g),
   ].map(([, p]) => inventory(p).text);

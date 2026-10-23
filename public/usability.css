@@ -326,3 +326,17 @@
 @media (max-width: 760px) {
   .web3t-course-structure .web3t-co-timeline { grid-template-columns: minmax(0, 1fr); }
 }
+.web3t-course .web3t-course-about__description-heading {
+  margin: 28px 0 8px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.web3t-course .web3t-course-about__desc {
+  max-width: 78ch;
+  line-height: 1.75;
+}
+.web3t-course .web3t-course-about__desc strong {
+  color: inherit;
+  font-weight: 600;
+}
