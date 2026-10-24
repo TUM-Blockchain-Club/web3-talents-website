@@ -259,24 +259,6 @@ export function HomeCommunity() {
           </TestimonialCard>
           <TestimonialCard
             className="web3t-testimonial"
-            attribution={<>Course Participant, Cohort 2</>}
-          >
-            &ldquo;The group research format was useful because it made me go
-            deeper into one topic instead of only listening passively.
-            Presenting it to others also helped me understand where I still had
-            gaps.&rdquo;
-          </TestimonialCard>
-          <TestimonialCard
-            className="web3t-testimonial"
-            attribution={<>Course Participant, Cohort 2</>}
-          >
-            &ldquo;The group research format was useful because it made me go
-            deeper into one topic instead of only listening passively.
-            Presenting it to others also helped me understand where I still had
-            gaps.&rdquo;
-          </TestimonialCard>
-          <TestimonialCard
-            className="web3t-testimonial"
             attribution={<>Course Participant, Cohort 1</>}
           >
             &ldquo;I joined the course with almost no prior knowledge of Web3,

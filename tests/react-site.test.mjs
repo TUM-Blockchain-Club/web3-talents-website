@@ -90,6 +90,7 @@ test('testimonial photos and unconfirmed event/course specifics stay removed', (
   for (const page of pages) {
     const html = renderPage(page);
     assert.doesNotMatch(html, /testimonial-avatar|community-photo\.png|Blabla|Annual Alumni|Jan 2027|10-week|3–4 hours|recognised certificate/);
+    assert.doesNotMatch(html, /Cohort 2/);
   }
 });
 
@@ -151,8 +152,8 @@ test('both pages show the same three previous speakers with real portraits', () 
   }
 });
 
-test('speaker profiles and all testimonial statements are restored without testimonial images', () => {
-  for (const [page, count] of [['home', 5], ['course', 8]]) {
+test('speaker profiles and remaining testimonials render without testimonial images', () => {
+  for (const [page, count] of [['home', 3], ['course', 7]]) {
     const html = renderPage(page);
     assert.match(html, /Dr\. David An/);
     assert.match(html, /Jonas Gebele/);

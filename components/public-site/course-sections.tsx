@@ -241,17 +241,6 @@ export function StudentReviews() {
             asking questions and exploring the topic further.&rdquo;
           </TestimonialCard>
           <TestimonialCard
-            className="web3t-course-quote web3t-course-quote--purple"
-            attribution={<>Course Participant, Cohort 2</>}
-          >
-            &ldquo;It was a good starting point if you&#039;re curious about
-            blockchain but don&#039;t know where to begin. Some topics were
-            challenging, but the structure made them manageable. Before joining,
-            I had heard about Bitcoin, Ethereum, and DeFi, but I didn&#039;t
-            really understand how they connected. The course helped me build a
-            clearer mental map of the Web3 ecosystem.&rdquo;
-          </TestimonialCard>
-          <TestimonialCard
             className="web3t-course-quote web3t-course-quote--blue"
             attribution={<>Course Participant, Cohort 1</>}
           >
