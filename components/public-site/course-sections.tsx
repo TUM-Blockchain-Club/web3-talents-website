@@ -1,5 +1,5 @@
 import { ApplicationLink } from "./application-link";
-import { TestimonialCard } from "./cards";
+import { ParticipantReview, participantReviews } from "./participant-reviews";
 import {
   PreviousSpeakerCards,
   previousSpeakersNote,
@@ -231,71 +231,22 @@ export function StudentReviews() {
       </h2>
       <div className="web3t-course-students__masonry">
         <div className="web3t-course-students__col">
-          <TestimonialCard
-            className="web3t-course-quote web3t-course-quote--blue"
-            attribution={<>Course Participant, Cohort 1</>}
-          >
-            &ldquo;I joined the course with almost no prior knowledge of Web3,
-            but the structure made it easy to follow. The sessions were
-            beginner-friendly, and the community helped me feel more confident
-            asking questions and exploring the topic further.&rdquo;
-          </TestimonialCard>
-          <TestimonialCard
-            className="web3t-course-quote web3t-course-quote--blue"
-            attribution={<>Course Participant, Cohort 1</>}
-          >
-            &ldquo;I joined the course with almost no prior knowledge of Web3,
-            but the structure made it easy to follow. The sessions were
-            beginner-friendly, and the community helped me feel more confident
-            asking questions and exploring the topic further.&rdquo;
-          </TestimonialCard>
-          <TestimonialCard
-            className="web3t-course-quote web3t-course-quote--violet"
-            attribution={<>Course Participant, Cohort 1</>}
-          >
-            &ldquo;I joined the course with almost no prior knowledge of Web3,
-            but the structure made it easy to follow. The sessions were
-            beginner-friendly, and the community helped me feel more confident
-            asking questions and exploring the topic further.&rdquo;
-          </TestimonialCard>
+          {participantReviews.slice(0, 2).map((review, index) => (
+            <ParticipantReview
+              key={review.name}
+              review={review}
+              className={`web3t-course-quote web3t-course-quote--${index === 0 ? "blue" : "purple"}`}
+            />
+          ))}
         </div>
         <div className="web3t-course-students__col">
-          <TestimonialCard
-            className="web3t-course-quote web3t-course-quote--blue web3t-course-quote--noavatar"
-            attribution={<>Course Participant, Cohort 1</>}
-          >
-            &ldquo;I liked that the course didn&#039;t assume everyone already
-            knew the terminology. It started with the basics and then slowly
-            connected the topics, which made the more technical parts easier to
-            understand.&rdquo;
-          </TestimonialCard>
-          <TestimonialCard
-            className="web3t-course-quote web3t-course-quote--purple"
-            attribution={<>Course Participant, Cohort 1</>}
-          >
-            &ldquo;I joined the course with almost no prior knowledge of Web3,
-            but the structure made it easy to follow. The sessions were
-            beginner-friendly, and the community helped me feel more confident
-            asking questions and exploring the topic further.&rdquo;
-          </TestimonialCard>
-          <TestimonialCard
-            className="web3t-course-quote web3t-course-quote--violet"
-            attribution={<>Course Participant, Cohort 3</>}
-          >
-            &ldquo;The group research format was useful because it made me go
-            deeper into one topic instead of only listening passively.
-            Presenting it to others also helped me understand where I still had
-            gaps.&rdquo;
-          </TestimonialCard>
-          <TestimonialCard
-            className="web3t-course-quote web3t-course-quote--blue"
-            attribution={<>Course Participant, Cohort 1</>}
-          >
-            &ldquo;I joined the course with almost no prior knowledge of Web3,
-            but the structure made it easy to follow. The sessions were
-            beginner-friendly, and the community helped me feel more confident
-            asking questions and exploring the topic further.&rdquo;
-          </TestimonialCard>
+          {participantReviews.slice(2).map((review, index) => (
+            <ParticipantReview
+              key={review.name}
+              review={review}
+              className={`web3t-course-quote web3t-course-quote--${index === 0 ? "violet" : "blue"}`}
+            />
+          ))}
         </div>
       </div>
     </section>

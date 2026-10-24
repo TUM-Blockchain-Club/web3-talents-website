@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { TestimonialCard } from "./cards";
+import { ParticipantReview, participantReviews } from "./participant-reviews";
 import {
   PreviousSpeakerCards,
   previousSpeakersNote,
@@ -248,33 +248,13 @@ export function HomeCommunity() {
           scrollerClassName="web3t-community__scroller"
           label="Testimonial slider"
         >
-          <TestimonialCard
-            className="web3t-testimonial"
-            attribution={<>Course Participant, Cohort 1</>}
-          >
-            &ldquo;I joined the course with almost no prior knowledge of Web3,
-            but the structure made it easy to follow. The sessions were
-            beginner-friendly, and the community helped me feel more confident
-            asking questions and exploring the topic further.&rdquo;
-          </TestimonialCard>
-          <TestimonialCard
-            className="web3t-testimonial"
-            attribution={<>Course Participant, Cohort 1</>}
-          >
-            &ldquo;I joined the course with almost no prior knowledge of Web3,
-            but the structure made it easy to follow. The sessions were
-            beginner-friendly, and the community helped me feel more confident
-            asking questions and exploring the topic further.&rdquo;
-          </TestimonialCard>
-          <TestimonialCard
-            className="web3t-testimonial"
-            attribution={<>Course Participant, Cohort 1</>}
-          >
-            &ldquo;I joined the course with almost no prior knowledge of Web3,
-            but the structure made it easy to follow. The sessions were
-            beginner-friendly, and the community helped me feel more confident
-            asking questions and exploring the topic further.&rdquo;
-          </TestimonialCard>
+          {participantReviews.map((review) => (
+            <ParticipantReview
+              key={review.name}
+              review={review}
+              className="web3t-testimonial"
+            />
+          ))}
         </Carousel>
         <div className="web3t-community__actions">
           <a className="web3t-btn web3t-btn--primary" href="#how">

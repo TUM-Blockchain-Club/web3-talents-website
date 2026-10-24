@@ -153,7 +153,7 @@ test('both pages show the same three previous speakers with real portraits', () 
 });
 
 test('speaker profiles and remaining testimonials render without testimonial images', () => {
-  for (const [page, count] of [['home', 3], ['course', 7]]) {
+  for (const [page, count] of [['home', 4], ['course', 4]]) {
     const html = renderPage(page);
     assert.match(html, /Dr\. David An/);
     assert.match(html, /Jonas Gebele/);
@@ -161,6 +161,19 @@ test('speaker profiles and remaining testimonials render without testimonial ima
     const testimonials = [...html.matchAll(/<figure\b[^>]*web3t-quote--text-only[^>]*>[\s\S]*?<\/figure>/g)];
     assert.equal(testimonials.length, count);
     for (const [testimonial] of testimonials) assert.doesNotMatch(testimonial, /<img\b/);
+  }
+});
+
+test('participant reviews have consistent approved names and no cohort or club labels', () => {
+  const reviews = ['home', 'course'].map(page =>
+    [...renderPage(page).matchAll(/<figure\b[^>]*web3t-quote--text-only[^>]*>[\s\S]*?<\/figure>/g)]
+      .map(([figure]) => inventory(figure).text)
+  );
+  assert.deepEqual(reviews[0], reviews[1]);
+  assert.equal(new Set(reviews[0]).size, 4);
+  for (const [index, name] of ['Anna', 'Anoushk', 'Adam', 'Anonymous'].entries()) {
+    assert.ok(reviews[0][index].includes(`${name} Course participant`));
+    assert.doesNotMatch(reviews[0][index], /Cohort [123]|TBC member|club member/i);
   }
 });
 
