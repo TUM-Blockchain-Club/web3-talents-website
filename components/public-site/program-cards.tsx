@@ -12,7 +12,7 @@ export function ProgramCards() {
             <p className="web3t-course-card__body">
               Explore 10 topics, from digital trust and Bitcoin to Ethereum,
               DeFi, and crypto taxation, through expert lectures and peer
-              teaching.
+              teaching. Join us online on {courseFacts.sessionTime}.
             </p>
             <div className="web3t-course-card__actions">
               <ApplicationLink className="web3t-btn web3t-btn--primary web3t-btn--sm" />

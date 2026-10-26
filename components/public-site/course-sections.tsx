@@ -34,7 +34,7 @@ export function CourseHero() {
       <p className="web3t-course-hero__desc">
         Blockchain Fundamentals 1 is a free, 20-week program combining expert
         lectures, small-group research, and peer teaching across 10 topics. Join
-        us online on Tuesdays, starting {courseFacts.start}.
+        us online on {courseFacts.sessionTime}, starting {courseFacts.start}.
       </p>
       <p className="web3t-course-hero__desc">
         Application deadline: {courseFacts.deadline}. Acceptance announcements:{" "}
@@ -95,7 +95,7 @@ export function CourseInformation() {
           </h3>
           <p className="web3t-course-about__desc">
             Sessions last <strong>1.5 hours</strong> and take place online on{" "}
-            <strong>Tuesdays.</strong> Teams rotate during the program so you
+            <strong>{courseFacts.sessionTime}.</strong> Teams rotate during the program so you
             can work with more peers. Use Moodle for materials and assignments,
             and Zoom for meetings; recordings and additional learning resources
             are provided. Cameras are required during sessions.
@@ -160,7 +160,7 @@ export function CourseInformation() {
               ["How do I apply?", applicationDetails],
               [
                 "What time are the sessions?",
-                "Sessions take place on Tuesdays and last 1.5 hours. The planned start is between 5:00 and 5:30 PM; the exact time and timezone will be confirmed. The first session is December 1, 2026. Holiday-break dates and the final calendar will be shared separately.",
+                `Sessions take place on ${courseFacts.sessionTime} and last 1.5 hours. The first session is ${courseFacts.start}. Holiday-break dates and the final calendar will be shared separately.`,
               ],
               [
                 "Will I receive a certificate?",

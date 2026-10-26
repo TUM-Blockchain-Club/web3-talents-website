@@ -115,8 +115,22 @@ test('confirmed free twenty-week program and December start are consistent', () 
     assert.match(text, /20[ -]weeks?/i);
     assert.match(text, /free/i);
     assert.doesNotMatch(text, /COST TO BE CONFIRMED|DURATION TO BE CONFIRMED|Fees, if any|any fees|Duration, session times/);
-    assert.match(text, /December 1, 2026/);
+    assert.match(text, /December 2, 2026/);
+    assert.doesNotMatch(text, /December 1, 2026|Tuesdays|5:00|5:30|exact (?:start )?time and timezone/i);
     assert.doesNotMatch(text, /TBD|start date.*to be announced|Applications coming soon|Curriculum and requirements to be confirmed/);
+  }
+});
+
+test('confirmed Wednesday evening schedule is consistent across course and community information', () => {
+  for (const page of pages) {
+    const text = inventory(renderPage(page)).text;
+    assert.match(text, /Wednesdays at 6 PM Berlin time/);
+  }
+  for (const file of ['app/layout.tsx', 'app/courses/page.tsx']) {
+    const source = readFileSync(new URL(`../${file}`, import.meta.url), 'utf8');
+    assert.match(source, /courseFacts\.start/);
+    assert.match(source, /courseFacts\.sessionTime/);
+    assert.doesNotMatch(source, /December 1, 2026|Tuesday|5:30/);
   }
 });
 

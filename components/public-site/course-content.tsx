@@ -1,11 +1,12 @@
-// Public-facing facts confirmed from the course team's Notion documents.
-// Exact session time, timezone and eligibility thresholds
-// are not yet confirmed; do not infer them from examples or internal notes.
+// Public-facing facts from the course team's Notion documents, with the session
+// schedule confirmed by the course owner on October 26, 2026.
+// Deadline timezone and eligibility thresholds remain unconfirmed.
 export const courseFacts = {
-  start: "December 1, 2026",
+  start: "December 2, 2026",
   deadline: "November 8, 2026 at 23:59",
   decisions: "November 22, 2026",
-  schedule: "Tuesdays · 1.5-hour online sessions",
+  sessionTime: "Wednesdays at 6 PM Berlin time",
+  schedule: "Wednesdays at 6 PM Berlin time · 1.5-hour online sessions",
   applicationUrl: "https://tally.so/r/BE4l9Y",
 };
 
@@ -83,4 +84,4 @@ export const applicationDetails = (
     {` Applications run from October 12 to ${courseFacts.deadline}. Acceptance announcements: ${courseFacts.decisions}. The deadline timezone is still to be confirmed.`}
   </>
 );
-export const participationDetails = `The free, 20-week program starts on ${courseFacts.start}. Join a 1.5-hour online session on Tuesdays, alternating lecture and presentation weeks. Allow additional time for group research and preparation; that workload is not yet specified. The exact start time and timezone are still to be confirmed.`;
+export const participationDetails = `The free, 20-week program starts on ${courseFacts.start}. Join a 1.5-hour online session on ${courseFacts.sessionTime}, alternating lecture and presentation weeks. Allow additional time for group research and preparation; that workload is not yet specified.`;
