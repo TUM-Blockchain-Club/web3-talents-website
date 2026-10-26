@@ -340,3 +340,35 @@
   color: inherit;
   font-weight: 600;
 }
+
+.web3t-communitypg .web3t-cm-hero__photo {
+  height: auto;
+}
+
+.web3t-communitypg .web3t-cm-event__thumb {
+  display: block;
+  overflow: hidden;
+}
+.web3t-communitypg .web3t-cm-event__thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.web3t-communitypg .web3t-cm-event__thumb:is(:hover, :focus-visible) img {
+  transform: scale(1.04);
+}
+@media (max-width: 900px) {
+  .web3t-communitypg .web3t-cm-event__thumb {
+    aspect-ratio: 16 / 9;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .web3t-communitypg .web3t-cm-event__thumb img {
+    transition: none;
+  }
+  .web3t-communitypg .web3t-cm-event__thumb:is(:hover, :focus-visible) img {
+    transform: none;
+  }
+}

@@ -94,6 +94,21 @@ test('testimonial photos and unconfirmed event/course specifics stay removed', (
   }
 });
 
+test('community page uses the supplied team photo and links the conference photo and button', () => {
+  const html = renderPage('community');
+  assert.match(html, /src="\/assets\/community-team.png"/);
+  assert.doesNotMatch(html, /Community photos coming soon|Event to be announced|25\. Jun-2024/);
+  const links = [...html.matchAll(/<a\b[^>]*href="https:\/\/conference.tum-blockchain.com"[^>]*>[\s\S]*?<\/a>/g)];
+  assert.equal(links.length, 2);
+  for (const [link] of links) {
+    assert.match(link, /target="_blank"/);
+    assert.match(link, /rel="noopener noreferrer"/);
+    assert.match(link, /opens in a new tab/);
+  }
+  assert.match(links[0][0], /tbc-conference-25-01.jpg/);
+  assert.match(links[1][0], />More Info<\/a>/);
+});
+
 test('confirmed free twenty-week program and December start are consistent', () => {
   for (const page of pages) {
     const text = inventory(renderPage(page)).text;

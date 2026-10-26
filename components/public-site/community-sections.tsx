@@ -1,4 +1,3 @@
-import { UnavailableAction } from "./unavailable-action";
 import { ClubEventCard, DiversityCard } from "./cards";
 import { SiteHeader } from "./site-header";
 import { SiteFooter } from "./site-footer";
@@ -30,9 +29,13 @@ export function CommunityHero() {
               />
             </div>
           </div>
-          <div className="web3t-cm-hero__photo web3t-community-photo-placeholder">
-            Community photos coming soon
-          </div>
+          <img
+            className="web3t-cm-hero__photo"
+            src="/assets/community-team.png"
+            alt="The Web3 Talents team"
+            width={1360}
+            height={1020}
+          />
         </div>
       </div>
     </section>
@@ -82,34 +85,50 @@ export function UpcomingEvents() {
     <section className="web3t-cm-events" aria-labelledby="web3t-cm-ev-title">
       <div className="web3t-rail">
         <h2 id="web3t-cm-ev-title" className="web3t-h2 web3t-cm-events__title">
-          Upcoming community events
+          Community events
         </h2>
         <div className="web3t-cm-event">
-          <span className="web3t-cm-event__upcoming">TO BE ANNOUNCED</span>
-          <div className="web3t-cm-event__thumb" aria-hidden="true"></div>
+          <span className="web3t-cm-event__upcoming">CONFERENCE</span>
+          <a
+            className="web3t-cm-event__thumb"
+            href="https://conference.tum-blockchain.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="TUM Blockchain Conference website (opens in a new tab)"
+          >
+            <img
+              src="https://conference26.tum-blockchain.com/media/gallery/web/tbc-conference-25-01.jpg"
+              alt="A look back at the TUM Blockchain Conference 2025"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
           <div className="web3t-cm-event__main">
             <span className="web3t-cm-event__date">
-              Event details coming soon
+              October 29–31, 2026
             </span>
             <div className="web3t-cm-event__mid">
               <div className="web3t-cm-event__info">
-                <h3 className="web3t-cm-event__name">Event to be announced</h3>
+                <h3 className="web3t-cm-event__name">TUM Blockchain Conference</h3>
                 <p className="web3t-cm-event__loc">
                   <img
                     src="/assets/events-pin.svg"
                     alt=""
                     className="web3t-cm-event__pin"
                   />
-                  Date and location to be confirmed
+                  House of Communication, Munich
                 </p>
               </div>
               <div className="web3t-cm-event__cta">
-                <UnavailableAction className="web3t-btn web3t-btn--primary">
-                  Registration coming soon
-                </UnavailableAction>
-                <UnavailableAction className="web3t-btn web3t-btn--outline">
-                  Details coming soon
-                </UnavailableAction>
+                <a
+                  className="web3t-btn web3t-btn--outline"
+                  href="https://conference.tum-blockchain.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="More info about TUM Blockchain Conference (opens in a new tab)"
+                >
+                  More Info
+                </a>
               </div>
             </div>
           </div>
