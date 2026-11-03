@@ -692,3 +692,21 @@ body.web3t-student-portal:not(.web3t-page).path-course-view .activity-item .acti
 body.web3t-student-portal:not(.web3t-page).path-course-view .btn.btn-icon.icons-collapse-expand{border-radius:9px;background:rgb(121 63 244 / .24);color:#cfcaff}
 @media (max-width:1120px){body.web3t-student-portal:not(.web3t-page) .web3t-native-portal-nav{display:none}body.web3t-student-portal:not(.web3t-page)>.navbar .navbar-brand,body.web3t-student-portal:not(.web3t-page) .navbar.fixed-top .navbar-brand{width:210px}}
 @media (max-width:767.98px){body.web3t-student-portal:not(.web3t-page){--w3t-native-header-height:72px}body.web3t-student-portal:not(.web3t-page)>.navbar .navbar-brand,body.web3t-student-portal:not(.web3t-page) .navbar.fixed-top .navbar-brand{display:flex!important;width:178px;height:34px}body.web3t-student-portal:not(.web3t-page) #page.drawers .main-inner{padding:20px 16px 36px}body.web3t-student-portal:not(.web3t-page).path-course-view .course-section>.section-item{padding:14px}}
+/* Course curriculum: detailed topic breakdown inside each phase accordion. */
+.web3t-course .web3t-curriculum-intro{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:8px 24px;margin:0 0 4px}
+.web3t-course .web3t-curriculum-intro__text{flex:1 1 320px;max-width:62ch;margin:0;color:rgb(255 255 255 / .75);font-size:1rem;line-height:1.55}
+.web3t-course .web3t-curriculum-intro .web3t-course-about__expand{margin:0 0 0 auto}
+.web3t-course .web3t-curriculum{padding:2px 18px 22px}
+.web3t-course .web3t-course-phase__body .web3t-curriculum p{padding:0}
+.web3t-course .web3t-course-phase__body .web3t-curriculum__summary{max-width:72ch;margin:0 0 6px;color:rgb(255 255 255 / .65);font-size:1rem;line-height:1.55}
+.web3t-course .web3t-curriculum__topic{padding:20px 0 0;margin-top:18px;border-top:1px solid rgb(172 166 255 / .18)}
+.web3t-course .web3t-course-phase__body .web3t-curriculum__eyebrow{margin:0 0 4px;color:var(--w3-lilac);font-size:.8125rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.web3t-course .web3t-curriculum__title{margin:0 0 12px;color:#fff;font-family:var(--w3-display);font-size:1.25rem;font-weight:500;line-height:1.35;letter-spacing:-.01em}
+.web3t-course .web3t-curriculum__points{display:flex;flex-direction:column;gap:10px;max-width:78ch;margin:0;padding:0;list-style:none}
+.web3t-course .web3t-curriculum__points--nested{gap:8px;margin-top:10px}
+.web3t-course .web3t-curriculum__point{position:relative;padding-left:20px;color:rgb(255 255 255 / .75);font-size:1rem;line-height:1.55}
+.web3t-course .web3t-curriculum__point::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--w3-purple)}
+.web3t-course .web3t-curriculum__points--nested .web3t-curriculum__point::before{width:6px;height:6px;background:transparent;border:1.5px solid var(--w3-lilac)}
+.web3t-course .web3t-curriculum__label{color:#fff;font-weight:600}
+.web3t-course .web3t-curriculum__note{display:block;margin-top:8px;padding:8px 12px;border-left:2px solid var(--w3-lilac);border-radius:0 8px 8px 0;background:rgb(172 166 255 / .08);color:rgb(255 255 255 / .85);font-size:.9375rem;line-height:1.5}
+@media (max-width:768px){.web3t-course .web3t-curriculum{padding:2px 14px 18px}.web3t-course .web3t-curriculum__title{font-size:1.125rem}.web3t-course .web3t-curriculum__point{font-size:.9375rem}}

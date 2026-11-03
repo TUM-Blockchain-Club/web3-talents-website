@@ -13,9 +13,36 @@ import { CourseStructure } from "./course-structure";
 import {
   courseFacts,
   curriculum,
+  curriculumIntro,
   applicationDetails,
   participationDetails,
+  type CurriculumPoint,
 } from "./course-content";
+
+function CurriculumPoints({
+  points,
+  nested = false,
+}: {
+  points: CurriculumPoint[];
+  nested?: boolean;
+}) {
+  return (
+    <ul
+      className={`web3t-curriculum__points${nested ? " web3t-curriculum__points--nested" : ""}`}
+    >
+      {points.map(({ label, text, note, points: children }) => (
+        <li key={label ?? text} className="web3t-curriculum__point">
+          {label && (
+            <strong className="web3t-curriculum__label">{label}: </strong>
+          )}
+          {text}
+          {note && <span className="web3t-curriculum__note">{note}</span>}
+          {children && <CurriculumPoints points={children} nested />}
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export function CourseHero() {
   return (
@@ -115,11 +142,14 @@ export function CourseInformation() {
           <AccordionGroup
             itemIds={curriculum.map((_, i) => `course-accordion-${i + 1}`)}
           >
-            <p className="web3t-course-about__expand">
-              <ExpandAll />
-            </p>
+            <div className="web3t-curriculum-intro">
+              <p className="web3t-curriculum-intro__text">{curriculumIntro}</p>
+              <p className="web3t-course-about__expand">
+                <ExpandAll />
+              </p>
+            </div>
             <ul className="web3t-course-about__phases">
-              {curriculum.map(({ title, topics }, i) => (
+              {curriculum.map(({ title, summary, topics }, i) => (
                 <AccordionItem
                   key={title}
                   itemId={`course-accordion-${i + 1}`}
@@ -137,13 +167,20 @@ export function CourseInformation() {
                     </>
                   }
                 >
-                  {topics.map(([topic, description]) => (
-                    <p key={topic}>
-                      <strong>{topic}</strong>
-                      <br />
-                      {description}
-                    </p>
-                  ))}
+                  <div className="web3t-curriculum">
+                    <p className="web3t-curriculum__summary">{summary}</p>
+                    {topics.map((topic) => (
+                      <div key={topic.number} className="web3t-curriculum__topic">
+                        <p className="web3t-curriculum__eyebrow">
+                          Topic {topic.number}
+                        </p>
+                        <h3 className="web3t-curriculum__title">
+                          Weeks {topic.weeks}: {topic.title}
+                        </h3>
+                        <CurriculumPoints points={topic.points} />
+                      </div>
+                    ))}
+                  </div>
                 </AccordionItem>
               ))}
             </ul>
