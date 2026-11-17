@@ -10,6 +10,29 @@
   border-bottom: 1px solid #aca6ff26;
   background: #03040d;
   gap: 20px;
+  transition: background-color 240ms ease, box-shadow 240ms ease;
+}
+.web3t .web3t-nav.is-scrolled {
+  background: #03040deb;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 8px 28px #0003;
+}
+/* A decorative reading-progress line, not another interactive control. */
+.web3t .web3t-nav::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -1px;
+  height: 2px;
+  pointer-events: none;
+  background: linear-gradient(90deg, #793ff4, #4f8cfa, #49cce0);
+  transform-origin: left;
+  transform: scaleX(var(--scroll-progress, 0));
+}
+@media (prefers-reduced-motion: reduce) {
+  .web3t .web3t-nav::after {
+    display: none;
+  }
 }
 .web3t .web3t-nav__links {
   gap: clamp(18px, 3vw, 36px);
