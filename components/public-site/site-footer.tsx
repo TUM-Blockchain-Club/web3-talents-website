@@ -12,15 +12,18 @@ export function SiteFooter({
       <div className="web3t-footer__bg" aria-hidden="true" />
       <div className="web3t-footer__inner">
         <div className="web3t-footer__brand">
+          <div className="web3t-footer__brandmark">
           <img
-            src="/assets/logo.png"
-            alt="Web3 Talents"
+            src="/assets/web3talents-logo-blue.png"
+            alt=""
             className="web3t-footer__logo"
-            width={900}
-            height={162}
+            width={1086}
+            height={1448}
             loading="lazy"
             decoding="async"
           />
+          <span>Web3 Talents</span>
+          </div>
           <p className="web3t-footer__tagline">Learn. Connect. Explore Web3.</p>
           <ApplicationLink className="web3t-btn web3t-btn--primary web3t-footer__apply" />
         </div>

@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
+import { readFileSync } from "node:fs";
 import {
   logoPosition,
   localPointer,
@@ -8,19 +9,31 @@ import {
   hoverRadius,
   driftQuery,
   logoSource,
-  artworkAlpha,
+  symbolCrop,
 } from "../lib/logo-field.mjs";
 import { stepParticle } from "../lib/hero-particles.mjs";
 
-test("original blue artwork replaces the rainbow logo and drifts twice as fast", () => {
-  assert.equal(logoSource, "/assets/hero-bg.png");
+test("transparent blue PNG is used whole, with unchanged drift speeds", () => {
+  assert.equal(logoSource, "/assets/web3talents-logo-blue.png");
+  assert.deepEqual(symbolCrop, { x: 0, y: 0, width: 1086, height: 1448 });
+  const png = readFileSync(new URL('../public' + logoSource, import.meta.url));
+  assert.equal(png.readUInt32BE(16), symbolCrop.width);
+  assert.equal(png.readUInt32BE(20), symbolCrop.height);
+  assert.equal(png[25], 6, 'Approved PNG retains its alpha channel');
   assert.deepEqual(
     logoTracks.slice(0, 9).map((track) => track.speed),
     [48, 38, 54, 44, 62, 34, 40, 58, 46],
   );
-  assert.equal(artworkAlpha(4, 7, 22), 0);
-  assert.equal(artworkAlpha(25, 80, 220), 1);
-  assert.equal(artworkAlpha(25, 32, 56), 0.5);
+});
+
+test("PNG transparency is preserved rather than inferred from brightness", () => {
+  const source = readFileSync(new URL('../lib/logo-field.mjs', import.meta.url), 'utf8');
+  assert.doesNotMatch(source, /artworkAlpha|putImageData/);
+  assert.match(source, /if \(colors\[i \+ 3\] < 20\) continue/);
+  const card = readFileSync(new URL('../components/public-site/card-generator.tsx', import.meta.url), 'utf8');
+  assert.match(card, /loadImage\("\/assets\/web3talents-logo-blue\.png"\)/);
+  const drawing = readFileSync(new URL('../components/public-site/card-drawing.ts', import.meta.url), 'utf8');
+  assert.match(drawing, /cardArt = "\/assets\/web3talents-logo-blue\.png"/);
 });
 
 test("twenty-seven differently sized logos move left to right at their configured speed", () => {

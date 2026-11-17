@@ -49,7 +49,7 @@ export const cardFormats = {
   },
 } as const;
 
-export const cardArt = "/assets/hero-bg.png";
+export const cardArt = "/assets/web3talents-logo-blue.png";
 
 export type CardFormat = keyof typeof cardFormats;
 
@@ -195,6 +195,10 @@ export function drawCard(canvas: HTMLCanvasElement, assets: CardAssets, content:
     (assets.logo.width / assets.logo.height) * layout.logoHeight,
     layout.logoHeight,
   );
+  ctx.font = `500 ${layout.logoHeight * 0.62}px ${DISPLAY}`;
+  ctx.fillStyle = "#ffffff";
+  ctx.fillText("Web3 Talents", layout.margin + layout.logoHeight * 0.75 + 16,
+    layout.logoY + layout.logoHeight * 0.72);
 
   ctx.font = `500 ${layout.headlineSize}px ${DISPLAY}`;
   ctx.fillStyle = "#ffffff";

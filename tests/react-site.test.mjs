@@ -243,7 +243,8 @@ test('header uses the blue symbol and preserves an accessible home link on every
     assert.doesNotMatch(header, /<img/);
   }
   const css = readFileSync(new URL('interactions.css', publicDir), 'utf8');
-  assert.match(css, /\.web3t-nav__blue-symbol\s*\{[^}]*hero-bg\.png/);
+  assert.match(css, /\.web3t-nav__blue-symbol\s*\{[^}]*web3talents-logo-blue\.png/);
+  assert.doesNotMatch(css, /assets\/(?:logo|hero-bg)\.png/);
 });
 
 test('components use React markup, not embedded HTML or legacy global scripts', () => {

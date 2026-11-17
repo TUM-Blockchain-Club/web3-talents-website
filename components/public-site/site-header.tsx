@@ -67,7 +67,7 @@ export function SiteHeader({
         onClick={() => setOpen(false)}
       >
         <span className="web3t-nav__blue-symbol" aria-hidden="true" />
-        <span className="web3t-nav__wordmark" aria-hidden="true" />
+        <span className="web3t-nav__wordmark" aria-hidden="true">Web3 Talents</span>
       </Link>
       <button
         ref={toggle}

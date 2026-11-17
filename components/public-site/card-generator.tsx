@@ -30,7 +30,7 @@ const loadImage = (src: string) =>
 
 async function loadCardAssets(): Promise<CardAssets> {
   const [logo, art] = await Promise.all([
-    loadImage("/assets/logo.png"),
+    loadImage("/assets/web3talents-logo-blue.png"),
     loadImage(cardArt),
     ...cardFonts.map((font) => document.fonts.load(font)),
   ]);

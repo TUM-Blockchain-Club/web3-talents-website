@@ -10,10 +10,10 @@ export function Header() {
           <div className="flex items-center gap-8">
             <Link href="/" className="flex items-center">
               <Image
-                  src="/logo/black background/small.png"
+                  src="/assets/web3talents-logo-blue.png"
                   alt="Web3 Talents"
-                  width={120}
-                  height={40}
+                  width={1086}
+                  height={1448}
                   className="h-8 w-auto"
                   priority
               />

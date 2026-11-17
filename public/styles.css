@@ -69,7 +69,8 @@ body.web3t-page .main-inner{border:0}
 .web3t-footer{position:relative;background:var(--w3-black);border-top:1px solid var(--w3-hairline);overflow:hidden}
 .web3t-footer__bg{position:absolute;inset:0;z-index:0;background:url(assets/footer-texture.png) center/cover no-repeat;opacity:.55;pointer-events:none}
 .web3t-footer__inner{position:relative;z-index:1;max-width:1224px;margin:0 auto;padding:clamp(36px, 4vw, 48px) clamp(18px, 4vw, 24px);min-height:300px;display:grid;grid-template-columns:minmax(260px,1.1fr) 1.6fr auto;gap:clamp(28px, 4vw, 56px);align-items:start}
-.web3t-footer__logo{width:min(402px, 80vw);height:auto}
+.web3t-footer__brandmark{display:flex;align-items:center;gap:14px;font-size:clamp(26px,3vw,36px);font-weight:500;letter-spacing:-.035em;color:#fff}
+.web3t-footer__logo{width:42px;height:56px;object-fit:contain;flex-shrink:0}
 .web3t-footer__tagline{margin:20px 0 32px;font-size:1.125rem}
 .web3t-footer__apply{border-radius:20px;width:196px;font-family:var(--w3-sans);font-weight:600}
 .web3t-footer__nav{display:flex;gap:64px;justify-content:center;padding-top:16px}
@@ -426,7 +427,7 @@ body.web3t-dashboard-page #page,body.web3t-dashboard-page #page.drawers,body.web
 .web3t-hero__logo-field{position:absolute;inset:0;z-index:0;overflow:hidden;background:radial-gradient(ellipse at 80% 45%,#141034 0%,#040716 55%,#000 100%);pointer-events:auto}
 .web3t-hero__logo-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .web3t-hero__logo-fallback{position:absolute;inset:0;pointer-events:none}
-.web3t-hero__logo-fallback i{position:absolute;left:var(--logo-x);top:var(--logo-y);height:var(--logo-height);aspect-ratio:550/760;background:url(assets/hero-bg.png) 89.88764% 29.41176% / 261.81818% 108.94737% no-repeat;mix-blend-mode:screen;opacity:var(--logo-opacity)}
+.web3t-hero__logo-fallback i{position:absolute;left:var(--logo-x);top:var(--logo-y);height:var(--logo-height);aspect-ratio:3/4;background:url(assets/web3talents-logo-blue.png) center / contain no-repeat;opacity:var(--logo-opacity)}
 .web3t-hero__logo-field.is-ready .web3t-hero__logo-fallback{display:none}
 .web3t-hero__motion-toggle{position:absolute;right:24px;bottom:18px;z-index:3;border:1px solid rgb(255 255 255 / .22);border-radius:100px;background:rgb(6 7 23 / .7);padding:7px 12px;color:#bcb8d0;font:inherit;font-size:.75rem;cursor:pointer}
 .web3t-hero__motion-toggle:hover,.web3t-hero__motion-toggle:focus-visible{border-color:#a69aff;color:#fff}
@@ -658,7 +659,7 @@ body:not(.web3t-page).path-mod .activity-details:not(:empty),body:not(.web3t-pag
 body.web3t-student-portal:not(.web3t-page){--w3t-native-header-height:92px}
 body.web3t-student-portal:not(.web3t-page)>.navbar,body.web3t-student-portal:not(.web3t-page) .navbar.fixed-top{min-height:var(--w3t-native-header-height);height:var(--w3t-native-header-height);border-bottom:2px solid rgb(78 77 77 / .33)}
 body.web3t-student-portal:not(.web3t-page)>.navbar>.container-fluid,body.web3t-student-portal:not(.web3t-page)>.navbar>.container-sm,body.web3t-student-portal:not(.web3t-page)>.navbar>.container-md,body.web3t-student-portal:not(.web3t-page)>.navbar>.container-lg,body.web3t-student-portal:not(.web3t-page)>.navbar>.container-xl,body.web3t-student-portal:not(.web3t-page)>.navbar>.container-xxl,body.web3t-student-portal:not(.web3t-page) .navbar.fixed-top>.container-fluid,body.web3t-student-portal:not(.web3t-page) .navbar.fixed-top>.container-sm,body.web3t-student-portal:not(.web3t-page) .navbar.fixed-top>.container-md,body.web3t-student-portal:not(.web3t-page) .navbar.fixed-top>.container-lg,body.web3t-student-portal:not(.web3t-page) .navbar.fixed-top>.container-xl,body.web3t-student-portal:not(.web3t-page) .navbar.fixed-top>.container-xxl{position:relative;height:100%;gap:24px;padding-inline:clamp(18px, 3vw, 32px)}
-body.web3t-student-portal:not(.web3t-page)>.navbar .navbar-brand,body.web3t-student-portal:not(.web3t-page) .navbar.fixed-top .navbar-brand{width:247px;height:43px;margin-right:0!important;overflow:hidden;background:url(assets/logo.png) left center / contain no-repeat;color:transparent!important;font-size:0;white-space:nowrap}
+body.web3t-student-portal:not(.web3t-page)>.navbar .navbar-brand,body.web3t-student-portal:not(.web3t-page) .navbar.fixed-top .navbar-brand{width:247px;height:43px;margin-right:0!important;overflow:hidden;background:url(assets/web3talents-logo-blue.png) left center / contain no-repeat;color:transparent!important;font-size:0;white-space:nowrap}
 body.web3t-student-portal:not(.web3t-page)>.navbar .primary-navigation,body.web3t-student-portal:not(.web3t-page) .navbar.fixed-top .primary-navigation{display:none}
 body.web3t-student-portal:not(.web3t-page)>.navbar #usernavigation,body.web3t-student-portal:not(.web3t-page) .navbar.fixed-top #usernavigation{min-width:180px;align-items:center}
 body.web3t-student-portal:not(.web3t-page)>.navbar .nav-link,body.web3t-student-portal:not(.web3t-page)>.navbar .btn-icon,body.web3t-student-portal:not(.web3t-page) .navbar.fixed-top .nav-link,body.web3t-student-portal:not(.web3t-page) .navbar.fixed-top .btn-icon{border-radius:10px}

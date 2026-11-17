@@ -366,16 +366,18 @@ html {
 .web3t .web3t-nav__blue-symbol {
   display: block;
   height: 43px;
-  aspect-ratio: 550 / 760;
-  background: url(assets/hero-bg.png) 89.88764% 29.41176% / 261.81818%
-    108.94737% no-repeat;
-  mix-blend-mode: screen;
+  aspect-ratio: 3 / 4;
+  background: url(assets/web3talents-logo-blue.png) center / contain no-repeat;
 }
 .web3t .web3t-nav__wordmark {
-  display: block;
+  display: flex;
+  align-items: center;
   height: 43px;
-  aspect-ratio: 730 / 162;
-  background: url(assets/logo.png) right center / auto 100% no-repeat;
+  font-size: clamp(1.35rem, 2vw, 1.85rem);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  white-space: nowrap;
+  color: #fff;
 }
 @media (max-width: 560px) {
   .web3t .web3t-nav__blue-symbol,
