@@ -77,13 +77,14 @@ test('confirmed peer-teaching format is restored without unconfirmed schedules o
   assert.match(home, /COST FREE/);
 });
 
-test('favicon uses the original standalone Web3 Talents mark, not the wide wordmark', () => {
+test('favicon uses the transparent blue Web3 Talents mark, not the wide wordmark', () => {
   const layout = readFileSync(new URL('../app/layout.tsx', import.meta.url), 'utf8');
   assert.doesNotMatch(layout, /icons\s*:/);
   const icon = readFileSync(new URL('../app/icon.png', import.meta.url));
   assert.equal(icon.subarray(1, 4).toString(), 'PNG');
-  assert.equal(icon.readUInt32BE(16), 1400);
-  assert.equal(icon.readUInt32BE(20), 1400);
+  assert.equal(icon.readUInt32BE(16), 512);
+  assert.equal(icon.readUInt32BE(20), 512);
+  assert.equal(icon[25], 6, 'RGBA PNG retains transparency');
 });
 
 test('testimonial photos and unconfirmed event/course specifics stay removed', () => {
