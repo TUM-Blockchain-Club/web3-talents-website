@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { initPageInteractions, initScrollHeader } from "../../lib/page-interactions.mjs";
+import { initPageInteractions } from "../../lib/page-interactions.mjs";
 import { ApplicationLink } from "./application-link";
 
 export function SiteHeader({
@@ -18,12 +18,7 @@ export function SiteHeader({
     const element = header.current;
     const root = element?.parentElement;
     if (!element || !root) return;
-    const stopEntrances = initPageInteractions(root);
-    const stopScroll = initScrollHeader(element);
-    return () => {
-      stopEntrances();
-      stopScroll();
-    };
+    return initPageInteractions(root);
   }, [home, current]);
   useEffect(() => {
     if (!open) return;

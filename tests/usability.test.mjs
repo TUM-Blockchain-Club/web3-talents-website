@@ -3,6 +3,19 @@ import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import { renderPage } from "./react-render.cjs";
 
+test("public sections snap without a progress bar, clipping or nested snap traps", () => {
+  const css = readFileSync(new URL("../public/usability.css", import.meta.url), "utf8");
+  assert.match(css, /scroll-snap-type: y mandatory/);
+  assert.match(css, /scroll-snap-stop: always/);
+  assert.match(css, /scroll-padding-top: var\(--w3-snap-offset\)/);
+  assert.match(css, /min-height: calc\(100svh - var\(--w3-snap-offset\)\)/);
+  assert.match(css, /prefers-reduced-motion: reduce[\s\S]*?scroll-snap-type: none/);
+  assert.match(css, /\.web3t-course__top > section/);
+  assert.doesNotMatch(css, /scroll-progress|\.web3t-nav::after|scroll-snap-align:[^;]*center/);
+  const js = readFileSync(new URL("../lib/page-interactions.mjs", import.meta.url), "utf8");
+  assert.doesNotMatch(js, /initScrollHeader|preventDefault|addEventListener\("wheel"/);
+});
+
 for (const page of ["home", "courses", "course", "community"]) {
   test(`${page}: one main landmark with a working skip target`, () => {
     const html = renderPage(page);

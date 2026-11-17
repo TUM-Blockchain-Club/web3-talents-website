@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { initPageInteractions, initScrollHeader } from "../lib/page-interactions.mjs";
+import { initPageInteractions } from "../lib/page-interactions.mjs";
 import { renderPage } from "./react-render.cjs";
 
 test("page entrances run once, respect preference changes, and clean up on navigation", () => {
@@ -75,71 +75,6 @@ test("page entrances run once, respect preference changes, and clean up on navig
     else globalThis.IntersectionObserver = previousObserver;
     if (previousWindow === undefined) delete globalThis.window;
     else globalThis.window = previousWindow;
-  }
-});
-
-test("scroll header batches updates, handles changing height and releases every listener", () => {
-  const keys = ["window", "document", "requestAnimationFrame", "cancelAnimationFrame", "ResizeObserver"];
-  const originals = keys.map((key) => globalThis[key]);
-  const listeners = new Map();
-  const frames = new Map();
-  let next = 0, resized, disconnected = false, scrolled = false;
-  const properties = new Map();
-  const header = {
-    style: { setProperty: (key, value) => properties.set(key, value), removeProperty: (key) => properties.delete(key) },
-    classList: { toggle: (_, value) => { scrolled = value; }, remove: () => { scrolled = false; } },
-  };
-  globalThis.window = {
-    scrollY: 0, innerHeight: 800,
-    addEventListener: (name, fn, options) => {
-      if (name === "scroll") assert.equal(options.passive, true);
-      listeners.set(name, fn);
-    },
-    removeEventListener: (name, fn) => {
-      assert.equal(listeners.get(name), fn);
-      listeners.delete(name);
-    },
-  };
-  globalThis.document = { documentElement: { scrollHeight: 2400 }, body: {} };
-  globalThis.requestAnimationFrame = (fn) => { frames.set(++next, fn); return next; };
-  globalThis.cancelAnimationFrame = (id) => frames.delete(id);
-  globalThis.ResizeObserver = class {
-    constructor(fn) { resized = fn; }
-    observe(node) { assert.equal(node, document.body); }
-    disconnect() { disconnected = true; }
-  };
-  const flush = () => { const callbacks = [...frames.values()]; frames.clear(); callbacks.forEach((fn) => fn()); };
-  try {
-    const stop = initScrollHeader(header);
-    assert.equal(properties.get("--scroll-progress"), "0");
-    window.scrollY = 800;
-    listeners.get("scroll")(); listeners.get("scroll")();
-    assert.equal(frames.size, 1);
-    flush();
-    assert.equal(properties.get("--scroll-progress"), "0.5");
-    assert.equal(scrolled, true);
-    document.documentElement.scrollHeight = 1600;
-    resized(); flush();
-    assert.equal(properties.get("--scroll-progress"), "1");
-    window.scrollY = -20;
-    listeners.get("scroll")(); flush();
-    assert.equal(properties.get("--scroll-progress"), "0");
-    document.documentElement.scrollHeight = 800;
-    resized(); flush();
-    assert.equal(properties.get("--scroll-progress"), "0");
-    listeners.get("scroll")();
-    stop();
-    assert.equal(frames.size, 0);
-    assert.equal(listeners.size, 0);
-    assert.equal(properties.size, 0);
-    assert.ok(disconnected);
-    resized();
-    assert.equal(frames.size, 0);
-  } finally {
-    keys.forEach((key, i) => {
-      if (originals[i] === undefined) delete globalThis[key];
-      else globalThis[key] = originals[i];
-    });
   }
 });
 
