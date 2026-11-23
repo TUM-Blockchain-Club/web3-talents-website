@@ -3,15 +3,9 @@ import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import { renderPage } from "./react-render.cjs";
 
-test("public sections snap without a progress bar, clipping or nested snap traps", () => {
+test("public pages use normal scrolling without section snapping", () => {
   const css = readFileSync(new URL("../public/usability.css", import.meta.url), "utf8");
-  assert.match(css, /scroll-snap-type: y mandatory/);
-  assert.match(css, /scroll-snap-stop: always/);
-  assert.match(css, /scroll-padding-top: var\(--w3-snap-offset\)/);
-  assert.match(css, /min-height: calc\(100svh - var\(--w3-snap-offset\)\)/);
-  assert.match(css, /prefers-reduced-motion: reduce[\s\S]*?scroll-snap-type: none/);
-  assert.match(css, /\.web3t-course__top > section/);
-  assert.doesNotMatch(css, /scroll-progress|\.web3t-nav::after|scroll-snap-align:[^;]*center/);
+  assert.doesNotMatch(css, /scroll-snap-type: y|scroll-snap-stop/);
   const js = readFileSync(new URL("../lib/page-interactions.mjs", import.meta.url), "utf8");
   assert.doesNotMatch(js, /initScrollHeader|preventDefault|addEventListener\("wheel"/);
 });
@@ -37,8 +31,8 @@ for (const page of ["home", "courses", "course", "community"]) {
     assert.match(html, /href="https:\/\/tally.so\/r\/BE4l9Y"[^>]*>Apply now<\/a>/);
     const header = html.match(/<header\b[\s\S]*?<\/header>/)?.[0];
     assert.ok(header);
-    assert.match(header, /href="https:\/\/tally.so\/r\/BE4l9Y"[^>]*>Apply now<\/a>/);
-    assert.doesNotMatch(header, /Login|Coming soon|data-login/);
+    assert.match(header, /href="https:\/\/moodle.web3-talents.com\/login\/"[^>]*>Student login<\/a>/);
+    assert.doesNotMatch(header, /Coming soon|data-login/);
   });
 }
 

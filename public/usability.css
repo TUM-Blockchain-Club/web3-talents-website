@@ -1,33 +1,3 @@
-/* Native section snapping: tall sections still scroll internally without clipping.
-   The card generator and nested course accordions are not snap targets. */
-html:has(.web3t-home, .web3t-communitypg, .web3t-course) {
-  --w3-snap-offset: 76px;
-  scroll-snap-type: y mandatory;
-  scroll-padding-top: var(--w3-snap-offset);
-}
-.web3t main > section[class],
-.web3t .web3t-course__top > section,
-.web3t .web3t-course__lower > section {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  scroll-margin-top: 0;
-  min-height: calc(100svh - var(--w3-snap-offset));
-  box-sizing: border-box;
-}
-.web3t .web3t-footer {
-  scroll-snap-align: end;
-  scroll-snap-stop: always;
-}
-@media (max-width: 799px) {
-  html:has(.web3t-home, .web3t-communitypg, .web3t-course) {
-    --w3-snap-offset: 68px;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  html:has(.web3t-home, .web3t-communitypg, .web3t-course) {
-    scroll-snap-type: none;
-  }
-}
 /* Usability refinements: preserve the existing artwork, palette and page compositions. */
 .web3t {
   overflow-x: clip; /* Unlike hidden, clip does not prevent the header from sticking. */
