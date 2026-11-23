@@ -2,7 +2,6 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { initPageInteractions } from "../../lib/page-interactions.mjs";
-import { ApplicationLink } from "./application-link";
 
 export function SiteHeader({
   home = false,
@@ -107,7 +106,14 @@ export function SiteHeader({
           </Link>
         </nav>
         <div className="web3t-nav__actions">
-          <ApplicationLink className="web3t-btn web3t-btn--primary" />
+          <a
+            className="web3t-btn web3t-btn--outline web3t-btn--sm web3t-nav__login"
+            href="https://moodle.web3-talents.com/login/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Student login
+          </a>
         </div>
       </div>
     </header>
