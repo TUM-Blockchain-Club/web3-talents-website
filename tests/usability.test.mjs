@@ -10,6 +10,35 @@ test("public pages use normal scrolling without section snapping", () => {
   assert.doesNotMatch(js, /initScrollHeader|preventDefault|addEventListener\("wheel"/);
 });
 
+test("footer social icon reserves a compact square with an accessible click target", () => {
+  for (const page of ["home", "course", "community"]) {
+    const icon = renderPage(page).match(/<img[^>]*class="web3t-footer__linkedin"[^>]*>/)?.[0];
+    assert.ok(icon);
+    assert.match(icon, /width="32" height="32"/);
+  }
+  const css = readFileSync(new URL("../public/styles.css", import.meta.url), "utf8");
+  assert.match(css, /\.web3t-footer__social-link\{[^}]*width:44px;height:44px/);
+  assert.match(css, /\.web3t-footer__linkedin\{[^}]*width:32px;height:32px;aspect-ratio:1;object-fit:contain/);
+  const svg = readFileSync(new URL("../public/assets/social-linkedin.svg", import.meta.url), "utf8");
+  assert.match(svg, /preserveAspectRatio="xMidYMid meet"/);
+});
+
+test("learning steps keep text in document flow before fonts or JavaScript load", () => {
+  const css = readFileSync(new URL("../public/styles.css", import.meta.url), "utf8");
+  assert.match(css, /\.web3t-steps__list\{[^}]*display:grid/);
+  assert.match(css, /\.web3t-step\{[^}]*minmax\(0,1fr\)/);
+  assert.doesNotMatch(css, /\.web3t-step__(?:badge|text)\{[^}]*position:absolute/);
+  assert.doesNotMatch(css, /\.web3t-steps__canvas\{[^}]*aspect-ratio:/);
+  assert.match(css, /\.web3t-step__text h3[^}]*white-space:normal/);
+  const layout = readFileSync(new URL("../app/layout.tsx", import.meta.url), "utf8");
+  for (const [file, precedence] of [["styles", "base"], ["interactions", "interactions"], ["usability", "usability"]]) {
+    assert.ok(layout.includes(`href="/${file}.css" precedence="${precedence}"`));
+  }
+  for (const font of ["Inter-400", "SpaceGrotesk-500"]) {
+    assert.ok(layout.includes(`rel="preload" href="/assets/${font}.woff2" as="font"`));
+  }
+});
+
 for (const page of ["home", "courses", "course", "community"]) {
   test(`${page}: one main landmark with a working skip target`, () => {
     const html = renderPage(page);

@@ -58,6 +58,7 @@ export function SiteFooter({
         </nav>
         <div className="web3t-footer__social">
           <a
+            className="web3t-footer__social-link"
             href="https://www.linkedin.com/company/tum-blockchain-club/"
             aria-label="TUM Blockchain Club on LinkedIn"
           >
@@ -65,6 +66,8 @@ export function SiteFooter({
               src="/assets/social-linkedin.svg"
               alt=""
               className="web3t-footer__linkedin"
+              width={32}
+              height={32}
             />
           </a>
           <a

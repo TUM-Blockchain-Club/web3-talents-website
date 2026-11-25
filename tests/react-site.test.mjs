@@ -168,11 +168,12 @@ test('curriculum covers all ten topic pairs and preserves unique accordion targe
   assert.doesNotMatch(text, /second expert lecture|follow-up expert lecture|option B|Screening:|burned out|Speaker can pitch/);
 });
 
-test('both pages show Andi for Topic 1 and retain the three previous speakers', () => {
+test('both pages show Andi for Topic 1 and restore all thirteen previous speakers', () => {
   const sections = ['home', 'course'].map(page => renderPage(page).match(/<section[^>]*id="speakers"[\s\S]*?<\/section>/)[0]);
   const portraits = sections.map(section => [...section.matchAll(/<img[^>]*src="([^"]+)"[^>]*alt="([^"]+)"/g)].map(([,src,alt]) => ({src,alt})));
   assert.deepEqual(portraits[0], portraits[1]);
-  assert.deepEqual(portraits[0].map(p => p.alt), ['Andi Schmitt', 'Dr. David An', 'Jonas Gebele', 'David Kurz']);
+  assert.deepEqual(portraits[0].map(p => p.alt), ['Andi Schmitt', 'Dr. David An', 'Jonas Gebele', 'Laurent Castillo', 'Andi Schmitt', 'Gopi Mehta', 'Filip Rezabek', 'David Kurz', 'Julian Hötzel', 'Rafael Kaaz', 'Prof. Dr. Philipp Maume', 'Dr. Christian Ziegler', 'Felix Hoops', 'Gaurav Sharma']);
+  for (const portrait of portraits[0]) assert.ok(existsSync(new URL(portrait.src.slice(1), publicDir)), portrait.src);
   assert.equal(portraits[0][0].src, '/speakers/andi.jpeg');
   assert.ok(existsSync(new URL('speakers/andi.jpeg', publicDir)));
   for (const section of sections) {
@@ -182,12 +183,13 @@ test('both pages show Andi for Topic 1 and retain the three previous speakers', 
     const [planned, past] = section.split(/<h2[^>]*>Past speakers<\/h2>/);
     assert.match(planned, /Andi Schmitt/);
     assert.doesNotMatch(planned, /Dr\. David An|Jonas Gebele|David Kurz/);
-    assert.doesNotMatch(past, /Andi Schmitt/);
+    assert.match(past, /Andi Schmitt/);
+    assert.match(past, /Bitcoin Data Structure and Transactions/);
     assert.match(past, /Dr\. David An/);
     assert.doesNotMatch(section, /confirmed for Topic 1|other profiles feature|announced soon/);
     assert.match(section, /Topic 1: The Need for Decentralization &amp; Digital Trust/);
-    assert.doesNotMatch(section, /speaker-placeholder|Philip Maume|Christian Ziegler/);
-    assert.equal([...section.matchAll(/Previous topic:/g)].length, 3);
+    assert.doesNotMatch(section, /speaker-placeholder/);
+    assert.equal([...section.matchAll(/Previous topic:/g)].length, 13);
   }
   const text = inventory(renderPage('course')).text;
   assert.match(text, /Weeks 1–2: The Need for Decentralization & Digital Trust Speaker: Andi Schmitt/);

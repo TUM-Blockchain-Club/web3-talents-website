@@ -16,9 +16,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="stylesheet" href="/styles.css" />
-        <link rel="stylesheet" href="/interactions.css" />
-        <link rel="stylesheet" href="/usability.css" />
+        <link rel="preload" href="/assets/Inter-400.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/assets/SpaceGrotesk-500.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="stylesheet" href="/styles.css" precedence="base" />
+        <link rel="stylesheet" href="/interactions.css" precedence="interactions" />
+        <link rel="stylesheet" href="/usability.css" precedence="usability" />
       </head>
       <body className="web3t-page">{children}</body>
     </html>
