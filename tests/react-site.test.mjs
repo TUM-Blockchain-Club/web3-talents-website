@@ -168,18 +168,23 @@ test('curriculum covers all ten topic pairs and preserves unique accordion targe
   assert.doesNotMatch(text, /second expert lecture|follow-up expert lecture|option B|Screening:|burned out|Speaker can pitch/);
 });
 
-test('both pages show the same three previous speakers with real portraits', () => {
+test('both pages show Andi for Topic 1 and retain the three previous speakers', () => {
   const sections = ['home', 'course'].map(page => renderPage(page).match(/<section[^>]*id="speakers"[\s\S]*?<\/section>/)[0]);
   const portraits = sections.map(section => [...section.matchAll(/<img[^>]*src="([^"]+)"[^>]*alt="([^"]+)"/g)].map(([,src,alt]) => ({src,alt})));
   assert.deepEqual(portraits[0], portraits[1]);
-  assert.deepEqual(portraits[0].map(p => p.alt), ['Dr. David An', 'Jonas Gebele', 'David Kurz']);
+  assert.deepEqual(portraits[0].map(p => p.alt), ['Andi Schmitt', 'Dr. David An', 'Jonas Gebele', 'David Kurz']);
+  assert.equal(portraits[0][0].src, '/speakers/andi.jpeg');
+  assert.ok(existsSync(new URL('speakers/andi.jpeg', publicDir)));
   for (const section of sections) {
-    assert.match(section, /Previous speakers/);
-    assert.match(section, /Speakers from previous cohorts/);
-    assert.match(section, /lineup will be announced separately/);
-    assert.doesNotMatch(section, /speaker-placeholder|Andi Schmitt|Philip Maume|Christian Ziegler/);
+    assert.match(section, /Andi Schmitt is confirmed for Topic 1/);
+    assert.match(section, /speakers from previous cohorts/);
+    assert.match(section, /Topic 1: The Need for Decentralization &amp; Digital Trust/);
+    assert.doesNotMatch(section, /speaker-placeholder|Philip Maume|Christian Ziegler/);
     assert.equal([...section.matchAll(/Previous topic:/g)].length, 3);
   }
+  const text = inventory(renderPage('course')).text;
+  assert.match(text, /Weeks 1–2: The Need for Decentralization & Digital Trust Speaker: Andi Schmitt/);
+  assert.equal([...text.matchAll(/Speaker: Andi Schmitt/g)].length, 1);
 });
 
 test('speaker profiles and remaining testimonials render without testimonial images', () => {

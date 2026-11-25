@@ -24,6 +24,7 @@ export type CurriculumTopic = {
   number: number;
   weeks: string;
   title: string;
+  speaker?: string;
   points: CurriculumPoint[];
 };
 
@@ -46,6 +47,7 @@ export const curriculum: CurriculumPhase[] = [
         number: 1,
         weeks: "1–2",
         title: "The Need for Decentralization & Digital Trust",
+        speaker: "Andi Schmitt",
         points: [
           {
             label: "Centralized vs. Decentralized Systems",

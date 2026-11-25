@@ -25,15 +25,25 @@ const previousSpeakers = [
   },
 ];
 
-export const previousSpeakersNote =
-  "Speakers from previous cohorts. The upcoming cohort’s lineup will be announced separately.";
+export const speakersNote =
+  "Andi Schmitt is confirmed for Topic 1. The other profiles feature speakers from previous cohorts; more upcoming speakers will be announced soon.";
 
-export function PreviousSpeakerCards({
+export function SpeakerCards({
   prefix = "web3t-speaker",
 }: {
   prefix?: "web3t-speaker" | "web3t-course-speaker";
 }) {
-  return previousSpeakers.map((speaker) => (
+  return <>
+    <SpeakerCard
+      prefix={prefix}
+      name="Andi Schmitt"
+      image="/speakers/andi.jpeg"
+      imageAlt="Andi Schmitt"
+      role="Co-founder"
+      organization="@LightUpKryptos"
+      topic="Topic 1: The Need for Decentralization & Digital Trust"
+    />
+    {previousSpeakers.map((speaker) => (
     <SpeakerCard
       key={speaker.name}
       {...speaker}
@@ -41,5 +51,6 @@ export function PreviousSpeakerCards({
       imageAlt={speaker.name}
       topic={`Previous topic: "${speaker.topic}"`}
     />
-  ));
+    ))}
+  </>;
 }
