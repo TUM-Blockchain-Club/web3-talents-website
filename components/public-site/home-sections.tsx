@@ -141,13 +141,13 @@ export function HomeSpeakers() {
       <div className="web3t-rail">
         <div className="web3t-speakers__head">
           <h2 id="web3t-speakers-title" className="web3t-h2">
-            Planned speakers
+            Speakers
           </h2>
         </div>
         <Carousel
           className="web3t-speakers__carousel"
           scrollerClassName="web3t-speakers__scroller"
-          label="Planned speakers slider"
+          label="Speakers slider"
         >
           <PlannedSpeakerCards />
         </Carousel>

@@ -176,7 +176,8 @@ test('both pages show Andi for Topic 1 and retain the three previous speakers', 
   assert.equal(portraits[0][0].src, '/speakers/andi.jpeg');
   assert.ok(existsSync(new URL('speakers/andi.jpeg', publicDir)));
   for (const section of sections) {
-    assert.match(section, /<h2[^>]*>Planned speakers<\/h2>/);
+    assert.match(section, /<h2[^>]*>Speakers<\/h2>/);
+    assert.doesNotMatch(section, /Planned speakers/);
     assert.match(section, /<h2[^>]*>Past speakers<\/h2>/);
     const [planned, past] = section.split(/<h2[^>]*>Past speakers<\/h2>/);
     assert.match(planned, /Andi Schmitt/);

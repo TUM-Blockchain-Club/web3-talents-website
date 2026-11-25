@@ -243,7 +243,7 @@ export function CourseSpeakers() {
         id="web3t-course-speakers-title"
         className="web3t-course-speakers__title"
       >
-        Planned speakers
+        Speakers
       </h2>
       <div className="web3t-course-speakers__grid">
         <PlannedSpeakerCards prefix="web3t-course-speaker" />
