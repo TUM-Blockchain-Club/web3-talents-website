@@ -15,9 +15,16 @@ export const participantReviews = [
     quote: "The group research format was useful because it made me go deeper into one topic instead of only listening passively. Presenting it to others also helped me understand where I still had gaps.",
   },
   {
-    name: "Anonymous",
-    // Verbatim excerpt from the final-feedback form; no identity was collected.
-    quote: "The diversity of the cohort. There was a lot to learn from everyone.",
+    name: "Nwadinso Florence",
+    quote: "The whole program has made me really see the whole picture: the law side, the economic side, the technical bits.",
+  },
+  {
+    name: "Oluwole Ilesanmi",
+    quote: "It’s so, so packed when it comes to knowledge: the presentations, the research, the quality of the lectures.",
+  },
+  {
+    name: "Petros Lekkos",
+    quote: "At Web3 Talents, I learned how to collaborate with people around the world, in challenging projects.",
   },
 ] as const;
 

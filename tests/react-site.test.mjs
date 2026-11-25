@@ -197,7 +197,7 @@ test('both pages show Andi for Topic 1 and restore all thirteen previous speaker
 });
 
 test('speaker profiles and remaining testimonials render without testimonial images', () => {
-  for (const [page, count] of [['home', 4], ['course', 4]]) {
+  for (const [page, count] of [['home', 6], ['course', 6]]) {
     const html = renderPage(page);
     assert.match(html, /Dr\. David An/);
     assert.match(html, /Jonas Gebele/);
@@ -214,8 +214,8 @@ test('participant reviews have consistent approved names and no cohort or club l
       .map(([figure]) => inventory(figure).text)
   );
   assert.deepEqual(reviews[0], reviews[1]);
-  assert.equal(new Set(reviews[0]).size, 4);
-  for (const [index, name] of ['Anna', 'Anoushk', 'Adam', 'Anonymous'].entries()) {
+  assert.equal(new Set(reviews[0]).size, 6);
+  for (const [index, name] of ['Anna', 'Anoushk', 'Adam', 'Nwadinso Florence', 'Oluwole Ilesanmi', 'Petros Lekkos'].entries()) {
     assert.ok(reviews[0][index].includes(`${name} Course participant`));
     assert.doesNotMatch(reviews[0][index], /Cohort [123]|TBC member|club member/i);
   }

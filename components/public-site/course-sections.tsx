@@ -259,6 +259,7 @@ export function CourseSpeakers() {
 }
 
 export function StudentReviews() {
+  const half = Math.ceil(participantReviews.length / 2);
   return (
     <section
       className="web3t-course-students"
@@ -274,20 +275,20 @@ export function StudentReviews() {
       </h2>
       <div className="web3t-course-students__masonry">
         <div className="web3t-course-students__col">
-          {participantReviews.slice(0, 2).map((review, index) => (
+          {participantReviews.slice(0, half).map((review, index) => (
             <ParticipantReview
               key={review.name}
               review={review}
-              className={`web3t-course-quote web3t-course-quote--${index === 0 ? "blue" : "purple"}`}
+              className={`web3t-course-quote web3t-course-quote--${["blue", "purple", "violet"][index % 3]}`}
             />
           ))}
         </div>
         <div className="web3t-course-students__col">
-          {participantReviews.slice(2).map((review, index) => (
+          {participantReviews.slice(half).map((review, index) => (
             <ParticipantReview
               key={review.name}
               review={review}
-              className={`web3t-course-quote web3t-course-quote--${index === 0 ? "violet" : "blue"}`}
+              className={`web3t-course-quote web3t-course-quote--${["violet", "blue", "purple"][index % 3]}`}
             />
           ))}
         </div>
