@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { ParticipantReview, participantReviews } from "./participant-reviews";
 import {
-  SpeakerCards,
-  speakersNote,
+  PlannedSpeakerCards,
+  PastSpeakerCards,
 } from "./previous-speakers";
 import { SiteHeader } from "./site-header";
 import { SiteFooter } from "./site-footer";
@@ -141,16 +141,25 @@ export function HomeSpeakers() {
       <div className="web3t-rail">
         <div className="web3t-speakers__head">
           <h2 id="web3t-speakers-title" className="web3t-h2">
-            Speakers
+            Planned speakers
           </h2>
-          <p className="web3t-speakers__sub">{speakersNote}</p>
         </div>
         <Carousel
           className="web3t-speakers__carousel"
           scrollerClassName="web3t-speakers__scroller"
-          label="Speaker slider"
+          label="Planned speakers slider"
         >
-          <SpeakerCards />
+          <PlannedSpeakerCards />
+        </Carousel>
+        <div className="web3t-speakers__head web3t-speakers__past-heading">
+          <h2 className="web3t-h2">Past speakers</h2>
+        </div>
+        <Carousel
+          className="web3t-speakers__carousel"
+          scrollerClassName="web3t-speakers__scroller"
+          label="Past speakers slider"
+        >
+          <PastSpeakerCards />
         </Carousel>
       </div>
     </section>

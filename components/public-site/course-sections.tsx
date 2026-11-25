@@ -1,8 +1,8 @@
 import { ApplicationLink } from "./application-link";
 import { ParticipantReview, participantReviews } from "./participant-reviews";
 import {
-  SpeakerCards,
-  speakersNote,
+  PlannedSpeakerCards,
+  PastSpeakerCards,
 } from "./previous-speakers";
 import { SiteHeader } from "./site-header";
 import { SiteFooter } from "./site-footer";
@@ -243,11 +243,16 @@ export function CourseSpeakers() {
         id="web3t-course-speakers-title"
         className="web3t-course-speakers__title"
       >
-        Speakers
+        Planned speakers
       </h2>
-      <p className="web3t-course-speakers__note">{speakersNote}</p>
       <div className="web3t-course-speakers__grid">
-        <SpeakerCards prefix="web3t-course-speaker" />
+        <PlannedSpeakerCards prefix="web3t-course-speaker" />
+      </div>
+      <h2 className="web3t-course-speakers__title web3t-speakers__past-heading">
+        Past speakers
+      </h2>
+      <div className="web3t-course-speakers__grid">
+        <PastSpeakerCards prefix="web3t-course-speaker" />
       </div>
     </section>
   );

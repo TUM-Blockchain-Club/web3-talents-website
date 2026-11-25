@@ -148,6 +148,9 @@
 .web3t-course .web3t-course-speakers__grid {
   grid-template-columns: repeat(auto-fit, minmax(0, 322px));
 }
+.web3t-speakers__past-heading {
+  margin-top: clamp(48px, 6vw, 80px);
+}
 .web3t-course .web3t-course-speaker {
   width: 100%;
   height: auto;
